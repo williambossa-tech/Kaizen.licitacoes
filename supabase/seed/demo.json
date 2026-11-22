@@ -1,0 +1,6777 @@
+{
+"EMP": {
+"A": {
+"nome": "Alfa Mobiliário e Equipamentos Ltda",
+"curto": "Alfa Mobiliário",
+"cnpj": "11.222.333/0001-81",
+"semCob": [
+"AP"
+],
+"proj": {
+"esc": "Mobiliário escolar",
+"adm": "Mobiliário administrativo"
+}
+},
+"B": {
+"nome": "Beta Sistemas e Serviços de TI Ltda",
+"curto": "Beta Sistemas",
+"cnpj": "44.555.666/0001-02",
+"semCob": [
+"RR"
+],
+"proj": {
+"sd": "Service desk e infraestrutura",
+"fs": "Fábrica de software",
+"gov": "Governança de TI"
+}
+}
+},
+"USERS": {
+"william": {
+"nome": "William",
+"papel": "Diretoria Kaizen",
+"emp": [
+"A",
+"B"
+],
+"perm": [
+"consultar",
+"preparar",
+"aprovar",
+"decidir",
+"preco",
+"juridico",
+"financeiro",
+"admin"
+],
+"cons": true
+},
+"ana": {
+"nome": "Ana Ribeiro",
+"papel": "Analista de licitações · Kaizen",
+"emp": [
+"A",
+"B"
+],
+"perm": [
+"consultar",
+"preparar"
+]
+},
+"marina": {
+"nome": "Marina Alves",
+"papel": "Jurídico · Kaizen",
+"emp": [
+"A",
+"B"
+],
+"perm": [
+"consultar",
+"juridico"
+]
+},
+"carlos": {
+"nome": "Carlos Mendes",
+"papel": "Gestor da Alfa (cliente)",
+"emp": [
+"A"
+],
+"perm": [
+"consultar",
+"aprovar",
+"decidir",
+"preco"
+]
+},
+"paula": {
+"nome": "Paula Souza",
+"papel": "Diretora financeira da Alfa",
+"emp": [
+"A"
+],
+"perm": [
+"consultar",
+"aprovar",
+"financeiro"
+]
+},
+"rui": {
+"nome": "Rui Costa",
+"papel": "Consulta · Alfa",
+"emp": [
+"A"
+],
+"perm": [
+"consultar"
+]
+},
+"bruno": {
+"nome": "Bruno Lima",
+"papel": "Gestor da Beta (cliente)",
+"emp": [
+"B"
+],
+"perm": [
+"consultar",
+"aprovar",
+"decidir",
+"preco",
+"financeiro"
+]
+}
+},
+"DESIG": {
+"A": [
+"carlos",
+"paula"
+],
+"B": [
+"bruno",
+"william"
+]
+},
+"CRT": [
+{
+"id": "CRT-PR-0101",
+"org": "Prefeitura Municipal de Curitiba",
+"un": "Secretaria Municipal da Educação",
+"sede": "PR",
+"exec": [
+"PR"
+],
+"num": "90045/2026",
+"obj": "Mobiliário escolar: conjuntos aluno e mesas de professor",
+"pub": "2026-11-12",
+"ses": "2026-12-10T10:00",
+"enc": null,
+"sit": "Publicado, aguardando sessão pública",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Portal de Compras de Curitiba",
+"lotes": [
+{
+"n": 1,
+"d": "Conjunto aluno CJA-06 (mesa e cadeira)",
+"q": 1200,
+"u": "conjunto",
+"uf": "PR",
+"ref": 486000
+},
+{
+"n": 2,
+"d": "Mesa para professor MP-01",
+"q": 150,
+"u": "un",
+"uf": "PR",
+"ref": 97500
+}
+]
+},
+{
+"id": "CRT-PR-0102",
+"org": "Universidade Federal do Paraná",
+"un": "Pró-Reitoria de Administração",
+"sede": "PR",
+"exec": [
+"PR"
+],
+"num": "90118/2026",
+"obj": "Armários de aço e estantes para bibliotecas",
+"pub": "2026-10-20",
+"ses": "2026-11-18T09:00",
+"enc": null,
+"sit": "Em habilitação: vencedor provisório declarado no lote 1",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Armário de aço 2 portas, 1.980 mm",
+"q": 80,
+"u": "un",
+"uf": "PR",
+"ref": 108000
+},
+{
+"n": 2,
+"d": "Estante dupla face para biblioteca",
+"q": 60,
+"u": "un",
+"uf": "PR",
+"ref": 75600
+}
+]
+},
+{
+"id": "CRT-PR-0103",
+"org": "Tribunal de Justiça do Estado do Paraná",
+"un": "Departamento de Patrimônio",
+"sede": "PR",
+"exec": [
+"PR"
+],
+"num": "90021/2026",
+"obj": "Armários de aço com 4 portas e arquivos deslizantes",
+"pub": "2026-02-20",
+"ses": "2026-03-12T10:00",
+"enc": {
+"t": "Homologação",
+"d": "2026-04-20"
+},
+"sit": "Homologado",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Armário de aço 4 portas",
+"q": 100,
+"u": "un",
+"uf": "PR",
+"ref": 132000
+},
+{
+"n": 2,
+"d": "Arquivo deslizante, módulo com 6 faces",
+"q": 12,
+"u": "módulo",
+"uf": "PR",
+"ref": 216000
+}
+]
+},
+{
+"id": "CRT-SC-0104",
+"org": "Prefeitura Municipal de Joinville",
+"un": "Secretaria de Educação",
+"sede": "SC",
+"exec": [
+"SC"
+],
+"num": "90310/2025",
+"obj": "Cadeiras escolares empilháveis",
+"pub": "2025-07-10",
+"ses": "2025-08-05T09:00",
+"enc": {
+"t": "Homologação",
+"d": "2025-09-01"
+},
+"sit": "Homologado",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Cadeira escolar empilhável CE-05",
+"q": 800,
+"u": "un",
+"uf": "SC",
+"ref": 152000
+}
+]
+},
+{
+"id": "CRT-SP-0105",
+"org": "Secretaria da Educação do Estado de São Paulo",
+"un": "Diretoria de Ensino, Região Centro",
+"sede": "SP",
+"exec": [
+"SP"
+],
+"num": "90040/2026",
+"obj": "Mobiliário escolar para as unidades da Diretoria de Ensino Centro",
+"pub": "2026-03-10",
+"ses": "2026-04-08T10:00",
+"enc": {
+"t": "Homologação",
+"d": "2026-05-12"
+},
+"sit": "Homologado",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "BEC/SP",
+"lotes": [
+{
+"n": 1,
+"d": "Conjunto aluno CJA-06",
+"q": 2000,
+"u": "conjunto",
+"uf": "SP",
+"ref": 840000
+},
+{
+"n": 2,
+"d": "Mesa de refeitório com bancos",
+"q": 300,
+"u": "un",
+"uf": "SP",
+"ref": 210000
+}
+]
+},
+{
+"id": "CRT-SP-0106",
+"org": "Universidade de São Paulo",
+"un": "Prefeitura do Campus da Capital",
+"sede": "SP",
+"exec": [
+"SP"
+],
+"num": "90077/2026",
+"obj": "Roupeiros de aço para vestiários",
+"pub": "2026-05-20",
+"ses": "2026-06-17T09:30",
+"enc": {
+"t": "Homologação",
+"d": "2026-07-22"
+},
+"sit": "Homologado",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "BEC/SP",
+"lotes": [
+{
+"n": 1,
+"d": "Roupeiro de aço 8 portas",
+"q": 240,
+"u": "un",
+"uf": "SP",
+"ref": 225600
+}
+]
+},
+{
+"id": "CRT-SP-0107",
+"org": "Prefeitura Municipal de Campinas",
+"un": "Secretaria Municipal de Cultura",
+"sede": "SP",
+"exec": [
+"SP"
+],
+"num": "90112/2026",
+"obj": "Poltronas para auditório",
+"pub": "2026-04-02",
+"ses": "2026-05-05T10:00",
+"enc": {
+"t": "Homologação",
+"d": "2026-06-10"
+},
+"sit": "Homologado",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Poltrona para auditório com prancheta",
+"q": 420,
+"u": "un",
+"uf": "SP",
+"ref": 378000
+}
+]
+},
+{
+"id": "CRT-SP-0108",
+"org": "Tribunal Regional do Trabalho da 2ª Região",
+"un": "Secretaria de Administração",
+"sede": "SP",
+"exec": [
+"SP"
+],
+"num": "90205/2026",
+"obj": "Estações de trabalho e gaveteiros",
+"pub": "2026-10-15",
+"ses": "2026-11-10T10:00",
+"enc": null,
+"sit": "Sessão suspensa para análise de impugnação",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Estação de trabalho em L com gaveteiro",
+"q": 350,
+"u": "conjunto",
+"uf": "SP",
+"ref": 595000
+}
+]
+},
+{
+"id": "CRT-SP-0109",
+"org": "Prefeitura Municipal de São Paulo",
+"un": "Secretaria Municipal de Gestão",
+"sede": "SP",
+"exec": [
+"SP"
+],
+"num": "90330/2026",
+"obj": "Arquivos deslizantes para o arquivo municipal, com instalação",
+"pub": "2026-11-16",
+"ses": "2027-01-14T10:00",
+"enc": null,
+"sit": "Publicado, aguardando sessão pública",
+"mod": "Concorrência eletrônica",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Arquivo deslizante, módulo com 8 faces",
+"q": 30,
+"u": "módulo",
+"uf": "SP",
+"ref": 615000
+}
+]
+},
+{
+"id": "CRT-SP-0110",
+"org": "Companhia do Metropolitano de São Paulo",
+"un": "Gerência de Suprimentos",
+"sede": "SP",
+"exec": [
+"SP"
+],
+"num": "90088/2026",
+"obj": "Bancos para plataformas de estações",
+"pub": "2026-07-30",
+"ses": "2026-08-27T10:00",
+"enc": {
+"t": "Revogação",
+"d": "2026-09-15"
+},
+"sit": "Revogado pela administração",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"cancel": true,
+"lotes": [
+{
+"n": 1,
+"d": "Banco de aço inox, 3 lugares",
+"q": 500,
+"u": "un",
+"uf": "SP",
+"ref": 410000
+}
+]
+},
+{
+"id": "CRT-RJ-0111",
+"org": "Fundação Oswaldo Cruz",
+"un": "Coordenação-Geral de Administração",
+"sede": "RJ",
+"exec": [
+"RJ"
+],
+"num": "90064/2026",
+"obj": "Mobiliário técnico para laboratórios",
+"pub": "2026-06-30",
+"ses": "2026-07-28T09:00",
+"enc": {
+"t": "Homologação",
+"d": "2026-09-01"
+},
+"sit": "Homologado",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Bancada técnica com prateleira",
+"q": 120,
+"u": "un",
+"uf": "RJ",
+"ref": 264000
+}
+]
+},
+{
+"id": "CRT-RJ-0112",
+"org": "Universidade Federal do Rio de Janeiro",
+"un": "Pró-Reitoria de Gestão e Governança",
+"sede": "RJ",
+"exec": [
+"RJ"
+],
+"num": "90140/2026",
+"obj": "Cadeiras universitárias com prancheta",
+"pub": "2026-10-06",
+"ses": "2026-11-05T10:00",
+"enc": null,
+"sit": "Fase recursal: intenção de recurso registrada",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Cadeira universitária com prancheta escamoteável",
+"q": 900,
+"u": "un",
+"uf": "RJ",
+"ref": 342000
+}
+]
+},
+{
+"id": "CRT-MG-0113",
+"org": "Tribunal de Justiça do Estado de Minas Gerais",
+"un": "Diretoria Executiva de Recursos Materiais",
+"sede": "MG",
+"exec": [
+"MG"
+],
+"num": "90019/2026",
+"obj": "Arquivos de aço com 4 gavetas",
+"pub": "2026-01-27",
+"ses": "2026-02-25T10:00",
+"enc": {
+"t": "Homologação",
+"d": "2026-03-30"
+},
+"sit": "Homologado",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Arquivo de aço 4 gavetas",
+"q": 300,
+"u": "un",
+"uf": "MG",
+"ref": 186000
+}
+]
+},
+{
+"id": "CRT-DF-0114",
+"org": "Ministério da Saúde",
+"un": "Coordenação-Geral de Material e Patrimônio",
+"sede": "DF",
+"exec": [
+"DF",
+"GO",
+"MG"
+],
+"num": "90310/2026",
+"obj": "Mobiliário administrativo com entregas no DF, em GO e em MG",
+"pub": "2026-05-11",
+"ses": "2026-06-09T10:00",
+"enc": {
+"t": "Homologação",
+"d": "2026-07-14"
+},
+"sit": "Homologado",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Mobiliário administrativo, entrega no DF",
+"q": 400,
+"u": "conjunto",
+"uf": "DF",
+"ref": 300000
+},
+{
+"n": 2,
+"d": "Mobiliário administrativo, entregas em GO e MG (sem quantidades por UF)",
+"q": 650,
+"u": "conjunto",
+"uf": [
+"GO",
+"MG"
+],
+"ref": 487500
+}
+]
+},
+{
+"id": "CRT-GO-0117",
+"org": "Prefeitura Municipal de Goiânia",
+"un": "Secretaria Municipal de Educação",
+"sede": "GO",
+"exec": [
+"GO"
+],
+"num": "90052/2026",
+"obj": "Estantes de aço para almoxarifado",
+"pub": "2026-04-14",
+"ses": "2026-05-13T09:00",
+"enc": {
+"t": "Homologação",
+"d": "2026-06-16"
+},
+"sit": "Homologado",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Estante de aço com 6 bandejas",
+"q": 400,
+"u": "un",
+"uf": "GO",
+"ref": 112000
+}
+]
+},
+{
+"id": "CRT-BA-0201",
+"org": "Tribunal Regional Eleitoral da Bahia",
+"un": "Secretaria de Administração e Orçamento",
+"sede": "BA",
+"exec": [
+"BA"
+],
+"num": "90077/2026",
+"obj": "Postos de atendimento ao eleitor: mobiliário (lote 1) e service desk (lote 2)",
+"pub": "2026-07-21",
+"ses": "2026-08-19T10:00",
+"enc": {
+"t": "Homologação",
+"d": "2026-09-25"
+},
+"sit": "Homologado",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Mobiliário para postos de atendimento",
+"q": 180,
+"u": "conjunto",
+"uf": "BA",
+"ref": 261000
+},
+{
+"n": 2,
+"d": "Service desk para postos de atendimento, 8 postos por 12 meses",
+"q": 96,
+"u": "posto-mês",
+"uf": "BA",
+"ref": 1056000
+}
+]
+},
+{
+"id": "CRT-PE-0115",
+"org": "Prefeitura do Recife",
+"un": "Secretaria de Educação",
+"sede": "PE",
+"exec": [
+"PE"
+],
+"num": "90150/2026",
+"obj": "Mobiliário para creches municipais",
+"pub": "2026-11-03",
+"ses": "2026-12-03T09:00",
+"enc": null,
+"sit": "Publicado, aguardando sessão pública",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Conjunto infantil: mesa e 4 cadeiras",
+"q": 500,
+"u": "conjunto",
+"uf": "PE",
+"ref": 290000
+}
+]
+},
+{
+"id": "CRT-AM-0116",
+"org": "Secretaria de Estado de Educação e Desporto do Amazonas",
+"un": "Departamento de Logística",
+"sede": "AM",
+"exec": [
+"AM"
+],
+"num": "número não informado",
+"obj": "Carteiras escolares para a capital e o interior",
+"pub": "2026-10-28",
+"ses": null,
+"enc": null,
+"sit": "Aviso publicado sem data de sessão",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "e-Compras AM",
+"lotes": [
+{
+"n": 1,
+"d": "Carteira escolar CJA-04",
+"q": 3000,
+"u": "conjunto",
+"uf": "AM",
+"ref": 1110000
+}
+]
+},
+{
+"id": "CRT-XX-0199",
+"org": "Consórcio Intermunicipal de Saúde (UF não informada na importação)",
+"un": "Setor de Compras",
+"sede": null,
+"exec": [],
+"num": "90009/2026",
+"obj": "Mobiliário hospitalar administrativo",
+"pub": "2026-11-05",
+"ses": "2026-12-15T09:00",
+"enc": null,
+"sit": "Publicado, aguardando sessão pública",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "não informado",
+"lotes": [
+{
+"n": 1,
+"d": "Armário vitrine e mesa de apoio",
+"q": 60,
+"u": "un",
+"uf": null,
+"ref": 72000
+}
+]
+},
+{
+"id": "CRT-DF-0301",
+"org": "Ministério da Gestão e da Inovação em Serviços Públicos",
+"un": "Diretoria de Tecnologia da Informação",
+"sede": "DF",
+"exec": [
+"DF"
+],
+"num": "90011/2026",
+"obj": "Service desk N1/N2 com 10 postos de dedicação exclusiva",
+"pub": "2026-01-12",
+"ses": "2026-02-10T10:00",
+"enc": {
+"t": "Homologação",
+"d": "2026-03-16"
+},
+"sit": "Homologado",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Service desk, 10 postos por 12 meses",
+"q": 120,
+"u": "posto-mês",
+"uf": "DF",
+"ref": 1450000
+}
+]
+},
+{
+"id": "CRT-SP-0302",
+"org": "Companhia de Processamento de Dados do Estado de São Paulo",
+"un": "Diretoria de Contratações",
+"sede": "SP",
+"exec": [
+"SP"
+],
+"num": "90052/2026",
+"obj": "Fábrica de software medida em pontos de função",
+"pub": "2026-02-23",
+"ses": "2026-03-24T10:00",
+"enc": {
+"t": "Homologação",
+"d": "2026-04-28"
+},
+"sit": "Homologado",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "BEC/SP",
+"lotes": [
+{
+"n": 1,
+"d": "Desenvolvimento e manutenção, 1.000 PF",
+"q": 1000,
+"u": "PF",
+"uf": "SP",
+"ref": 108000
+}
+]
+},
+{
+"id": "CRT-RJ-0303",
+"org": "Tribunal de Justiça do Estado do Rio de Janeiro",
+"un": "Diretoria-Geral de Tecnologia da Informação",
+"sede": "RJ",
+"exec": [
+"RJ"
+],
+"num": "90006/2026",
+"obj": "Suporte de infraestrutura medido em UST",
+"pub": "2025-12-15",
+"ses": "2026-01-20T10:00",
+"enc": {
+"t": "Homologação",
+"d": "2026-02-27"
+},
+"sit": "Homologado",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Suporte de infraestrutura, 200.000 UST",
+"q": 200000,
+"u": "UST",
+"uf": "RJ",
+"ref": 2100000
+}
+]
+},
+{
+"id": "CRT-DF-0304",
+"org": "Agência Nacional de Telecomunicações",
+"un": "Gerência de Tecnologia da Informação",
+"sede": "DF",
+"exec": [
+"DF"
+],
+"num": "90044/2026",
+"obj": "Sustentação de sistemas medida em UST",
+"pub": "2026-10-23",
+"ses": "2026-11-17T10:00",
+"enc": null,
+"sit": "Em negociação com o primeiro colocado",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Sustentação de sistemas, 60.000 UST",
+"q": 60000,
+"u": "UST",
+"uf": "DF",
+"ref": 690000
+}
+]
+},
+{
+"id": "CRT-DF-0305",
+"org": "Ministério da Educação",
+"un": "Subsecretaria de Tecnologia da Informação e Comunicação",
+"sede": "DF",
+"exec": [
+"DF"
+],
+"num": "90090/2026",
+"obj": "Governança de TI e escritório de projetos",
+"pub": "2026-11-09",
+"ses": "2026-12-08T10:00",
+"enc": null,
+"sit": "Publicado, aguardando sessão pública",
+"mod": "Concorrência eletrônica",
+"crit": "Técnica e preço",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Governança de TI, equipe sem dedicação exclusiva",
+"q": 12,
+"u": "mês",
+"uf": "DF",
+"ref": 840000
+}
+]
+},
+{
+"id": "CRT-PR-0306",
+"org": "Secretaria de Estado da Administração e da Previdência do Paraná",
+"un": "Departamento de Tecnologia",
+"sede": "PR",
+"exec": [
+"PR"
+],
+"num": "90233/2026",
+"obj": "Suporte de infraestrutura medido em UST",
+"pub": "2026-04-20",
+"ses": "2026-05-19T10:00",
+"enc": {
+"t": "Homologação",
+"d": "2026-06-23"
+},
+"sit": "Homologado",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras Paraná",
+"lotes": [
+{
+"n": 1,
+"d": "Suporte de infraestrutura, 80.000 UST",
+"q": 80000,
+"u": "UST",
+"uf": "PR",
+"ref": 820000
+}
+]
+},
+{
+"id": "CRT-MG-0307",
+"org": "Prefeitura Municipal de Belo Horizonte",
+"un": "Empresa de Informática e Informação do Município",
+"sede": "MG",
+"exec": [
+"MG"
+],
+"num": "90118/2026",
+"obj": "Service desk com 30 postos simultâneos",
+"pub": "2026-06-08",
+"ses": "2026-07-07T10:00",
+"enc": {
+"t": "Homologação",
+"d": "2026-08-18"
+},
+"sit": "Homologado",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Service desk, 30 postos por 12 meses",
+"q": 360,
+"u": "posto-mês",
+"uf": "MG",
+"ref": 3960000
+}
+]
+},
+{
+"id": "CRT-SP-0308",
+"org": "Prefeitura Municipal de São Paulo",
+"un": "Empresa de Tecnologia da Informação e Comunicação do Município",
+"sede": "SP",
+"exec": [
+"SP"
+],
+"num": "90301/2026",
+"obj": "Desenvolvimento de sistemas por pontos de função",
+"pub": "2026-11-10",
+"ses": "2026-12-15T10:00",
+"enc": null,
+"sit": "Publicado, aguardando sessão pública",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Desenvolvimento de sistemas, 2.500 PF",
+"q": 2500,
+"u": "PF",
+"uf": "SP",
+"ref": 287500
+}
+]
+},
+{
+"id": "CRT-CE-0309",
+"org": "Empresa de Tecnologia da Informação do Ceará",
+"un": "Gerência de Licitações",
+"sede": "CE",
+"exec": [
+"CE"
+],
+"num": "90071/2026",
+"obj": "Suporte de infraestrutura medido em UST",
+"pub": "2026-10-09",
+"ses": "2026-11-12T10:00",
+"enc": null,
+"sit": "Fase recursal",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Suporte de infraestrutura, 50.000 UST",
+"q": 50000,
+"u": "UST",
+"uf": "CE",
+"ref": 545000
+}
+]
+},
+{
+"id": "CRT-RS-0310",
+"org": "Companhia de Processamento de Dados do Rio Grande do Sul",
+"un": "Divisão de Compras",
+"sede": "RS",
+"exec": [
+"RS"
+],
+"num": "90028/2026",
+"obj": "Governança de dados e escritório de projetos",
+"pub": "2026-03-02",
+"ses": "2026-03-31T10:00",
+"enc": {
+"t": "Certame deserto",
+"d": "2026-03-31"
+},
+"sit": "Deserto",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por lote",
+"portal": "Compras.gov.br",
+"cancel": true,
+"lotes": [
+{
+"n": 1,
+"d": "Governança de dados, 12 meses",
+"q": 12,
+"u": "mês",
+"uf": "RS",
+"ref": 620000
+}
+]
+},
+{
+"id": "CRT-ES-0120",
+"org": "Prefeitura Municipal de Vitória",
+"un": "Secretaria de Gestão",
+"sede": "ES",
+"exec": [
+"ES"
+],
+"num": "90044/2026",
+"obj": "Registro de preços de armários de aço",
+"pub": "2026-04-01",
+"ses": "2026-04-28T10:00",
+"enc": {
+"t": "Homologação",
+"d": "2026-05-18"
+},
+"sit": "Homologado · ata de registro de preços assinada",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por item",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Armário de aço 2 portas (registro de preços)",
+"q": 100,
+"u": "un",
+"uf": "ES",
+"ref": 125000
+}
+]
+},
+{
+"id": "CRT-MT-0121",
+"org": "Prefeitura Municipal de Cuiabá",
+"un": "Secretaria de Administração",
+"sede": "MT",
+"exec": [
+"MT"
+],
+"num": "90061/2026",
+"obj": "Registro de preços de acessórios ergonômicos",
+"pub": "2026-02-02",
+"ses": "2026-02-24T10:00",
+"enc": {
+"t": "Homologação",
+"d": "2026-02-27"
+},
+"sit": "Homologado · ata de registro de preços assinada",
+"mod": "Pregão eletrônico",
+"crit": "Menor preço por item",
+"portal": "Compras.gov.br",
+"lotes": [
+{
+"n": 1,
+"d": "Apoio para pés ergonômico (registro de preços)",
+"q": 100,
+"u": "un",
+"uf": "MT",
+"ref": 5600
+}
+]
+}
+],
+"PART": [
+{
+"emp": "A",
+"crt": "CRT-PR-0101",
+"proj": "esc",
+"L": {
+"1": {
+"dec": "pendente",
+"et": "Aguardando aprovação da participação",
+"resp": "ana",
+"prazo": "2026-11-25",
+"acao": "Decidir participação",
+"aprov": [
+"carlos",
+"william"
+],
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-11-12",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-11-16",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-11-20",
+"by": "Carlos Mendes"
+}
+]
+},
+"2": {
+"dec": "pendente",
+"et": "Em análise preliminar",
+"resp": "ana",
+"prazo": "2026-11-24",
+"acao": "Concluir análise preliminar",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-11-12",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-11-20",
+"by": "Ana Ribeiro"
+}
+]
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-PR-0102",
+"proj": "adm",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Acompanhamento pós-disputa",
+"comp": "Habilitação em análise",
+"res": "pendente",
+"pos": 1,
+"of": 103200,
+"resp": "ana",
+"prazo": "2026-11-24",
+"acao": "Responder diligência de habilitação",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-10-20",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-10-25",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-10-29",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-11-03",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-11-07",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-11-12",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-11-16",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-11-21",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "carlos",
+"d": "2026-11-03",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+},
+"2": {
+"dec": "declinar",
+"et": "Arquivada",
+"mot": "Declinado: prazo de entrega incompatível com a programação da fábrica",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-10-20",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-10-31",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-11-10",
+"by": "Gestor do cliente"
+},
+{
+"et": "Arquivada",
+"d": "2026-11-21",
+"by": "Gestor do cliente"
+}
+]
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-PR-0103",
+"proj": "adm",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Formalizada",
+"res": "venceu",
+"pos": 1,
+"of": 124800,
+"rd": "2026-04-20",
+"hv": 124800,
+"hd": "2026-04-20",
+"ctr": "CTR-0103",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-02-20",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-02-25",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-03-03",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-03-08",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-03-13",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-03-19",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-03-24",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-03-30",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Adjudicada",
+"d": "2026-04-04",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Homologada",
+"d": "2026-04-09",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando assinatura",
+"d": "2026-04-15",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Formalizada",
+"d": "2026-04-20",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "carlos",
+"d": "2026-03-08",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+},
+"2": {
+"dec": "participar",
+"et": "Arquivada",
+"res": "perdeu",
+"pos": 2,
+"of": 198000,
+"vv": 189600,
+"rd": "2026-04-20",
+"mot": "Preço acima do vencedor",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-02-20",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-02-27",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-03-05",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-03-12",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-03-18",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-03-25",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-03-31",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-04-07",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Homologada",
+"d": "2026-04-13",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Arquivada",
+"d": "2026-04-20",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "carlos",
+"d": "2026-03-12",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-SC-0104",
+"proj": "esc",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Arquivada",
+"res": "perdeu",
+"pos": 3,
+"of": 148000,
+"vv": 139200,
+"rd": "2025-09-01",
+"mot": "Preço acima do vencedor",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2025-07-10",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2025-07-16",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2025-07-22",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2025-07-28",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2025-08-03",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2025-08-08",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2025-08-14",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2025-08-20",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Homologada",
+"d": "2025-08-26",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Arquivada",
+"d": "2025-09-01",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "carlos",
+"d": "2025-07-28",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-SP-0105",
+"proj": "esc",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Formalizada",
+"res": "venceu",
+"pos": 1,
+"of": 792000,
+"rd": "2026-05-12",
+"hv": 792000,
+"hd": "2026-05-12",
+"ctr": "CTR-0105",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-03-10",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-03-16",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-03-21",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-03-27",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-04-02",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-04-08",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-04-13",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-04-19",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Adjudicada",
+"d": "2026-04-25",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Homologada",
+"d": "2026-05-01",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando assinatura",
+"d": "2026-05-06",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Formalizada",
+"d": "2026-05-12",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "carlos",
+"d": "2026-03-27",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+},
+"2": {
+"dec": "participar",
+"et": "Arquivada",
+"res": "perdeu",
+"pos": 2,
+"of": 201000,
+"vv": 194400,
+"rd": "2026-05-12",
+"mot": "Preço acima do vencedor",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-03-10",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-03-17",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-03-24",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-03-31",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-04-07",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-04-14",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-04-21",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-04-28",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Homologada",
+"d": "2026-05-05",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Arquivada",
+"d": "2026-05-12",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "carlos",
+"d": "2026-03-31",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-SP-0106",
+"proj": "adm",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Arquivada",
+"res": "perdeu",
+"pos": 2,
+"of": 214000,
+"vv": 206400,
+"rd": "2026-07-22",
+"mot": "Preço acima do vencedor",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-05-20",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-05-27",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-06-03",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-06-10",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-06-17",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-06-24",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-07-01",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-07-08",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Homologada",
+"d": "2026-07-15",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Arquivada",
+"d": "2026-07-22",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "carlos",
+"d": "2026-06-10",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-SP-0107",
+"proj": "adm",
+"L": {
+"1": {
+"dec": "declinar",
+"et": "Arquivada",
+"mot": "Declinado: produto fora do portfólio da fábrica",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-04-02",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-04-25",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-05-18",
+"by": "Gestor do cliente"
+},
+{
+"et": "Arquivada",
+"d": "2026-06-10",
+"by": "Gestor do cliente"
+}
+]
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-SP-0108",
+"proj": "adm",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Em disputa",
+"comp": "Sessão suspensa",
+"res": "pendente",
+"of": 562000,
+"resp": "ana",
+"prazo": "2026-11-26",
+"acao": "Acompanhar reabertura da sessão",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-10-15",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-10-21",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-10-27",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-11-03",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-11-09",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-11-15",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-11-21",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "carlos",
+"d": "2026-11-03",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-SP-0109",
+"proj": "adm",
+"L": {
+"1": {
+"dec": "pendente",
+"et": "Em análise preliminar",
+"resp": "ana",
+"prazo": "2026-12-02",
+"acao": "Concluir análise preliminar",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-11-16",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-11-24",
+"by": "Ana Ribeiro"
+}
+]
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-SP-0110",
+"proj": "adm",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Arquivada",
+"res": "cancelado",
+"of": 389000,
+"rd": "2026-09-15",
+"mot": "Certame revogado: fica fora do denominador da taxa de êxito",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-07-30",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-08-05",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-08-11",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-08-17",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-08-23",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-08-28",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-09-03",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-09-09",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Arquivada",
+"d": "2026-09-15",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "carlos",
+"d": "2026-08-17",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-RJ-0111",
+"proj": "adm",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Arquivada",
+"res": "perdeu",
+"pos": 4,
+"of": 251000,
+"vv": 228000,
+"rd": "2026-09-01",
+"mot": "Preço acima do vencedor",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-06-30",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-07-07",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-07-14",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-07-21",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-07-28",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-08-04",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-08-11",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-08-18",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Homologada",
+"d": "2026-08-25",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Arquivada",
+"d": "2026-09-01",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "carlos",
+"d": "2026-07-21",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-RJ-0112",
+"proj": "esc",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Acompanhamento pós-disputa",
+"comp": "Fase recursal",
+"res": "pendente",
+"pos": 2,
+"of": 318600,
+"resp": "marina",
+"prazo": "2026-11-24",
+"acao": "Apresentar contrarrazões",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-10-06",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-10-13",
+"by": "Marina Alves"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-10-19",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-10-26",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-11-01",
+"by": "Marina Alves"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-11-08",
+"by": "Marina Alves"
+},
+{
+"et": "Em disputa",
+"d": "2026-11-14",
+"by": "Marina Alves"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-11-21",
+"by": "Marina Alves"
+}
+],
+"decisao": {
+"by": "carlos",
+"d": "2026-10-26",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-MG-0113",
+"proj": "adm",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Formalizada",
+"res": "venceu",
+"pos": 1,
+"of": 171000,
+"rd": "2026-03-30",
+"hv": 171000,
+"hd": "2026-03-30",
+"ctr": "CTR-0113",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-01-27",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-02-02",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-02-07",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-02-13",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-02-19",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-02-24",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-03-02",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-03-07",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Adjudicada",
+"d": "2026-03-13",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Homologada",
+"d": "2026-03-19",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando assinatura",
+"d": "2026-03-24",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Formalizada",
+"d": "2026-03-30",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "carlos",
+"d": "2026-02-13",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-DF-0114",
+"proj": "adm",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Arquivada",
+"res": "perdeu",
+"pos": 2,
+"of": 281600,
+"vv": 276000,
+"rd": "2026-07-14",
+"mot": "Preço acima do vencedor",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-05-11",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-05-18",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-05-25",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-06-01",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-06-08",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-06-16",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-06-23",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-06-30",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Homologada",
+"d": "2026-07-07",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Arquivada",
+"d": "2026-07-14",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "carlos",
+"d": "2026-06-01",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+},
+"2": {
+"dec": "participar",
+"et": "Formalizada",
+"res": "venceu",
+"pos": 1,
+"of": 455000,
+"rd": "2026-07-14",
+"hv": 455000,
+"hd": "2026-07-14",
+"ctr": "CTR-0114",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-05-11",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-05-17",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-05-23",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-05-28",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-06-03",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-06-09",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-06-15",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-06-21",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Adjudicada",
+"d": "2026-06-27",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Homologada",
+"d": "2026-07-02",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando assinatura",
+"d": "2026-07-08",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Formalizada",
+"d": "2026-07-14",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "carlos",
+"d": "2026-05-28",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-GO-0117",
+"proj": "adm",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Arquivada",
+"res": "perdeu",
+"pos": 2,
+"of": 104800,
+"vv": 101600,
+"rd": "2026-06-16",
+"mot": "Preço acima do vencedor",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-04-14",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-04-21",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-04-28",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-05-05",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-05-12",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-05-19",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-05-26",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-06-02",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Homologada",
+"d": "2026-06-09",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Arquivada",
+"d": "2026-06-16",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "carlos",
+"d": "2026-05-05",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-BA-0201",
+"proj": "adm",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Formalizada",
+"res": "venceu",
+"pos": 1,
+"of": 248000,
+"rd": "2026-09-25",
+"hv": 248000,
+"hd": "2026-09-25",
+"ctr": "CTR-0201",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-07-21",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-07-27",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-08-02",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-08-08",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-08-14",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-08-20",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-08-26",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-09-01",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Adjudicada",
+"d": "2026-09-07",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Homologada",
+"d": "2026-09-13",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando assinatura",
+"d": "2026-09-19",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Formalizada",
+"d": "2026-09-25",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "carlos",
+"d": "2026-08-08",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-PE-0115",
+"proj": "esc",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Em preparação",
+"comp": "Esclarecimento em análise",
+"resp": "ana",
+"prazo": "2026-11-27",
+"acao": "Aprovar orçamento (colegiado)",
+"prep": {
+"orc": "Aguardando aprovação",
+"hab": "Em andamento"
+},
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-11-03",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-11-05",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-11-07",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-11-09",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-11-11",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "carlos",
+"d": "2026-11-09",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+},
+"orc": {
+"vers": [
+{
+"v": 1,
+"d": "2026-11-19",
+"by": "Ana Ribeiro",
+"origem": "Estimativa Kaizen",
+"m": {
+"tipo": "bens",
+"q": 500,
+"comps": [
+{
+"nome": "Estrutura metálica e tampos",
+"orig": "fab",
+"qpu": 1,
+"custo": 300,
+"perda": 4
+},
+{
+"nome": "Assentos plásticos (4 por conjunto)",
+"orig": "nac",
+"qpu": 4,
+"custo": 18,
+"perda": 0
+}
+],
+"frete": 4000,
+"setup": 0,
+"instal": 0,
+"gar": 0,
+"trib": 9.25,
+"cred": 0,
+"dv": 3,
+"taxa": 0,
+"prazo": 30,
+"base": "receita",
+"mg": 15,
+"lance": ""
+},
+"preco": 538.8316151202749,
+"mg": 15,
+"st": "submetida",
+"votos": {}
+}
+],
+"m": {
+"tipo": "bens",
+"q": 500,
+"comps": [
+{
+"nome": "Estrutura metálica e tampos",
+"orig": "fab",
+"qpu": 1,
+"custo": 300,
+"perda": 4
+},
+{
+"nome": "Assentos plásticos (4 por conjunto)",
+"orig": "nac",
+"qpu": 4,
+"custo": 18,
+"perda": 0
+}
+],
+"frete": 4000,
+"setup": 0,
+"instal": 0,
+"gar": 0,
+"trib": 9.25,
+"cred": 0,
+"dv": 3,
+"taxa": 0,
+"prazo": 30,
+"base": "receita",
+"mg": 15,
+"lance": ""
+},
+"scen": []
+},
+"delib": {
+"parts": [
+"carlos",
+"paula"
+],
+"votos": {},
+"v": 1
+}
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-AM-0116",
+"proj": "esc",
+"L": {
+"1": {
+"dec": "pendente",
+"et": "Em análise preliminar",
+"resp": "ana",
+"prazo": "2026-11-28",
+"acao": "Concluir análise preliminar",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-10-28",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-11-05",
+"by": "Ana Ribeiro"
+}
+]
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-XX-0199",
+"proj": "adm",
+"L": {
+"1": {
+"dec": "pendente",
+"et": "Prospectada",
+"resp": "ana",
+"prazo": "2026-11-26",
+"acao": "Completar localização e analisar",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-11-05",
+"by": "Importação"
+}
+]
+}
+}
+},
+{
+"emp": "B",
+"crt": "CRT-DF-0301",
+"proj": "sd",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Formalizada",
+"res": "venceu",
+"pos": 1,
+"of": 1380000,
+"rd": "2026-03-16",
+"hv": 1380000,
+"hd": "2026-03-16",
+"ctr": "CTR-0301",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-01-12",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-01-18",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-01-23",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-01-29",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-02-04",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-02-10",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-02-15",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-02-21",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Adjudicada",
+"d": "2026-02-27",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Homologada",
+"d": "2026-03-05",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando assinatura",
+"d": "2026-03-10",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Formalizada",
+"d": "2026-03-16",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "bruno",
+"d": "2026-01-29",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "B",
+"crt": "CRT-SP-0302",
+"proj": "fs",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Formalizada",
+"res": "venceu",
+"pos": 1,
+"of": 100000,
+"rd": "2026-04-28",
+"hv": 100000,
+"hd": "2026-04-28",
+"ctr": "CTR-0302",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-02-23",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-03-01",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-03-07",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-03-12",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-03-18",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-03-24",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-03-30",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-04-05",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Adjudicada",
+"d": "2026-04-11",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Homologada",
+"d": "2026-04-16",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando assinatura",
+"d": "2026-04-22",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Formalizada",
+"d": "2026-04-28",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "bruno",
+"d": "2026-03-12",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "B",
+"crt": "CRT-RJ-0303",
+"proj": "sd",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Formalizada",
+"res": "venceu",
+"pos": 1,
+"of": 1960000,
+"rd": "2026-02-27",
+"hv": 1960000,
+"hd": "2026-02-27",
+"ctr": "CTR-0303",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2025-12-15",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2025-12-22",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2025-12-28",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-01-04",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-01-11",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-01-18",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-01-24",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-01-31",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Adjudicada",
+"d": "2026-02-07",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Homologada",
+"d": "2026-02-14",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando assinatura",
+"d": "2026-02-20",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Formalizada",
+"d": "2026-02-27",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "bruno",
+"d": "2026-01-04",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "B",
+"crt": "CRT-DF-0304",
+"proj": "sd",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Em disputa",
+"comp": "Negociação",
+"res": "pendente",
+"of": 648000,
+"resp": "ana",
+"prazo": "2026-11-23",
+"acao": "Registrar resultado da negociação",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-10-23",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-10-28",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-11-02",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-11-07",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-11-11",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-11-16",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-11-21",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "bruno",
+"d": "2026-11-07",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "B",
+"crt": "CRT-DF-0305",
+"proj": "gov",
+"L": {
+"1": {
+"dec": "pendente",
+"et": "Aguardando aprovação da participação",
+"resp": "ana",
+"prazo": "2026-11-26",
+"acao": "Decidir participação",
+"aprov": [
+"bruno",
+"william"
+],
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-11-09",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-11-13",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-11-17",
+"by": "Bruno Lima"
+}
+]
+}
+}
+},
+{
+"emp": "B",
+"crt": "CRT-BA-0201",
+"proj": "sd",
+"L": {
+"2": {
+"dec": "participar",
+"et": "Arquivada",
+"res": "perdeu",
+"pos": 2,
+"of": 1003200,
+"vv": 979200,
+"rd": "2026-09-25",
+"mot": "Preço acima do vencedor",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-07-21",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-07-28",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-08-05",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-08-12",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-08-19",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-08-27",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-09-03",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-09-10",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Homologada",
+"d": "2026-09-18",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Arquivada",
+"d": "2026-09-25",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "bruno",
+"d": "2026-08-12",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "B",
+"crt": "CRT-PR-0306",
+"proj": "sd",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Arquivada",
+"res": "perdeu",
+"pos": 3,
+"of": 788000,
+"vv": 760000,
+"rd": "2026-06-23",
+"mot": "Preço acima do vencedor",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-04-20",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-04-27",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-05-04",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-05-11",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-05-18",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-05-26",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-06-02",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-06-09",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Homologada",
+"d": "2026-06-16",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Arquivada",
+"d": "2026-06-23",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "bruno",
+"d": "2026-05-11",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "B",
+"crt": "CRT-MG-0307",
+"proj": "sd",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Arquivada",
+"res": "perdeu",
+"of": 3780000,
+"vv": 3816000,
+"rd": "2026-08-18",
+"mot": "Inabilitada: atestado comprova 24 dos 30 postos simultâneos exigidos",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-06-08",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-06-16",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-06-24",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-07-02",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-07-10",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-07-17",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Em disputa",
+"d": "2026-07-25",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-08-02",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Homologada",
+"d": "2026-08-10",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Arquivada",
+"d": "2026-08-18",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "bruno",
+"d": "2026-07-02",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "B",
+"crt": "CRT-SP-0308",
+"proj": "fs",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Em preparação",
+"comp": "Orçamento em elaboração",
+"resp": "ana",
+"prazo": "2026-11-30",
+"acao": "Elaborar orçamento",
+"prep": {
+"orc": "A elaborar",
+"hab": "Em andamento"
+},
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-11-10",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-11-12",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-11-14",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-11-16",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-11-18",
+"by": "Ana Ribeiro"
+}
+],
+"decisao": {
+"by": "bruno",
+"d": "2026-11-16",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+},
+"orc": {
+"vers": [],
+"m": {
+"tipo": "ti",
+"q": 2500,
+"comps": [
+{
+"nome": "Componente principal",
+"orig": "fab",
+"qpu": 1,
+"custo": 0,
+"perda": 0
+}
+],
+"frete": 0,
+"setup": 0,
+"instal": 0,
+"gar": 0,
+"trib": 14.25,
+"cred": 0,
+"dv": 0,
+"taxa": 0,
+"prazo": 30,
+"base": "receita",
+"mg": 15,
+"lance": "",
+"uni": "PF",
+"custoTI": 78
+},
+"scen": []
+}
+}
+}
+},
+{
+"emp": "B",
+"crt": "CRT-CE-0309",
+"proj": "sd",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Acompanhamento pós-disputa",
+"comp": "Fase recursal",
+"res": "pendente",
+"pos": 1,
+"of": 512000,
+"resp": "marina",
+"prazo": "2026-11-25",
+"acao": "Acompanhar recurso da concorrente",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-10-09",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-10-15",
+"by": "Marina Alves"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-10-21",
+"by": "Gestor do cliente"
+},
+{
+"et": "Participação aprovada",
+"d": "2026-10-27",
+"by": "Gestor do cliente"
+},
+{
+"et": "Em preparação",
+"d": "2026-11-03",
+"by": "Marina Alves"
+},
+{
+"et": "Proposta apresentada",
+"d": "2026-11-09",
+"by": "Marina Alves"
+},
+{
+"et": "Em disputa",
+"d": "2026-11-15",
+"by": "Marina Alves"
+},
+{
+"et": "Acompanhamento pós-disputa",
+"d": "2026-11-21",
+"by": "Marina Alves"
+}
+],
+"decisao": {
+"by": "bruno",
+"d": "2026-10-27",
+"just": "Aprovada após análise preliminar.",
+"v": 1
+}
+}
+}
+},
+{
+"emp": "B",
+"crt": "CRT-RS-0310",
+"proj": "gov",
+"L": {
+"1": {
+"dec": "declinar",
+"et": "Arquivada",
+"mot": "Declinado: certificação exigida da equipe não atendida",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-03-02",
+"by": "Importação"
+},
+{
+"et": "Em análise preliminar",
+"d": "2026-03-12",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Aguardando aprovação da participação",
+"d": "2026-03-21",
+"by": "Gestor do cliente"
+},
+{
+"et": "Arquivada",
+"d": "2026-03-31",
+"by": "Gestor do cliente"
+}
+]
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-ES-0120",
+"proj": "adm",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Formalizada",
+"res": "venceu",
+"pos": 1,
+"of": 118000,
+"rd": "2026-05-18",
+"hv": 118000,
+"hd": "2026-05-18",
+"ata": "ATA-02",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-02-02",
+"by": "Importação"
+},
+{
+"et": "Homologada",
+"d": "2026-05-18",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Formalizada",
+"d": "2026-05-18",
+"by": "Ana Ribeiro"
+}
+]
+}
+}
+},
+{
+"emp": "A",
+"crt": "CRT-MT-0121",
+"proj": "adm",
+"L": {
+"1": {
+"dec": "participar",
+"et": "Formalizada",
+"res": "venceu",
+"pos": 1,
+"of": 5000,
+"rd": "2026-02-27",
+"hv": 5000,
+"hd": "2026-02-27",
+"ata": "ATA-01",
+"resp": "ana",
+"hist": [
+{
+"et": "Prospectada",
+"d": "2026-02-02",
+"by": "Importação"
+},
+{
+"et": "Homologada",
+"d": "2026-02-27",
+"by": "Ana Ribeiro"
+},
+{
+"et": "Formalizada",
+"d": "2026-02-27",
+"by": "Ana Ribeiro"
+}
+]
+}
+}
+}
+],
+"RES": {
+"CRT-PR-0102-L1": {
+"rows": [
+[
+null,
+"Épsilon Mobiliário Corporativo S.A.",
+"Desclassificado",
+112000,
+99500,
+null,
+"Amostra em desacordo com o item 4.2 do termo de referência"
+],
+[
+1,
+"Alfa Mobiliário e Equipamentos Ltda",
+"Vencedor provisório",
+118400,
+103200,
+null,
+""
+],
+[
+2,
+"Gama Móveis de Aço Ltda",
+"Classificado",
+115000,
+104800,
+null,
+""
+],
+[
+3,
+"Delta Office Indústria de Móveis Ltda",
+"Classificado",
+121300,
+109900,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": true,
+"fonte": "Ata parcial da sessão de 18/11/2026"
+},
+"CRT-PR-0103-L1": {
+"rows": [
+[
+1,
+"Alfa Mobiliário e Equipamentos Ltda",
+"Vencedor (homologado)",
+139000,
+124800,
+124800,
+""
+],
+[
+2,
+"Gama Móveis de Aço Ltda",
+"Classificado",
+136500,
+127300,
+null,
+""
+],
+[
+null,
+"Zeta Equipamentos Escolares Ltda",
+"Inabilitado",
+131000,
+121900,
+null,
+"Atestado de capacidade técnica insuficiente"
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 12/03/2026 e termo de homologação de 20/04/2026"
+},
+"CRT-PR-0103-L2": {
+"rows": [
+[
+1,
+"Delta Office Indústria de Móveis Ltda",
+"Vencedor (homologado)",
+224000,
+189600,
+189600,
+""
+],
+[
+2,
+"Alfa Mobiliário e Equipamentos Ltda",
+"Classificado",
+210000,
+198000,
+null,
+""
+],
+[
+3,
+"Épsilon Mobiliário Corporativo S.A.",
+"Classificado",
+219000,
+203500,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 12/03/2026"
+},
+"CRT-SC-0104-L1": {
+"rows": [
+[
+1,
+"Zeta Equipamentos Escolares Ltda",
+"Vencedor (homologado)",
+150000,
+139200,
+139200,
+""
+],
+[
+2,
+"Gama Móveis de Aço Ltda",
+"Classificado",
+149000,
+142500,
+null,
+""
+],
+[
+3,
+"Alfa Mobiliário e Equipamentos Ltda",
+"Classificado",
+155000,
+148000,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 05/08/2025"
+},
+"CRT-SP-0105-L1": {
+"rows": [
+[
+1,
+"Alfa Mobiliário e Equipamentos Ltda",
+"Vencedor (homologado)",
+846000,
+792000,
+792000,
+""
+],
+[
+2,
+"Zeta Equipamentos Escolares Ltda",
+"Classificado",
+838000,
+801500,
+null,
+""
+],
+[
+3,
+"Gama Móveis de Aço Ltda",
+"Classificado",
+860000,
+815000,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 08/04/2026"
+},
+"CRT-SP-0105-L2": {
+"rows": [
+[
+1,
+"Ômicron Móveis Ltda",
+"Vencedor (homologado)",
+205000,
+194400,
+194400,
+""
+],
+[
+2,
+"Alfa Mobiliário e Equipamentos Ltda",
+"Classificado",
+214000,
+201000,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 08/04/2026"
+},
+"CRT-SP-0106-L1": {
+"rows": [
+[
+1,
+"Delta Office Indústria de Móveis Ltda",
+"Vencedor (homologado)",
+229000,
+206400,
+206400,
+""
+],
+[
+2,
+"Alfa Mobiliário e Equipamentos Ltda",
+"Classificado",
+226000,
+214000,
+null,
+""
+],
+[
+3,
+"Gama Móveis de Aço Ltda",
+"Classificado",
+231000,
+219800,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 17/06/2026"
+},
+"CRT-SP-0107-L1": {
+"rows": [
+[
+1,
+"Épsilon Mobiliário Corporativo S.A.",
+"Vencedor (homologado)",
+380000,
+352800,
+352800,
+""
+],
+[
+2,
+"Ômicron Móveis Ltda",
+"Classificado",
+376000,
+361000,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 05/05/2026"
+},
+"CRT-RJ-0111-L1": {
+"rows": [
+[
+1,
+"Delta Office Indústria de Móveis Ltda",
+"Vencedor (homologado)",
+null,
+228000,
+228000,
+""
+],
+[
+2,
+"Épsilon Mobiliário Corporativo S.A.",
+"Classificado",
+null,
+236500,
+null,
+""
+],
+[
+3,
+"Gama Móveis de Aço Ltda",
+"Classificado",
+null,
+244900,
+null,
+""
+],
+[
+4,
+"Alfa Mobiliário e Equipamentos Ltda",
+"Classificado",
+null,
+251000,
+null,
+""
+]
+],
+"cob": "parcial",
+"prov": false,
+"fonte": "Extrato publicado com os quatro primeiros colocados; ofertas iniciais não informadas"
+},
+"CRT-RJ-0112-L1": {
+"rows": [
+[
+1,
+"Zeta Equipamentos Escolares Ltda",
+"Vencedor provisório",
+335000,
+309600,
+null,
+""
+],
+[
+2,
+"Alfa Mobiliário e Equipamentos Ltda",
+"Classificado",
+340000,
+318600,
+null,
+""
+],
+[
+3,
+"Gama Móveis de Aço Ltda",
+"Classificado",
+338000,
+322000,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": true,
+"fonte": "Ata da sessão de 05/11/2026"
+},
+"CRT-MG-0113-L1": {
+"rows": [
+[
+1,
+"Alfa Mobiliário e Equipamentos Ltda",
+"Vencedor (homologado)",
+183000,
+171000,
+171000,
+""
+],
+[
+2,
+"Gama Móveis de Aço Ltda",
+"Classificado",
+181000,
+173400,
+null,
+""
+],
+[
+3,
+"Ômicron Móveis Ltda",
+"Classificado",
+185500,
+176000,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 25/02/2026"
+},
+"CRT-DF-0114-L1": {
+"rows": [
+[
+1,
+"Delta Office Indústria de Móveis Ltda",
+"Vencedor (homologado)",
+298000,
+276000,
+276000,
+""
+],
+[
+2,
+"Alfa Mobiliário e Equipamentos Ltda",
+"Classificado",
+295000,
+281600,
+null,
+""
+],
+[
+3,
+"Gama Móveis de Aço Ltda",
+"Classificado",
+301000,
+284300,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 09/06/2026"
+},
+"CRT-DF-0114-L2": {
+"rows": [
+[
+1,
+"Alfa Mobiliário e Equipamentos Ltda",
+"Vencedor (homologado)",
+481000,
+455000,
+455000,
+""
+],
+[
+2,
+"Delta Office Indústria de Móveis Ltda",
+"Classificado",
+478000,
+459900,
+null,
+""
+],
+[
+3,
+"Épsilon Mobiliário Corporativo S.A.",
+"Classificado",
+490000,
+468000,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 09/06/2026"
+},
+"CRT-GO-0117-L1": {
+"rows": [
+[
+1,
+"Gama Móveis de Aço Ltda",
+"Vencedor (homologado)",
+110000,
+101600,
+101600,
+""
+],
+[
+2,
+"Alfa Mobiliário e Equipamentos Ltda",
+"Classificado",
+109000,
+104800,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 13/05/2026"
+},
+"CRT-BA-0201-L1": {
+"rows": [
+[
+1,
+"Alfa Mobiliário e Equipamentos Ltda",
+"Vencedor (homologado)",
+259000,
+248000,
+248000,
+""
+],
+[
+2,
+"Ômicron Móveis Ltda",
+"Classificado",
+262000,
+251900,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 19/08/2026"
+},
+"CRT-BA-0201-L2": {
+"rows": [
+[
+1,
+"Kappa Serviços Digitais S.A.",
+"Vencedor (homologado)",
+1040000,
+979200,
+979200,
+""
+],
+[
+2,
+"Beta Sistemas e Serviços de TI Ltda",
+"Classificado",
+1050000,
+1003200,
+null,
+""
+],
+[
+3,
+"Lambda Tecnologia da Informação Ltda",
+"Classificado",
+1061000,
+1012000,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 19/08/2026"
+},
+"CRT-DF-0301-L1": {
+"rows": [
+[
+1,
+"Beta Sistemas e Serviços de TI Ltda",
+"Vencedor (homologado)",
+1440000,
+1380000,
+1380000,
+""
+],
+[
+2,
+"Lambda Tecnologia da Informação Ltda",
+"Classificado",
+1435000,
+1392000,
+null,
+""
+],
+[
+null,
+"Teta Soluções em TI Ltda",
+"Inabilitado",
+1420000,
+1371000,
+null,
+"Atestado não comprova 10 postos simultâneos"
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 10/02/2026"
+},
+"CRT-SP-0302-L1": {
+"rows": [
+[
+1,
+"Beta Sistemas e Serviços de TI Ltda",
+"Vencedor (homologado)",
+106000,
+100000,
+100000,
+""
+],
+[
+2,
+"Rô Infraestrutura e Sistemas Ltda",
+"Classificado",
+107500,
+101800,
+null,
+""
+],
+[
+3,
+"Kappa Serviços Digitais S.A.",
+"Classificado",
+109000,
+103400,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 24/03/2026"
+},
+"CRT-RJ-0303-L1": {
+"rows": [
+[
+1,
+"Beta Sistemas e Serviços de TI Ltda",
+"Vencedor (homologado)",
+2080000,
+1960000,
+1960000,
+""
+],
+[
+2,
+"Kappa Serviços Digitais S.A.",
+"Classificado",
+2075000,
+1984000,
+null,
+""
+],
+[
+3,
+"Lambda Tecnologia da Informação Ltda",
+"Classificado",
+2090000,
+1999000,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 20/01/2026"
+},
+"CRT-PR-0306-L1": {
+"rows": [
+[
+1,
+"Teta Soluções em TI Ltda",
+"Vencedor (homologado)",
+800000,
+760000,
+760000,
+""
+],
+[
+2,
+"Kappa Serviços Digitais S.A.",
+"Classificado",
+805000,
+772000,
+null,
+""
+],
+[
+3,
+"Beta Sistemas e Serviços de TI Ltda",
+"Classificado",
+815000,
+788000,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 19/05/2026"
+},
+"CRT-MG-0307-L1": {
+"rows": [
+[
+null,
+"Beta Sistemas e Serviços de TI Ltda",
+"Inabilitado",
+3850000,
+3780000,
+null,
+"Atestado comprova 24 dos 30 postos simultâneos exigidos"
+],
+[
+1,
+"Lambda Tecnologia da Informação Ltda",
+"Vencedor (homologado)",
+3905000,
+3816000,
+3816000,
+""
+],
+[
+2,
+"Rô Infraestrutura e Sistemas Ltda",
+"Classificado",
+3940000,
+3850000,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 07/07/2026 e decisão de habilitação"
+},
+"CRT-CE-0309-L1": {
+"rows": [
+[
+1,
+"Beta Sistemas e Serviços de TI Ltda",
+"Vencedor provisório",
+540000,
+512000,
+null,
+""
+],
+[
+2,
+"Teta Soluções em TI Ltda",
+"Classificado",
+538000,
+519000,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": true,
+"fonte": "Ata da sessão de 12/11/2026"
+},
+"CRT-ES-0120-L1": {
+"rows": [
+[
+1,
+"Alfa Mobiliário e Equipamentos Ltda",
+"Vencedor (homologado)",
+124000,
+118000,
+118000,
+""
+],
+[
+2,
+"Gama Móveis de Aço Ltda",
+"Classificado",
+123500,
+119900,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 28/04/2026"
+},
+"CRT-MT-0121-L1": {
+"rows": [
+[
+1,
+"Alfa Mobiliário e Equipamentos Ltda",
+"Vencedor (homologado)",
+5500,
+5000,
+5000,
+""
+],
+[
+2,
+"Ômicron Móveis Ltda",
+"Classificado",
+5400,
+5150,
+null,
+""
+]
+],
+"cob": "completa",
+"prov": false,
+"fonte": "Ata da sessão de 24/02/2026"
+}
+},
+"CTR": [
+{
+"id": "CTR-0103",
+"emp": "A",
+"crt": "CRT-PR-0103",
+"lote": 1,
+"num": "Contrato 045/2026",
+"inst": "Contrato de fornecimento",
+"ass": "2026-05-15",
+"fim": "2027-05-14",
+"v": 124800,
+"q": 100,
+"u": "un",
+"mprev": 20,
+"nfs": [
+[
+"NF 1.204",
+"2026-07-10",
+12480,
+"10 un"
+],
+[
+"NF 1.388",
+"2026-09-22",
+18720,
+"15 un"
+]
+],
+"rec": [
+[
+"2026-08-14",
+12480,
+"NF 1.204"
+]
+],
+"dre": [
+[
+"2026-07",
+12480,
+11232,
+1910
+],
+[
+"2026-09",
+18720,
+16848,
+2696
+]
+]
+},
+{
+"id": "CTR-0105",
+"emp": "A",
+"crt": "CRT-SP-0105",
+"lote": 1,
+"num": "Contrato 2026/0318",
+"inst": "Contrato de fornecimento",
+"ass": "2026-06-03",
+"fim": "2027-06-02",
+"v": 792000,
+"q": 2000,
+"u": "conjunto",
+"mprev": 19,
+"nfs": [
+[
+"NF 1.256",
+"2026-08-15",
+237600,
+"600 conjuntos"
+],
+[
+"NF 1.402",
+"2026-10-10",
+158400,
+"400 conjuntos"
+]
+],
+"rec": [
+[
+"2026-09-20",
+237600,
+"NF 1.256"
+],
+[
+"2026-10-15",
+158400,
+"NF 1.402 · antecipada (líquido R$ 154.000,00)"
+]
+],
+"dre": [
+[
+"2026-08",
+237600,
+213840,
+38491
+],
+[
+"2026-10",
+158400,
+142560,
+22810
+]
+]
+},
+{
+"id": "CTR-0113",
+"emp": "A",
+"crt": "CRT-MG-0113",
+"lote": 1,
+"num": "Contrato 2026-0089",
+"inst": "Contrato de fornecimento",
+"ass": "2026-04-28",
+"fim": "2026-10-27",
+"v": 171000,
+"q": 300,
+"u": "un",
+"mprev": 18,
+"nfs": [
+[
+"NF 1.118",
+"2026-05-29",
+85500,
+"150 un"
+],
+[
+"NF 1.190",
+"2026-07-03",
+85500,
+"150 un"
+]
+],
+"rec": [
+[
+"2026-06-30",
+85500,
+"NF 1.118"
+],
+[
+"2026-08-05",
+85500,
+"NF 1.190"
+]
+],
+"dre": [
+[
+"2026-05",
+85500,
+76950,
+9600
+],
+[
+"2026-07",
+85500,
+76950,
+8870
+]
+]
+},
+{
+"id": "CTR-0114",
+"emp": "A",
+"crt": "CRT-DF-0114",
+"lote": 2,
+"num": "Contrato 31/2026",
+"inst": "Contrato de fornecimento",
+"ass": "2026-08-05",
+"fim": "2027-08-04",
+"v": 455000,
+"q": 650,
+"u": "conjunto",
+"mprev": 17,
+"nfs": [
+[
+"NF 1.437",
+"2026-10-20",
+91000,
+"130 conjuntos"
+]
+],
+"rec": [],
+"dre": [
+[
+"2026-10",
+91000,
+81900,
+13104
+]
+]
+},
+{
+"id": "CTR-0201",
+"emp": "A",
+"crt": "CRT-BA-0201",
+"lote": 1,
+"num": "Contrato 77/2026",
+"inst": "Contrato de fornecimento",
+"ass": "2026-10-15",
+"fim": "2027-10-14",
+"v": 248000,
+"q": 180,
+"u": "conjunto",
+"mprev": 18,
+"nfs": [],
+"rec": [],
+"dre": []
+},
+{
+"id": "CTR-0301",
+"emp": "B",
+"crt": "CRT-DF-0301",
+"lote": 1,
+"num": "Contrato 08/2026",
+"inst": "Contrato de serviços com dedicação exclusiva",
+"ass": "2026-04-01",
+"fim": "2027-03-31",
+"v": 1380000,
+"q": 120,
+"u": "posto-mês",
+"mprev": 17,
+"nfs": [
+[
+"NF 3.021",
+"2026-05-28",
+69000,
+"6 postos ocupados"
+],
+[
+"NF 3.025",
+"2026-06-28",
+69000,
+"6 postos ocupados"
+],
+[
+"NF 3.029",
+"2026-07-28",
+69000,
+"6 postos ocupados"
+],
+[
+"NF 3.033",
+"2026-08-28",
+69000,
+"6 postos ocupados"
+],
+[
+"NF 3.037",
+"2026-09-28",
+69000,
+"6 postos ocupados"
+],
+[
+"NF 3.041",
+"2026-10-28",
+69000,
+"6 postos ocupados"
+],
+[
+"NF 3.101",
+"2026-11-20",
+100000,
+"6 postos e serviços eventuais"
+]
+],
+"rec": [
+[
+"2026-06-25",
+69000,
+"NF 3.021"
+],
+[
+"2026-07-25",
+69000,
+"NF 3.025"
+],
+[
+"2026-08-25",
+69000,
+"NF 3.029"
+],
+[
+"2026-09-25",
+69000,
+"NF 3.033"
+],
+[
+"2026-10-25",
+69000,
+"NF 3.037"
+]
+],
+"dre": [
+[
+"2026-05",
+69000,
+62100,
+9936
+],
+[
+"2026-06",
+69000,
+62100,
+9315
+],
+[
+"2026-07",
+69000,
+62100,
+8694
+],
+[
+"2026-08",
+69000,
+62100,
+9315
+],
+[
+"2026-09",
+69000,
+62100,
+8073
+],
+[
+"2026-10",
+69000,
+62100,
+7452
+],
+[
+"2026-11",
+100000,
+90000,
+16000
+]
+]
+},
+{
+"id": "CTR-0302",
+"emp": "B",
+"crt": "CRT-SP-0302",
+"lote": 1,
+"num": "Contrato 2026/112",
+"inst": "Contrato de serviços por pontos de função",
+"ass": "2026-05-20",
+"fim": "2027-05-19",
+"v": 100000,
+"q": 1000,
+"u": "PF",
+"mprev": 16,
+"nfs": [
+[
+"NF 3.051",
+"2026-09-30",
+25000,
+"250 PF"
+]
+],
+"rec": [
+[
+"2026-10-29",
+25000,
+"NF 3.051"
+]
+],
+"dre": [
+[
+"2026-09",
+25000,
+22500,
+3600
+]
+]
+},
+{
+"id": "CTR-0303",
+"emp": "B",
+"crt": "CRT-RJ-0303",
+"lote": 1,
+"num": "Contrato 004/2026",
+"inst": "Contrato de serviços por UST",
+"ass": "2026-03-20",
+"fim": "2027-03-19",
+"v": 1960000,
+"q": 200000,
+"u": "UST",
+"mprev": 14,
+"nfs": [
+[
+"NF 2.977",
+"2026-06-30",
+117600,
+"12.000 UST"
+],
+[
+"NF 3.012",
+"2026-08-31",
+98000,
+"10.000 UST"
+],
+[
+"NF 3.063",
+"2026-10-30",
+107800,
+"11.000 UST"
+]
+],
+"rec": [
+[
+"2026-07-30",
+117600,
+"NF 2.977"
+],
+[
+"2026-09-30",
+98000,
+"NF 3.012"
+]
+],
+"dre": [
+[
+"2026-06",
+117600,
+105840,
+-2540
+],
+[
+"2026-08",
+98000,
+88200,
+-3970
+],
+[
+"2026-10",
+107800,
+97020,
+-1650
+]
+]
+}
+],
+"ACV": [
+{
+"id": "DOC-A-001",
+"emp": "A",
+"pasta": "jur",
+"tipo": "Contrato social consolidado",
+"emissor": "Junta Comercial do Paraná",
+"emi": "2024-03-10",
+"val": null,
+"v": 1,
+"arq": "contrato-social-consolidado-v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": []
+},
+{
+"id": "DOC-A-002",
+"emp": "A",
+"pasta": "jur",
+"tipo": "Ata de eleição dos administradores",
+"emissor": "Junta Comercial do Paraná",
+"emi": "2025-04-30",
+"val": null,
+"v": 1,
+"arq": "ata-de-eleicao-dos-administradores-v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": []
+},
+{
+"id": "DOC-A-003",
+"emp": "A",
+"pasta": "jur",
+"tipo": "Comprovante de inscrição no CNPJ",
+"emissor": "Receita Federal",
+"emi": "2026-11-01",
+"val": "desconhecida",
+"v": 1,
+"arq": "comprovante-de-inscricao-no-cnpj-v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": []
+},
+{
+"id": "DOC-A-004",
+"emp": "A",
+"pasta": "fis",
+"tipo": "Certidão negativa de débitos federais (CND)",
+"emissor": "Receita Federal e PGFN",
+"emi": "2026-09-15",
+"val": "2027-03-14",
+"v": 2,
+"arq": "cnd-federal-v2.pdf",
+"conf": true,
+"arqd": false,
+"hist": [
+{
+"v": 1,
+"emi": "2026-02-20",
+"val": "2026-08-19",
+"arq": "cnd-federal-v1.pdf",
+"by": "Ana Ribeiro",
+"d": "2026-02-20"
+}
+]
+},
+{
+"id": "DOC-A-005",
+"emp": "A",
+"pasta": "fis",
+"tipo": "Certificado de regularidade do FGTS (CRF)",
+"emissor": "Caixa Econômica Federal",
+"emi": "2026-11-02",
+"val": "2026-12-01",
+"v": 1,
+"arq": "certificado-de-regularidade-do-fgts-crf--v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": []
+},
+{
+"id": "DOC-A-006",
+"emp": "A",
+"pasta": "fis",
+"tipo": "Certidão negativa de débitos trabalhistas (CNDT)",
+"emissor": "Tribunal Superior do Trabalho",
+"emi": "2026-08-10",
+"val": "2027-02-06",
+"v": 1,
+"arq": "certidao-negativa-de-debitos-trabalhista-v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": []
+},
+{
+"id": "DOC-A-007",
+"emp": "A",
+"pasta": "fis",
+"tipo": "Certidão negativa estadual (PR)",
+"emissor": "Secretaria da Fazenda do Paraná",
+"emi": "2026-10-01",
+"val": "2026-11-30",
+"v": 1,
+"arq": "certidao-negativa-estadual-pr--v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": []
+},
+{
+"id": "DOC-A-008",
+"emp": "A",
+"pasta": "fis",
+"tipo": "Certidão negativa municipal (Curitiba)",
+"emissor": "Prefeitura de Curitiba",
+"emi": "2026-06-01",
+"val": "2026-08-30",
+"v": 1,
+"arq": "certidao-negativa-municipal-curitiba--v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": []
+},
+{
+"id": "DOC-A-009",
+"emp": "A",
+"pasta": "eco",
+"tipo": "Balanço patrimonial e demonstrações 2025",
+"emissor": "Contador responsável",
+"emi": "2026-04-28",
+"val": null,
+"v": 1,
+"arq": "balanco-patrimonial-e-demonstracoes-2025-v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": []
+},
+{
+"id": "DOC-A-010",
+"emp": "A",
+"pasta": "eco",
+"tipo": "Certidão negativa de falência e recuperação judicial",
+"emissor": "Tribunal de Justiça do Paraná",
+"emi": "2026-07-02",
+"val": "2026-09-30",
+"v": 1,
+"arq": "certidao-negativa-de-falencia-e-recupera-v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": []
+},
+{
+"id": "DOC-A-011",
+"emp": "A",
+"pasta": "tec",
+"tipo": "Atestado: Secretaria da Educação de SP, 2.000 conjuntos",
+"emissor": "Secretaria da Educação do Estado de SP",
+"emi": "2026-10-30",
+"val": null,
+"v": 1,
+"arq": "atestado-secretaria-da-educacao-de-sp-2--v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": [],
+"tag": "mobiliário escolar"
+},
+{
+"id": "DOC-A-012",
+"emp": "A",
+"pasta": "tec",
+"tipo": "Atestado: TJMG, 300 arquivos de aço",
+"emissor": "Tribunal de Justiça de MG",
+"emi": "2026-10-29",
+"val": null,
+"v": 1,
+"arq": "atestado-tjmg-300-arquivos-de-aco-v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": [],
+"tag": "arquivo armário aço"
+},
+{
+"id": "DOC-A-013",
+"emp": "A",
+"pasta": "tec",
+"tipo": "Atestado: TJPR, 25 armários de aço",
+"emissor": "Tribunal de Justiça do Paraná",
+"emi": "2026-10-05",
+"val": null,
+"v": 1,
+"arq": "atestado-tjpr-25-armarios-de-aco-v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": [],
+"tag": "armário aço"
+},
+{
+"id": "DOC-A-014",
+"emp": "A",
+"pasta": "tec",
+"tipo": "Certificado de conformidade NBR 14006 nº 0412/2025",
+"emissor": "Organismo de certificação acreditado",
+"emi": "2025-03-16",
+"val": "2027-03-15",
+"v": 1,
+"arq": "certificado-de-conformidade-nbr-14006-n--v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": [],
+"tag": "mobiliário escolar"
+},
+{
+"id": "DOC-A-015",
+"emp": "A",
+"pasta": "dec",
+"tipo": "Declaração de cumprimento dos requisitos de habilitação (modelo)",
+"emissor": "Modelo da empresa",
+"emi": null,
+"val": null,
+"v": 1,
+"arq": "declaracao-de-cumprimento-dos-requisitos-v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": [],
+"modelo": "preencher"
+},
+{
+"id": "DOC-A-016",
+"emp": "A",
+"pasta": "dec",
+"tipo": "Declaração de não emprego de menor (modelo)",
+"emissor": "Modelo da empresa",
+"emi": null,
+"val": null,
+"v": 1,
+"arq": "declaracao-de-nao-emprego-de-menor-model-v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": [],
+"modelo": "assinar"
+},
+{
+"id": "DOC-A-017",
+"emp": "A",
+"pasta": "out",
+"tipo": "Apresentação institucional",
+"emissor": "Alfa",
+"emi": null,
+"val": null,
+"v": 1,
+"arq": "apresentacao-institucional-v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": []
+},
+{
+"id": "DOC-A-018",
+"emp": "A",
+"pasta": "out",
+"tipo": "Alvará de funcionamento",
+"emissor": "Prefeitura de Curitiba",
+"emi": "2026-02-10",
+"val": "desconhecida",
+"v": 1,
+"arq": "alvara-de-funcionamento-v1.pdf",
+"conf": false,
+"arqd": false,
+"hist": []
+},
+{
+"id": "DOC-B-019",
+"emp": "B",
+"pasta": "jur",
+"tipo": "Contrato social consolidado",
+"emissor": "Junta Comercial do DF",
+"emi": "2025-01-15",
+"val": null,
+"v": 1,
+"arq": "contrato-social-consolidado-v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": []
+},
+{
+"id": "DOC-B-020",
+"emp": "B",
+"pasta": "fis",
+"tipo": "Certidão negativa de débitos federais (CND)",
+"emissor": "Receita Federal e PGFN",
+"emi": "2026-10-02",
+"val": "2027-03-31",
+"v": 1,
+"arq": "certidao-negativa-de-debitos-federais-cn-v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": []
+},
+{
+"id": "DOC-B-021",
+"emp": "B",
+"pasta": "fis",
+"tipo": "Certificado de regularidade do FGTS (CRF)",
+"emissor": "Caixa Econômica Federal",
+"emi": "2026-11-10",
+"val": "2026-12-09",
+"v": 1,
+"arq": "certificado-de-regularidade-do-fgts-crf--v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": []
+},
+{
+"id": "DOC-B-022",
+"emp": "B",
+"pasta": "fis",
+"tipo": "Certidão negativa de débitos trabalhistas (CNDT)",
+"emissor": "Tribunal Superior do Trabalho",
+"emi": "2026-09-01",
+"val": "2027-02-27",
+"v": 1,
+"arq": "certidao-negativa-de-debitos-trabalhista-v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": []
+},
+{
+"id": "DOC-B-023",
+"emp": "B",
+"pasta": "eco",
+"tipo": "Balanço patrimonial e demonstrações 2025",
+"emissor": "Contador responsável",
+"emi": "2026-04-25",
+"val": null,
+"v": 1,
+"arq": "balanco-patrimonial-e-demonstracoes-2025-v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": []
+},
+{
+"id": "DOC-B-024",
+"emp": "B",
+"pasta": "tec",
+"tipo": "Atestado: MGI, service desk com 6 postos",
+"emissor": "Ministério da Gestão e da Inovação",
+"emi": "2026-10-20",
+"val": null,
+"v": 1,
+"arq": "atestado-mgi-service-desk-com-6-postos-v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": [],
+"tag": "service desk"
+},
+{
+"id": "DOC-B-025",
+"emp": "B",
+"pasta": "tec",
+"tipo": "Atestado: Prodabel, service desk com 24 postos",
+"emissor": "Empresa de informática de BH",
+"emi": "2025-12-01",
+"val": null,
+"v": 1,
+"arq": "atestado-prodabel-service-desk-com-24-po-v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": [],
+"tag": "service desk"
+},
+{
+"id": "DOC-B-026",
+"emp": "B",
+"pasta": "dec",
+"tipo": "Declaração de cumprimento dos requisitos de habilitação (modelo)",
+"emissor": "Modelo da empresa",
+"emi": null,
+"val": null,
+"v": 1,
+"arq": "declaracao-de-cumprimento-dos-requisitos-v1.pdf",
+"conf": true,
+"arqd": false,
+"hist": [],
+"modelo": "preencher"
+}
+],
+"PKG": {
+"A|CRT-PR-0103": [
+{
+"v": 1,
+"d": "2026-03-10",
+"by": "Ana Ribeiro",
+"items": [
+{
+"id": "DOC-A-001",
+"pasta": "jur",
+"tipo": "Contrato social consolidado",
+"v": 1,
+"val": null,
+"emi": "2024-03-10",
+"arq": "contrato-social-consolidado-v1.pdf",
+"txt": "Arquivo de demonstração\nContrato social consolidado\nTitular: Alfa Mobiliário e Equipamentos Ltda · CNPJ 11.222.333/0001-81\nEmissor: Junta Comercial do Paraná\nVersão: 1\nEmissão: 10/03/2024\nValidade: sem prazo\n"
+},
+{
+"id": "DOC-A-002",
+"pasta": "jur",
+"tipo": "Ata de eleição dos administradores",
+"v": 1,
+"val": null,
+"emi": "2025-04-30",
+"arq": "ata-de-eleicao-dos-administradores-v1.pdf",
+"txt": "Arquivo de demonstração\nAta de eleição dos administradores\nTitular: Alfa Mobiliário e Equipamentos Ltda · CNPJ 11.222.333/0001-81\nEmissor: Junta Comercial do Paraná\nVersão: 1\nEmissão: 30/04/2025\nValidade: sem prazo\n"
+},
+{
+"id": "DOC-A-004",
+"pasta": "fis",
+"tipo": "Certidão negativa de débitos federais (CND)",
+"v": 1,
+"val": "2026-08-19",
+"emi": "2026-02-20",
+"arq": "cnd-federal-v1.pdf",
+"txt": "Arquivo de demonstração\nCertidão negativa de débitos federais (CND)\nTitular: Alfa Mobiliário e Equipamentos Ltda · CNPJ 11.222.333/0001-81\nEmissor: Receita Federal e PGFN\nVersão: 1\nEmissão: 20/02/2026\nValidade: 19/08/2026\n"
+},
+{
+"id": "DOC-A-014",
+"pasta": "tec",
+"tipo": "Certificado de conformidade NBR 14006 nº 0412/2025",
+"v": 1,
+"val": "2027-03-15",
+"emi": "2025-03-16",
+"arq": "certificado-de-conformidade-nbr-14006-n--v1.pdf",
+"txt": "Arquivo de demonstração\nCertificado de conformidade NBR 14006 nº 0412/2025\nTitular: Alfa Mobiliário e Equipamentos Ltda · CNPJ 11.222.333/0001-81\nEmissor: Organismo de certificação acreditado\nVersão: 1\nEmissão: 16/03/2025\nValidade: 15/03/2027\n"
+},
+{
+"id": "DOC-A-015",
+"pasta": "dec",
+"tipo": "Declaração de cumprimento dos requisitos de habilitação (modelo)",
+"v": 1,
+"val": null,
+"emi": null,
+"arq": "declaracao-de-cumprimento-dos-requisitos-v1.pdf",
+"txt": "Arquivo de demonstração\nDeclaração de cumprimento dos requisitos de habilitação (modelo)\nTitular: Alfa Mobiliário e Equipamentos Ltda · CNPJ 11.222.333/0001-81\nEmissor: Modelo da empresa\nVersão: 1\nEmissão: não informada\nValidade: sem prazo\n",
+"modelo": "preencher"
+},
+{
+"id": "DOC-A-016",
+"pasta": "dec",
+"tipo": "Declaração de não emprego de menor (modelo)",
+"v": 1,
+"val": null,
+"emi": null,
+"arq": "declaracao-de-nao-emprego-de-menor-model-v1.pdf",
+"txt": "Arquivo de demonstração\nDeclaração de não emprego de menor (modelo)\nTitular: Alfa Mobiliário e Equipamentos Ltda · CNPJ 11.222.333/0001-81\nEmissor: Modelo da empresa\nVersão: 1\nEmissão: não informada\nValidade: sem prazo\n",
+"modelo": "assinar"
+}
+],
+"apres": "2026-03-12",
+"comp": "Recibo de envio nº 2026-0312-0045 (portal)",
+"irr": ""
+}
+]
+},
+"ATAS": [
+{
+"id": "ATA-01",
+"emp": "A",
+"crt": "CRT-MT-0121",
+"num": "Ata de registro de preços 12/2026",
+"ini": "2026-03-02",
+"fim": "2027-03-01",
+"item": "Apoio para pés ergonômico",
+"un": "un",
+"reg": 100,
+"preco": 50,
+"crono": null,
+"peds": [
+{
+"num": "Pedido 01/2026 · empenho 2026NE000210",
+"d": "2026-07-15",
+"q": 40,
+"ent": 30,
+"fat": 30,
+"nf": "NF 1.350",
+"rec": 1000
+}
+],
+"periodos": []
+},
+{
+"id": "ATA-02",
+"emp": "A",
+"crt": "CRT-ES-0120",
+"num": "Ata de registro de preços 31/2026",
+"ini": "2026-05-21",
+"fim": "2027-05-20",
+"item": "Armário de aço 2 portas",
+"un": "un",
+"reg": 100,
+"preco": 1180,
+"crono": null,
+"loteMin": 10,
+"cl": "6.3",
+"freteRem": 900,
+"custo": 850,
+"ind": 40,
+"trib": 12.25,
+"remOrc": 20,
+"mprev": 18,
+"peds": [
+{
+"num": "Pedido 01/2026 · empenho 2026NE000377",
+"d": "2026-08-10",
+"q": 5,
+"ent": 5,
+"fat": 5,
+"nf": "NF 1.371",
+"rec": 5900
+}
+],
+"periodos": [],
+"alertas": [
+{
+"d": "2026-11-15",
+"msg": "Desvio de consumo acima do limiar",
+"resp": "Carlos Mendes"
+}
+]
+}
+],
+"GD": {
+"CTR-0103": {
+"item": {
+"desc": "Armário de aço 4 portas",
+"un": "un",
+"ini": 100,
+"preco": 1248
+},
+"adit": [],
+"emp": [
+{
+"num": "2026NE000100",
+"d": "2026-06-04",
+"q": 25,
+"fat": 25
+}
+],
+"nf": [
+{
+"num": "NF 1.204",
+"d": "2026-07-10",
+"q": 10,
+"v": 12480,
+"emp": "2026NE000100",
+"ent": true,
+"ace": true
+},
+{
+"num": "NF 1.388",
+"d": "2026-09-22",
+"q": 15,
+"v": 18720,
+"emp": "2026NE000100",
+"ent": true,
+"ace": true
+}
+],
+"pend": [],
+"evt": [
+[
+"2026-06-04",
+"Empenho de 25 un recepcionado e reservado"
+],
+[
+"2026-07-10",
+"NF 1.204: 10 un faturados (reserva convertida)"
+],
+[
+"2026-09-22",
+"NF 1.388: 15 un faturados (reserva convertida)"
+]
+],
+"accepted": {}
+},
+"CTR-0105": {
+"item": {
+"desc": "Conjunto aluno CJA-06",
+"un": "conjunto",
+"ini": 2000,
+"preco": 396
+},
+"adit": [],
+"emp": [
+{
+"num": "2026NE000101",
+"d": "2026-06-23",
+"q": 1000,
+"fat": 1000
+}
+],
+"nf": [
+{
+"num": "NF 1.256",
+"d": "2026-08-15",
+"q": 600,
+"v": 237600,
+"emp": "2026NE000101",
+"ent": true,
+"ace": true
+},
+{
+"num": "NF 1.402",
+"d": "2026-10-10",
+"q": 400,
+"v": 158400,
+"emp": "2026NE000101",
+"ent": true,
+"ace": true
+}
+],
+"pend": [],
+"evt": [
+[
+"2026-06-23",
+"Empenho de 1000 conjunto recepcionado e reservado"
+],
+[
+"2026-08-15",
+"NF 1.256: 600 conjunto faturados (reserva convertida)"
+],
+[
+"2026-10-10",
+"NF 1.402: 400 conjunto faturados (reserva convertida)"
+]
+],
+"accepted": {}
+},
+"CTR-0113": {
+"item": {
+"desc": "Arquivo de aço 4 gavetas",
+"un": "un",
+"ini": 300,
+"preco": 570
+},
+"adit": [],
+"emp": [
+{
+"num": "2026NE000102",
+"d": "2026-05-18",
+"q": 300,
+"fat": 300
+}
+],
+"nf": [
+{
+"num": "NF 1.118",
+"d": "2026-05-29",
+"q": 150,
+"v": 85500,
+"emp": "2026NE000102",
+"ent": true,
+"ace": true
+},
+{
+"num": "NF 1.190",
+"d": "2026-07-03",
+"q": 150,
+"v": 85500,
+"emp": "2026NE000102",
+"ent": true,
+"ace": true
+}
+],
+"pend": [],
+"evt": [
+[
+"2026-05-18",
+"Empenho de 300 un recepcionado e reservado"
+],
+[
+"2026-05-29",
+"NF 1.118: 150 un faturados (reserva convertida)"
+],
+[
+"2026-07-03",
+"NF 1.190: 150 un faturados (reserva convertida)"
+]
+],
+"accepted": {}
+},
+"CTR-0114": {
+"item": {
+"desc": "Mobiliário administrativo, entregas em GO e MG (sem quantidades por UF)",
+"un": "conjunto",
+"ini": 650,
+"preco": 700
+},
+"adit": [],
+"emp": [
+{
+"num": "2026NE000103",
+"d": "2026-08-25",
+"q": 130,
+"fat": 130
+}
+],
+"nf": [
+{
+"num": "NF 1.437",
+"d": "2026-10-20",
+"q": 130,
+"v": 91000,
+"emp": "2026NE000103",
+"ent": true,
+"ace": true
+}
+],
+"pend": [],
+"evt": [
+[
+"2026-08-25",
+"Empenho de 130 conjunto recepcionado e reservado"
+],
+[
+"2026-10-20",
+"NF 1.437: 130 conjunto faturados (reserva convertida)"
+]
+],
+"accepted": {}
+},
+"CTR-0201": {
+"item": {
+"desc": "Mobiliário para postos de atendimento",
+"un": "conjunto",
+"ini": 180,
+"preco": 1377.7777777777778
+},
+"adit": [],
+"emp": [],
+"nf": [],
+"pend": [],
+"evt": [],
+"accepted": {}
+}
+},
+"PST": {
+"CTR-0301": {
+"prev": 10,
+"postos": [
+{
+"id": "P01",
+"perfil": "Técnico de suporte N1",
+"local": "Brasília · Esplanada",
+"st": "ocupado",
+"tit": "Ana P.",
+"ini": "2026-04-20",
+"os": "OS 01/2026",
+"hist": [
+{
+"d": "2026-04-20",
+"e": "Ocupado por Ana P. (OS 01/2026)"
+}
+]
+},
+{
+"id": "P02",
+"perfil": "Técnico de suporte N1",
+"local": "Brasília · Esplanada",
+"st": "ocupado",
+"tit": "Bruno S.",
+"ini": "2026-04-20",
+"os": "OS 01/2026",
+"hist": [
+{
+"d": "2026-04-20",
+"e": "Ocupado por Bruno S. (OS 01/2026)"
+}
+]
+},
+{
+"id": "P03",
+"perfil": "Técnico de suporte N1",
+"local": "Brasília · Esplanada",
+"st": "ocupado",
+"tit": "Carla M.",
+"ini": "2026-04-20",
+"os": "OS 01/2026",
+"hist": [
+{
+"d": "2026-04-20",
+"e": "Ocupado por Carla M. (OS 01/2026)"
+}
+]
+},
+{
+"id": "P04",
+"perfil": "Técnico de suporte N1",
+"local": "Brasília · Esplanada",
+"st": "ocupado",
+"tit": "Diego R.",
+"ini": "2026-04-20",
+"os": "OS 01/2026",
+"hist": [
+{
+"d": "2026-04-20",
+"e": "Ocupado por Diego R. (OS 01/2026)"
+}
+]
+},
+{
+"id": "P05",
+"perfil": "Técnico de suporte N2",
+"local": "Brasília · Esplanada",
+"st": "ocupado",
+"tit": "Elisa T.",
+"ini": "2026-04-20",
+"os": "OS 01/2026",
+"hist": [
+{
+"d": "2026-04-20",
+"e": "Ocupado por Elisa T. (OS 01/2026)"
+}
+]
+},
+{
+"id": "P06",
+"perfil": "Técnico de suporte N2",
+"local": "Brasília · Esplanada",
+"st": "ocupado",
+"tit": "Fábio N.",
+"ini": "2026-04-20",
+"os": "OS 01/2026",
+"hist": [
+{
+"d": "2026-04-20",
+"e": "Ocupado por Fábio N. (OS 01/2026)"
+}
+]
+},
+{
+"id": "P07",
+"perfil": "Técnico de suporte N2",
+"local": "Brasília · Esplanada",
+"st": "nao",
+"tit": null,
+"ini": null,
+"os": null,
+"hist": []
+},
+{
+"id": "P08",
+"perfil": "Técnico de suporte N2",
+"local": "Brasília · Esplanada",
+"st": "nao",
+"tit": null,
+"ini": null,
+"os": null,
+"hist": []
+},
+{
+"id": "P09",
+"perfil": "Técnico de suporte N2",
+"local": "Brasília · Esplanada",
+"st": "nao",
+"tit": null,
+"ini": null,
+"os": null,
+"hist": []
+},
+{
+"id": "P10",
+"perfil": "Coordenador de service desk",
+"local": "Brasília · Esplanada",
+"st": "nao",
+"tit": null,
+"ini": null,
+"os": null,
+"hist": []
+}
+],
+"rep": []
+}
+},
+"UST": {
+"CTR-0303": {
+"preco": 9.8,
+"tot": 200000,
+"cat": [
+[
+"INF-01",
+"Atendimento a incidente de infraestrutura",
+4
+],
+[
+"INF-02",
+"Mudança padrão em servidor",
+6
+],
+[
+"INF-05",
+"Monitoramento mensal de servidor",
+20
+],
+[
+"INF-09",
+"Rotina de backup e restauração",
+12
+]
+],
+"med": [
+[
+"Medição jun/2026",
+"2026-06-30",
+12500
+],
+[
+"Medição ago/2026",
+"2026-08-31",
+9800
+],
+[
+"Medição out/2026",
+"2026-10-30",
+11400
+]
+]
+}
+},
+"PFD": {
+"CTR-0302": {
+"preco": 100,
+"tot": 1000,
+"med": [
+[
+"Medição 01 · ago/2026",
+"2026-08-31",
+180
+],
+[
+"Medição 02 · set/2026",
+"2026-09-30",
+120
+]
+],
+"pend": []
+}
+},
+"TEAM": {
+"CTR-0303": {
+"teto": 6,
+"perfis": {
+"Analista de infraestrutura sênior": "Certificação em virtualização; 5 anos",
+"Analista de infraestrutura pleno": "3 anos de experiência",
+"Administrador de banco de dados": "Certificação do SGBD",
+"Especialista em redes": "Certificação de redes",
+"Coordenador técnico": "Gestão de serviços de TI"
+},
+"aloc": [
+{
+"nome": "Marcos V.",
+"perfil": "Analista de infraestrutura sênior",
+"fr": 1,
+"ok": true,
+"doc": true
+},
+{
+"nome": "Paula R.",
+"perfil": "Analista de infraestrutura pleno",
+"fr": 1,
+"ok": true,
+"doc": true
+},
+{
+"nome": "Igor F.",
+"perfil": "Analista de infraestrutura pleno",
+"fr": 1,
+"ok": true,
+"doc": true
+},
+{
+"nome": "Sônia K.",
+"perfil": "Administrador de banco de dados",
+"fr": 0.5,
+"ok": true,
+"doc": true
+},
+{
+"nome": "Tiago B.",
+"perfil": "Especialista em redes",
+"fr": 0.5,
+"ok": true,
+"doc": true
+}
+]
+}
+},
+"SLA": {
+"CTR-0301": [
+{
+"id": "mob",
+"nome": "Mobilização inicial",
+"cl": "7.1",
+"ev": "Recebimento da ordem de serviço",
+"dur": 10,
+"tipo": "úteis",
+"cumpre": "Profissional apresentado e em atividade",
+"av": [
+3,
+1
+]
+},
+{
+"id": "rep",
+"nome": "Reposição de profissional",
+"cl": "7.4",
+"ev": "Data da saída do profissional (fato)",
+"dur": 5,
+"tipo": "úteis",
+"cumpre": "Substituto em atividade no posto",
+"av": [
+2,
+1
+]
+},
+{
+"id": "nf",
+"nome": "Apresentação da nota fiscal",
+"cl": "11.2",
+"ev": "Fim da competência",
+"dur": 5,
+"tipo": "úteis",
+"cumpre": "NF e documentos protocolados",
+"av": [
+2
+]
+}
+]
+},
+"LANC": {
+"CTR-0103": [
+{
+"id": "CTR-0103-L001",
+"c": "2026-07",
+"g": "rb",
+"v": 12480,
+"desc": "Receita da competência jul/2026",
+"doc": "NF 1.204"
+},
+{
+"id": "CTR-0103-L002",
+"c": "2026-07",
+"g": "ded",
+"v": 1248,
+"desc": "Tributos sobre a receita",
+"doc": "Apuração fiscal jul/2026"
+},
+{
+"id": "CTR-0103-L003",
+"c": "2026-07",
+"g": "var",
+"v": 5593,
+"desc": "Custo dos produtos vendidos e frete",
+"doc": "Notas de compra jul/2026"
+},
+{
+"id": "CTR-0103-L004",
+"c": "2026-07",
+"g": "fix",
+"v": 2610,
+"desc": "Equipe de entrega e instalação",
+"doc": "Folha gerencial jul/2026"
+},
+{
+"id": "CTR-0103-L005",
+"c": "2026-07",
+"g": "rat",
+"v": 746,
+"desc": "Rateio de estrutura central",
+"doc": "Mapa de rateio v2"
+},
+{
+"id": "CTR-0103-L006",
+"c": "2026-07",
+"g": "fin",
+"v": 373,
+"desc": "Custo financeiro do capital de giro",
+"doc": "Extrato bancário jul/2026"
+},
+{
+"id": "CTR-0103-L007",
+"c": "2026-09",
+"g": "rb",
+"v": 18720,
+"desc": "Receita da competência set/2026",
+"doc": "NF 1.388"
+},
+{
+"id": "CTR-0103-L008",
+"c": "2026-09",
+"g": "ded",
+"v": 1872,
+"desc": "Tributos sobre a receita",
+"doc": "Apuração fiscal set/2026"
+},
+{
+"id": "CTR-0103-L009",
+"c": "2026-09",
+"g": "var",
+"v": 8491,
+"desc": "Custo dos produtos vendidos e frete",
+"doc": "Notas de compra set/2026"
+},
+{
+"id": "CTR-0103-L010",
+"c": "2026-09",
+"g": "fix",
+"v": 3963,
+"desc": "Equipe de entrega e instalação",
+"doc": "Folha gerencial set/2026"
+},
+{
+"id": "CTR-0103-L011",
+"c": "2026-09",
+"g": "rat",
+"v": 1132,
+"desc": "Rateio de estrutura central",
+"doc": "Mapa de rateio v2"
+},
+{
+"id": "CTR-0103-L012",
+"c": "2026-09",
+"g": "fin",
+"v": 566,
+"desc": "Custo financeiro do capital de giro",
+"doc": "Extrato bancário set/2026"
+}
+],
+"CTR-0105": [
+{
+"id": "CTR-0105-L001",
+"c": "2026-08",
+"g": "rb",
+"v": 237600,
+"desc": "Receita da competência ago/2026",
+"doc": "NF 1.256"
+},
+{
+"id": "CTR-0105-L002",
+"c": "2026-08",
+"g": "ded",
+"v": 23760,
+"desc": "Tributos sobre a receita",
+"doc": "Apuração fiscal ago/2026"
+},
+{
+"id": "CTR-0105-L003",
+"c": "2026-08",
+"g": "var",
+"v": 105209,
+"desc": "Custo dos produtos vendidos e frete",
+"doc": "Notas de compra ago/2026"
+},
+{
+"id": "CTR-0105-L004",
+"c": "2026-08",
+"g": "fix",
+"v": 49098,
+"desc": "Equipe de entrega e instalação",
+"doc": "Folha gerencial ago/2026"
+},
+{
+"id": "CTR-0105-L005",
+"c": "2026-08",
+"g": "rat",
+"v": 14028,
+"desc": "Rateio de estrutura central",
+"doc": "Mapa de rateio v2"
+},
+{
+"id": "CTR-0105-L006",
+"c": "2026-08",
+"g": "fin",
+"v": 7014,
+"desc": "Custo financeiro do capital de giro",
+"doc": "Extrato bancário ago/2026"
+},
+{
+"id": "CTR-0105-L007",
+"c": "2026-10",
+"g": "rb",
+"v": 158400,
+"desc": "Receita da competência out/2026",
+"doc": "NF 1.402"
+},
+{
+"id": "CTR-0105-L008",
+"c": "2026-10",
+"g": "ded",
+"v": 15840,
+"desc": "Tributos sobre a receita",
+"doc": "Apuração fiscal out/2026"
+},
+{
+"id": "CTR-0105-L009",
+"c": "2026-10",
+"g": "var",
+"v": 72094,
+"desc": "Custo dos produtos vendidos e frete",
+"doc": "Notas de compra out/2026"
+},
+{
+"id": "CTR-0105-L010",
+"c": "2026-10",
+"g": "fix",
+"v": 33644,
+"desc": "Equipe de entrega e instalação",
+"doc": "Folha gerencial out/2026"
+},
+{
+"id": "CTR-0105-L011",
+"c": "2026-10",
+"g": "rat",
+"v": 9612,
+"desc": "Rateio de estrutura central",
+"doc": "Mapa de rateio v2"
+},
+{
+"id": "CTR-0105-L012",
+"c": "2026-10",
+"g": "fin",
+"v": 4400,
+"desc": "Custo da antecipação de recebível (NF 1.402)",
+"doc": "Termo de cessão FIDC Recebíveis Públicos (fictício)"
+}
+],
+"CTR-0113": [
+{
+"id": "CTR-0113-L001",
+"c": "2026-05",
+"g": "rb",
+"v": 85500,
+"desc": "Receita da competência mai/2026",
+"doc": "NF 1.118"
+},
+{
+"id": "CTR-0113-L002",
+"c": "2026-05",
+"g": "ded",
+"v": 8550,
+"desc": "Tributos sobre a receita",
+"doc": "Apuração fiscal mai/2026"
+},
+{
+"id": "CTR-0113-L003",
+"c": "2026-05",
+"g": "var",
+"v": 40410,
+"desc": "Custo dos produtos vendidos e frete",
+"doc": "Notas de compra mai/2026"
+},
+{
+"id": "CTR-0113-L004",
+"c": "2026-05",
+"g": "fix",
+"v": 18858,
+"desc": "Equipe de entrega e instalação",
+"doc": "Folha gerencial mai/2026"
+},
+{
+"id": "CTR-0113-L005",
+"c": "2026-05",
+"g": "rat",
+"v": 5388,
+"desc": "Rateio de estrutura central",
+"doc": "Mapa de rateio v2"
+},
+{
+"id": "CTR-0113-L006",
+"c": "2026-05",
+"g": "fin",
+"v": 2694,
+"desc": "Custo financeiro do capital de giro",
+"doc": "Extrato bancário mai/2026"
+},
+{
+"id": "CTR-0113-L007",
+"c": "2026-07",
+"g": "rb",
+"v": 85500,
+"desc": "Receita da competência jul/2026",
+"doc": "NF 1.190"
+},
+{
+"id": "CTR-0113-L008",
+"c": "2026-07",
+"g": "ded",
+"v": 8550,
+"desc": "Tributos sobre a receita",
+"doc": "Apuração fiscal jul/2026"
+},
+{
+"id": "CTR-0113-L009",
+"c": "2026-07",
+"g": "var",
+"v": 40848,
+"desc": "Custo dos produtos vendidos e frete",
+"doc": "Notas de compra jul/2026"
+},
+{
+"id": "CTR-0113-L010",
+"c": "2026-07",
+"g": "fix",
+"v": 19062,
+"desc": "Equipe de entrega e instalação",
+"doc": "Folha gerencial jul/2026"
+},
+{
+"id": "CTR-0113-L011",
+"c": "2026-07",
+"g": "rat",
+"v": 5447,
+"desc": "Rateio de estrutura central",
+"doc": "Mapa de rateio v2"
+},
+{
+"id": "CTR-0113-L012",
+"c": "2026-07",
+"g": "fin",
+"v": 2723,
+"desc": "Custo financeiro do capital de giro",
+"doc": "Extrato bancário jul/2026"
+}
+],
+"CTR-0114": [
+{
+"id": "CTR-0114-L001",
+"c": "2026-10",
+"g": "rb",
+"v": 91000,
+"desc": "Receita da competência out/2026",
+"doc": "NF 1.437"
+},
+{
+"id": "CTR-0114-L002",
+"c": "2026-10",
+"g": "ded",
+"v": 9100,
+"desc": "Tributos sobre a receita",
+"doc": "Apuração fiscal out/2026"
+},
+{
+"id": "CTR-0114-L003",
+"c": "2026-10",
+"g": "var",
+"v": 41278,
+"desc": "Custo dos produtos vendidos e frete",
+"doc": "Notas de compra out/2026"
+},
+{
+"id": "CTR-0114-L004",
+"c": "2026-10",
+"g": "fix",
+"v": 19263,
+"desc": "Equipe de entrega e instalação",
+"doc": "Folha gerencial out/2026"
+},
+{
+"id": "CTR-0114-L005",
+"c": "2026-10",
+"g": "rat",
+"v": 5503,
+"desc": "Rateio de estrutura central",
+"doc": "Mapa de rateio v2"
+},
+{
+"id": "CTR-0114-L006",
+"c": "2026-10",
+"g": "fin",
+"v": 2752,
+"desc": "Custo financeiro do capital de giro",
+"doc": "Extrato bancário out/2026"
+}
+],
+"CTR-0201": [],
+"CTR-0301": [
+{
+"id": "CTR-0301-L001",
+"c": "2026-05",
+"g": "rb",
+"v": 69000,
+"desc": "Receita da competência mai/2026",
+"doc": "NF 3.021"
+},
+{
+"id": "CTR-0301-L002",
+"c": "2026-05",
+"g": "ded",
+"v": 6900,
+"desc": "Tributos sobre a receita",
+"doc": "Apuração fiscal mai/2026"
+},
+{
+"id": "CTR-0301-L003",
+"c": "2026-05",
+"g": "var",
+"v": 31298,
+"desc": "Mão de obra variável e insumos",
+"doc": "Folha e notas de insumos mai/2026"
+},
+{
+"id": "CTR-0301-L004",
+"c": "2026-05",
+"g": "fix",
+"v": 14606,
+"desc": "Mão de obra dedicada (fixa no período)",
+"doc": "Folha gerencial mai/2026"
+},
+{
+"id": "CTR-0301-L005",
+"c": "2026-05",
+"g": "rat",
+"v": 4173,
+"desc": "Rateio de estrutura central",
+"doc": "Mapa de rateio v2"
+},
+{
+"id": "CTR-0301-L006",
+"c": "2026-05",
+"g": "fin",
+"v": 2087,
+"desc": "Custo financeiro do capital de giro",
+"doc": "Extrato bancário mai/2026"
+},
+{
+"id": "CTR-0301-L007",
+"c": "2026-06",
+"g": "rb",
+"v": 69000,
+"desc": "Receita da competência jun/2026",
+"doc": "NF 3.025"
+},
+{
+"id": "CTR-0301-L008",
+"c": "2026-06",
+"g": "ded",
+"v": 6900,
+"desc": "Tributos sobre a receita",
+"doc": "Apuração fiscal jun/2026"
+},
+{
+"id": "CTR-0301-L009",
+"c": "2026-06",
+"g": "var",
+"v": 31671,
+"desc": "Mão de obra variável e insumos",
+"doc": "Folha e notas de insumos jun/2026"
+},
+{
+"id": "CTR-0301-L010",
+"c": "2026-06",
+"g": "fix",
+"v": 14780,
+"desc": "Mão de obra dedicada (fixa no período)",
+"doc": "Folha gerencial jun/2026"
+},
+{
+"id": "CTR-0301-L011",
+"c": "2026-06",
+"g": "rat",
+"v": 4223,
+"desc": "Rateio de estrutura central",
+"doc": "Mapa de rateio v2"
+},
+{
+"id": "CTR-0301-L012",
+"c": "2026-06",
+"g": "fin",
+"v": 2111,
+"desc": "Custo financeiro do capital de giro",
+"doc": "Extrato bancário jun/2026"
+},
+{
+"id": "CTR-0301-L013",
+"c": "2026-07",
+"g": "rb",
+"v": 69000,
+"desc": "Receita da competência jul/2026",
+"doc": "NF 3.029"
+},
+{
+"id": "CTR-0301-L014",
+"c": "2026-07",
+"g": "ded",
+"v": 6900,
+"desc": "Tributos sobre a receita",
+"doc": "Apuração fiscal jul/2026"
+},
+{
+"id": "CTR-0301-L015",
+"c": "2026-07",
+"g": "var",
+"v": 32044,
+"desc": "Mão de obra variável e insumos",
+"doc": "Folha e notas de insumos jul/2026"
+},
+{
+"id": "CTR-0301-L016",
+"c": "2026-07",
+"g": "fix",
+"v": 14954,
+"desc": "Mão de obra dedicada (fixa no período)",
+"doc": "Folha gerencial jul/2026"
+},
+{
+"id": "CTR-0301-L017",
+"c": "2026-07",
+"g": "rat",
+"v": 4272,
+"desc": "Rateio de estrutura central",
+"doc": "Mapa de rateio v2"
+},
+{
+"id": "CTR-0301-L018",
+"c": "2026-07",
+"g": "fin",
+"v": 2136,
+"desc": "Custo financeiro do capital de giro",
+"doc": "Extrato bancário jul/2026"
+},
+{
+"id": "CTR-0301-L019",
+"c": "2026-08",
+"g": "rb",
+"v": 69000,
+"desc": "Receita da competência ago/2026",
+"doc": "NF 3.033"
+},
+{
+"id": "CTR-0301-L020",
+"c": "2026-08",
+"g": "ded",
+"v": 6900,
+"desc": "Tributos sobre a receita",
+"doc": "Apuração fiscal ago/2026"
+},
+{
+"id": "CTR-0301-L021",
+"c": "2026-08",
+"g": "var",
+"v": 31671,
+"desc": "Mão de obra variável e insumos",
+"doc": "Folha e notas de insumos ago/2026"
+},
+{
+"id": "CTR-0301-L022",
+"c": "2026-08",
+"g": "fix",
+"v": 14780,
+"desc": "Mão de obra dedicada (fixa no período)",
+"doc": "Folha gerencial ago/2026"
+},
+{
+"id": "CTR-0301-L023",
+"c": "2026-08",
+"g": "rat",
+"v": 4223,
+"desc": "Rateio de estrutura central",
+"doc": "Mapa de rateio v2"
+},
+{
+"id": "CTR-0301-L024",
+"c": "2026-08",
+"g": "fin",
+"v": 2111,
+"desc": "Custo financeiro do capital de giro",
+"doc": "Extrato bancário ago/2026"
+},
+{
+"id": "CTR-0301-L025",
+"c": "2026-09",
+"g": "rb",
+"v": 69000,
+"desc": "Receita da competência set/2026",
+"doc": "NF 3.037"
+},
+{
+"id": "CTR-0301-L026",
+"c": "2026-09",
+"g": "ded",
+"v": 6900,
+"desc": "Tributos sobre a receita",
+"doc": "Apuração fiscal set/2026"
+},
+{
+"id": "CTR-0301-L027",
+"c": "2026-09",
+"g": "var",
+"v": 32416,
+"desc": "Mão de obra variável e insumos",
+"doc": "Folha e notas de insumos set/2026"
+},
+{
+"id": "CTR-0301-L028",
+"c": "2026-09",
+"g": "fix",
+"v": 15128,
+"desc": "Mão de obra dedicada (fixa no período)",
+"doc": "Folha gerencial set/2026"
+},
+{
+"id": "CTR-0301-L029",
+"c": "2026-09",
+"g": "rat",
+"v": 4322,
+"desc": "Rateio de estrutura central",
+"doc": "Mapa de rateio v2"
+},
+{
+"id": "CTR-0301-L030",
+"c": "2026-09",
+"g": "fin",
+"v": 2161,
+"desc": "Custo financeiro do capital de giro",
+"doc": "Extrato bancário set/2026"
+},
+{
+"id": "CTR-0301-L031",
+"c": "2026-10",
+"g": "rb",
+"v": 69000,
+"desc": "Receita da competência out/2026",
+"doc": "NF 3.041"
+},
+{
+"id": "CTR-0301-L032",
+"c": "2026-10",
+"g": "ded",
+"v": 6900,
+"desc": "Tributos sobre a receita",
+"doc": "Apuração fiscal out/2026"
+},
+{
+"id": "CTR-0301-L033",
+"c": "2026-10",
+"g": "var",
+"v": 32789,
+"desc": "Mão de obra variável e insumos",
+"doc": "Folha e notas de insumos out/2026"
+},
+{
+"id": "CTR-0301-L034",
+"c": "2026-10",
+"g": "fix",
+"v": 15301,
+"desc": "Mão de obra dedicada (fixa no período)",
+"doc": "Folha gerencial out/2026"
+},
+{
+"id": "CTR-0301-L035",
+"c": "2026-10",
+"g": "rat",
+"v": 4372,
+"desc": "Rateio de estrutura central",
+"doc": "Mapa de rateio v2"
+},
+{
+"id": "CTR-0301-L036",
+"c": "2026-10",
+"g": "fin",
+"v": 2186,
+"desc": "Custo financeiro do capital de giro",
+"doc": "Extrato bancário out/2026"
+},
+{
+"id": "CTR-0301-L037",
+"c": "2026-11",
+"g": "rb",
+"v": 100000,
+"desc": "Receita da competência nov/2026",
+"doc": "NF 3.101"
+},
+{
+"id": "CTR-0301-L038",
+"c": "2026-11",
+"g": "ded",
+"v": 10000,
+"desc": "Tributos sobre a receita",
+"doc": "Apuração fiscal nov/2026"
+},
+{
+"id": "CTR-0301-L039",
+"c": "2026-11",
+"g": "var",
+"v": 54000,
+"desc": "Serviços eventuais e insumos",
+"doc": "NF de fornecedores nov/2026"
+},
+{
+"id": "CTR-0301-L040",
+"c": "2026-11",
+"g": "fix",
+"v": 15000,
+"desc": "Supervisão e estrutura dedicadas",
+"doc": "Folha gerencial nov/2026"
+},
+{
+"id": "CTR-0301-L041",
+"c": "2026-11",
+"g": "rat",
+"v": 3000,
+"desc": "Rateio da central de serviços",
+"doc": "Mapa de rateio v2 (vigência 2026)"
+},
+{
+"id": "CTR-0301-L042",
+"c": "2026-11",
+"g": "fin",
+"v": 2000,
+"desc": "Custo financeiro do capital de giro",
+"doc": "Extrato bancário nov/2026"
+}
+],
+"CTR-0302": [
+{
+"id": "CTR-0302-L001",
+"c": "2026-09",
+"g": "rb",
+"v": 25000,
+"desc": "Receita da competência set/2026",
+"doc": "NF 3.051"
+},
+{
+"id": "CTR-0302-L002",
+"c": "2026-09",
+"g": "ded",
+"v": 2500,
+"desc": "Tributos sobre a receita",
+"doc": "Apuração fiscal set/2026"
+},
+{
+"id": "CTR-0302-L003",
+"c": "2026-09",
+"g": "var",
+"v": 11340,
+"desc": "Mão de obra variável e insumos",
+"doc": "Folha e notas de insumos set/2026"
+},
+{
+"id": "CTR-0302-L004",
+"c": "2026-09",
+"g": "fix",
+"v": 5292,
+"desc": "Mão de obra dedicada (fixa no período)",
+"doc": "Folha gerencial set/2026"
+},
+{
+"id": "CTR-0302-L005",
+"c": "2026-09",
+"g": "rat",
+"v": 1512,
+"desc": "Rateio de estrutura central",
+"doc": "Mapa de rateio v2"
+},
+{
+"id": "CTR-0302-L006",
+"c": "2026-09",
+"g": "fin",
+"v": 756,
+"desc": "Custo financeiro do capital de giro",
+"doc": "Extrato bancário set/2026"
+}
+],
+"CTR-0303": [
+{
+"id": "CTR-0303-L001",
+"c": "2026-06",
+"g": "rb",
+"v": 117600,
+"desc": "Receita da competência jun/2026",
+"doc": "NF 2.977"
+},
+{
+"id": "CTR-0303-L002",
+"c": "2026-06",
+"g": "ded",
+"v": 11760,
+"desc": "Tributos sobre a receita",
+"doc": "Apuração fiscal jun/2026"
+},
+{
+"id": "CTR-0303-L003",
+"c": "2026-06",
+"g": "var",
+"v": 65028,
+"desc": "Mão de obra variável e insumos",
+"doc": "Folha e notas de insumos jun/2026"
+},
+{
+"id": "CTR-0303-L004",
+"c": "2026-06",
+"g": "fix",
+"v": 30346,
+"desc": "Mão de obra dedicada (fixa no período)",
+"doc": "Folha gerencial jun/2026"
+},
+{
+"id": "CTR-0303-L005",
+"c": "2026-06",
+"g": "rat",
+"v": 8671,
+"desc": "Rateio de estrutura central",
+"doc": "Mapa de rateio v2"
+},
+{
+"id": "CTR-0303-L006",
+"c": "2026-06",
+"g": "fin",
+"v": 4335,
+"desc": "Custo financeiro do capital de giro",
+"doc": "Extrato bancário jun/2026"
+},
+{
+"id": "CTR-0303-L007",
+"c": "2026-08",
+"g": "rb",
+"v": 98000,
+"desc": "Receita da competência ago/2026",
+"doc": "NF 3.012"
+},
+{
+"id": "CTR-0303-L008",
+"c": "2026-08",
+"g": "ded",
+"v": 9800,
+"desc": "Tributos sobre a receita",
+"doc": "Apuração fiscal ago/2026"
+},
+{
+"id": "CTR-0303-L009",
+"c": "2026-08",
+"g": "var",
+"v": 55302,
+"desc": "Mão de obra variável e insumos",
+"doc": "Folha e notas de insumos ago/2026"
+},
+{
+"id": "CTR-0303-L010",
+"c": "2026-08",
+"g": "fix",
+"v": 25808,
+"desc": "Mão de obra dedicada (fixa no período)",
+"doc": "Folha gerencial ago/2026"
+},
+{
+"id": "CTR-0303-L011",
+"c": "2026-08",
+"g": "rat",
+"v": 7373,
+"desc": "Rateio de estrutura central",
+"doc": "Mapa de rateio v2"
+},
+{
+"id": "CTR-0303-L012",
+"c": "2026-08",
+"g": "fin",
+"v": 3687,
+"desc": "Custo financeiro do capital de giro",
+"doc": "Extrato bancário ago/2026"
+},
+{
+"id": "CTR-0303-L013",
+"c": "2026-10",
+"g": "rb",
+"v": 107800,
+"desc": "Receita da competência out/2026",
+"doc": "NF 3.063"
+},
+{
+"id": "CTR-0303-L014",
+"c": "2026-10",
+"g": "ded",
+"v": 10780,
+"desc": "Tributos sobre a receita",
+"doc": "Apuração fiscal out/2026"
+},
+{
+"id": "CTR-0303-L015",
+"c": "2026-10",
+"g": "var",
+"v": 59202,
+"desc": "Mão de obra variável e insumos",
+"doc": "Folha e notas de insumos out/2026"
+},
+{
+"id": "CTR-0303-L016",
+"c": "2026-10",
+"g": "fix",
+"v": 27628,
+"desc": "Mão de obra dedicada (fixa no período)",
+"doc": "Folha gerencial out/2026"
+},
+{
+"id": "CTR-0303-L017",
+"c": "2026-10",
+"g": "rat",
+"v": 7893,
+"desc": "Rateio de estrutura central",
+"doc": "Mapa de rateio v2"
+},
+{
+"id": "CTR-0303-L018",
+"c": "2026-10",
+"g": "fin",
+"v": 3947,
+"desc": "Custo financeiro do capital de giro",
+"doc": "Extrato bancário out/2026"
+}
+]
+},
+"REQ": {
+"CRT-PR-0101|1": [
+{
+"cl": "9.11.1",
+"pg": 14,
+"v": 1,
+"req": "Atestado de fornecimento de mobiliário escolar compatível, mínimo de 50% do lote (600 conjuntos)",
+"ev": "Atestado da Secretaria da Educação de SP: 2.000 conjuntos (2026)",
+"dif": "Excede em 1.400 conjuntos",
+"st": "atendido"
+},
+{
+"cl": "9.11.2",
+"pg": 14,
+"v": 1,
+"req": "Certificado de conformidade do conjunto aluno com a ABNT NBR 14006",
+"ev": "Certificado de conformidade nº 0412/2025, válido até 15/03/2027",
+"dif": "—",
+"st": "atendido"
+},
+{
+"cl": "9.9.3",
+"pg": 13,
+"v": 1,
+"req": "Liquidez geral, solvência geral e liquidez corrente maiores que 1,0",
+"ev": "Balanço 2025: LG 1,42 · SG 1,88 · LC 1,35",
+"dif": "—",
+"st": "atendido"
+},
+{
+"cl": "5.4",
+"pg": 8,
+"v": 1,
+"req": "Entrega de 1.200 conjuntos em até 30 dias corridos após a ordem",
+"ev": "Capacidade cadastrada: 900 conjuntos por mês",
+"dif": "Faltam cerca de 10 dias de produção; exige estoque prévio ou entrega parcelada",
+"st": "parcial"
+},
+{
+"cl": "9.10.4",
+"pg": 13,
+"v": 1,
+"req": "Certidão negativa de falência emitida há no máximo 90 dias",
+"ev": "Certidão emitida em 02/07/2026 (vencida na data da sessão)",
+"dif": "Emitir nova certidão antes de 10/12/2026",
+"st": "pendente"
+},
+{
+"cl": "7.2",
+"pg": 10,
+"v": 1,
+"req": "Amostra do conjunto aluno em até 5 dias úteis após a convocação",
+"ev": "Requisito fora do perfil cadastrado",
+"dif": "Definir logística da amostra",
+"st": "novo"
+}
+],
+"CRT-PR-0101|2": [
+{
+"cl": "9.11.3",
+"pg": 15,
+"v": 1,
+"req": "Atestado de fornecimento de mesas de professor, mínimo de 75 unidades",
+"ev": "Nenhum atestado específico localizado no acervo",
+"dif": "Falta comprovar 75 unidades",
+"st": "pendente"
+},
+{
+"cl": "9.9.3",
+"pg": 13,
+"v": 1,
+"req": "Índices contábeis maiores que 1,0",
+"ev": "Balanço 2025: LG 1,42 · SG 1,88 · LC 1,35",
+"dif": "—",
+"st": "atendido"
+}
+],
+"CRT-DF-0305|1": [
+{
+"cl": "8.4.1",
+"pg": 21,
+"v": 1,
+"req": "Atestado de serviços de governança de TI com no mínimo 8 profissionais simultâneos",
+"ev": "Atestado do MGI: 6 profissionais simultâneos",
+"dif": "Faltam 2 profissionais; o item 8.4.3 admite somar atestados do mesmo período",
+"st": "parcial"
+},
+{
+"cl": "8.5",
+"pg": 22,
+"v": 1,
+"req": "Coordenador com certificação PMP ou equivalente",
+"ev": "Profissional cadastrado com PMP válido até 2028",
+"dif": "—",
+"st": "atendido"
+},
+{
+"cl": "8.6",
+"pg": 22,
+"v": 1,
+"req": "Certificação ISO/IEC 20000-1 da empresa",
+"ev": "Sem certificado no acervo",
+"dif": "Requisito incompatível com o perfil atual",
+"st": "incompat"
+}
+]
+},
+"DOCS": {
+"CRT-PR-0101": [
+{
+"nome": "Edital",
+"v": 1,
+"d": "2026-11-12",
+"pg": 46
+},
+{
+"nome": "Termo de referência",
+"v": 1,
+"d": "2026-11-12",
+"pg": 22
+},
+{
+"nome": "Anexo I: planilha de quantitativos",
+"v": 1,
+"d": "2026-11-12",
+"pg": 3
+}
+],
+"CRT-DF-0305": [
+{
+"nome": "Edital",
+"v": 1,
+"d": "2026-11-09",
+"pg": 58
+},
+{
+"nome": "Termo de referência",
+"v": 1,
+"d": "2026-11-09",
+"pg": 31
+}
+],
+"CRT-SP-0109": [
+{
+"nome": "Edital",
+"v": 1,
+"d": "2026-11-16",
+"pg": 40
+}
+],
+"CRT-AM-0116": [
+{
+"nome": "Aviso de licitação",
+"v": 1,
+"d": "2026-10-28",
+"pg": 2
+}
+]
+}
+}

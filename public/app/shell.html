@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaizen B2G</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/app/base.css?v=__V__">
+<link rel="stylesheet" href="/app/app.css?v=__V__">
+</head>
+<body>
+<header class="top">
+  <div class="bar1">
+    <div class="brand"><i aria-hidden="true"></i>Kaizen B2G</div>
+    <nav id="nav" aria-label="Navegação principal"></nav>
+    <div class="ctx">
+      <label class="sr" for="emp">Empresa ativa</label>
+      <select id="emp" aria-label="Empresa ativa"></select>
+      <small id="cnpj"></small>
+      <label class="sr" for="usr">Atuar como (demonstração)</label><select id="usr" aria-label="Atuar como (demonstração)" style="font-weight:500" hidden></select><small id="urole"></small><a href="/sair" class="btn" style="text-decoration:none;color:inherit;display:inline-flex;align-items:center">Sair</a>
+    </div>
+  </div>
+</header>
+<button type="button" id="ftog" aria-expanded="false" aria-controls="filters"><b id="fsum"></b><span>Filtros</span></button>
+<div class="filters" id="filters">
+  <label>Período<select id="per">
+    <option value="2026">2026 (jan–dez)</option>
+    <option value="12m">Últimos 12 meses (dez/2025–nov/2026)</option>
+    <option value="2025">2025 (jan–dez)</option>
+    <option value="2526">2025–2026</option>
+  </select></label>
+  <label>Métrica<select id="met"></select></label>
+  <div><div class="small mut" style="margin-bottom:3px">Localizar por</div>
+    <div class="seg" role="group" aria-label="Base geográfica">
+      <button type="button" id="b-exec" aria-pressed="true">Local de execução</button>
+      <button type="button" id="b-sede" aria-pressed="false">Sede do órgão</button>
+    </div></div>
+  <label>Região<select id="reg"><option value="">Todas</option><option value="N">Norte</option><option value="NE">Nordeste</option><option value="CO">Centro-Oeste</option><option value="SE">Sudeste</option><option value="S">Sul</option></select></label>
+  <label>Projeto<select id="proj"></select></label>
+  <label>Modalidade<select id="modal"><option value="">Todas</option><option>Pregão eletrônico</option><option>Concorrência eletrônica</option></select></label>
+  <label>Concorrente<select id="conc"></select></label>
+  <div class="fgrow"></div>
+  <label>Visões salvas<select id="views"><option value="">—</option></select></label>
+  <button type="button" class="btn" id="save">Salvar visão</button>
+  <button type="button" class="btn" id="clear">Limpar filtros</button>
+  <button type="button" class="btn pri" id="openrot">Roteiro de teste</button>
+</div>
+<div class="crumbs" id="crumbs" aria-label="Caminho"></div>
+<main id="main">
+  <section class="vmap" id="vmap">
+    <div>
+      <div class="lhead">
+        <div><h1 id="mtitle">Carteira por UF</h1><p class="mut small" id="msub" style="margin:0"></p></div>
+        <div class="big"><span id="bscope">Brasil</span><b id="btot">0</b><span id="bnote"></span></div>
+      </div>
+      <div class="mapgrid">
+        <div class="mapwrap" id="mapwrap">
+          <svg id="map" viewBox="0 0 613 639" role="group" aria-label="Mapa do Brasil por UF. Use Tab para percorrer os estados e Enter para abrir.">
+            <defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="var(--nob)"/><rect width="2" height="6" fill="var(--line)"/></pattern></defs>
+            <g id="gpaths"></g><g id="glabels"></g>
+          </svg>
+          <div id="tip" role="status"></div>
+        </div>
+        <div>
+          <div class="legend" id="legend"></div>
+          <div class="ufsearch">
+            <label for="ufq">Selecionar UF por nome ou sigla</label>
+            <input type="search" id="ufq" list="uflist" placeholder="Ex.: PR ou Paraná" autocomplete="off">
+            <datalist id="uflist"></datalist>
+          </div>
+        </div>
+      </div>
+      <p class="src" id="src"></p>
+      <div class="fun" id="fun" role="group" aria-label="Da oportunidade ao resultado econômico"></div>
+      <h3 id="ttitle">Tabela por região e UF</h3>
+      <div class="scroll"><table id="rtab"></table></div>
+    </div>
+    <aside id="panel" aria-label="Painel estadual"></aside>
+  </section>
+  <section id="vfic" hidden></section>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+<div id="busy" hidden>Carregando o contexto da empresa…</div>
+<div id="rot" hidden><div class="in" role="dialog" aria-label="Roteiro de teste">
+  <div class="fhead"><h2>Roteiro de teste · Templates 1 a 9</h2><button class="btn" id="closerot">Fechar</button></div>
+  <p class="small mut">Marque cada passo conforme validar. As marcações ficam só neste navegador.</p>
+  <ol id="rotl"></ol>
+</div></div>
+
+<script>window.KB_DATA=__DADOS__;</script>
+<script src="/app/vendor/jszip.min.js"></script>
+<script src="/app/geo.js?v=__V__"></script>
+<script src="/app/core.js?v=__V__"></script>
+<script src="/app/util.js?v=__V__"></script>
+<script src="/app/t2.js?v=__V__"></script>
+<script src="/app/bpmn.js?v=__V__"></script>
+<script src="/app/t3.js?v=__V__"></script>
+<script src="/app/t4.js?v=__V__"></script>
+<script src="/app/t5.js?v=__V__"></script>
+<script src="/app/t6.js?v=__V__"></script>
+<script src="/app/t7.js?v=__V__"></script>
+<script src="/app/t8.js?v=__V__"></script>
+<script src="/app/t9.js?v=__V__"></script>
+<script>KB.baseline();{const ir=sessionStorage.getItem('kb_ir');if(ir){sessionStorage.removeItem('kb_ir');KB.S.stack=[{v:ir}];}}KB.render();</script>
+</body>
+</html>

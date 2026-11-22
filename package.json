@@ -1,0 +1,31 @@
+{
+  "name": "kaizen-b2g",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kaizen B2G: plataforma multiempresa de licitações e rentabilidade contratual",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "node scripts/migrate.mjs && next start -p ${PORT:-3000}",
+    "db:migrate": "node scripts/migrate.mjs",
+    "db:seed": "node scripts/migrate.mjs --seed",
+    "test:e2e": "node scripts/e2e.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.57.4",
+    "jszip": "^3.10.1",
+    "next": "^15.5.6",
+    "postgres": "^3.4.7",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.0",
+    "@types/react": "^19.1.12",
+    "typescript": "^5.9.2"
+  }
+}
