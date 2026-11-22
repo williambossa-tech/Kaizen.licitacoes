@@ -7,6 +7,8 @@ import { gravar } from '@/lib/armazenamento';
 export const dynamic = 'force-dynamic';
 /** API pública de integração do PNCP (manual: pncp.gov.br/manual · serviços 11.x de contratação). */
 const BASE = process.env.PNCP_BASE_URL || 'https://pncp.gov.br/api/pncp';
+/** Desde 2026 o detalhe da contratação é servido pela API de consulta; arquivos seguem na API do PNCP. */
+const CONSULTA = process.env.PNCP_CONSULTA_URL || 'https://pncp.gov.br/api/consulta';
 
 /** Aceita o número de controle (CNPJ-1-SEQUENCIAL/ANO) ou o link do portal (…/editais/CNPJ/ANO/SEQUENCIAL). */
 function interpretar(ref: string) {
@@ -19,6 +21,8 @@ async function obter(url: string) {
   const r = await fetch(url, { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(15000) });
   if (r.status === 404 || r.status === 204) return { status: 'nao_localizado' as const };
   if (!r.ok) return { status: 'indisponivel' as const, http: r.status };
+  const tipo = r.headers.get('content-type') || '';
+  if (!tipo.includes('json')) return { status: 'indisponivel' as const, http: r.status };
   return { status: 'ok' as const, dados: await r.json() };
 }
 
@@ -27,9 +31,11 @@ export async function GET(req: Request) {
   const ref = new URL(req.url).searchParams.get('ref') || '';
   const id = interpretar(ref); if (!id) return jsonErro(422, 'Informe o número de controle PNCP (ex.: 00394460000141-1-000045/2026) ou o link do edital no portal.');
   try {
-    const base = `${BASE}/v1/orgaos/${id.cnpj}/compras/${id.ano}/${id.seq}`;
-    const c = await obter(base);
-    if (c.status !== 'ok') return Response.json({ ok: true, situacao: c.status, ref: id, mensagem: c.status === 'nao_localizado' ? 'Nenhuma publicação localizada no PNCP para este identificador.' : 'Fonte indisponível no momento; siga pelo fluxo manual.' });
+    const caminho = `/v1/orgaos/${id.cnpj}/compras/${id.ano}/${id.seq}`;
+    const base = `${BASE}${caminho}`;
+    let c = await obter(`${CONSULTA}${caminho}`);
+    if (c.status === 'indisponivel') c = await obter(base);   // compatibilidade com o endereço anterior
+    if (c.status !== 'ok') return Response.json({ ok: true, situacao: c.status, ref: id, mensagem: c.status === 'nao_localizado' ? 'Nenhuma publicação localizada no PNCP para este identificador.' : 'Fonte indisponível no momento' + ('http' in c && c.http ? ' (HTTP ' + c.http + ')' : '') + '; siga pelo fluxo manual.' });
     const a = await obter(`${base}/arquivos`);
     const docs = a.status === 'ok' ? (Array.isArray(a.dados) ? a.dados : a.dados.documentos || []) : [];
     const d = c.dados;
