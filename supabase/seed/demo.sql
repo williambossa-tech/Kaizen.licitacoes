@@ -8,7 +8,7 @@ insert into empresas (id,razao_social,nome_curto,cnpj,vinculo_comercial,particip
 ('G','Gama Participações S.A.','Gama Participações','77.888.999/0001-10','Nenhum','15%',false,array[]::text[],'{}'::jsonb);
 
 insert into perfis (id,slug,nome,papel,email,demo,consolida) values
-('00000000-0000-4000-8000-000000000001','william','William','Diretoria Kaizen','william.bossa@outlook.com',false,true),
+('00000000-0000-4000-8000-000000000001','william','William','Diretoria Kaizen','william.bossa@kaizenpartners.com.br',false,true),
 ('00000000-0000-4000-8000-000000000002','ana','Ana Ribeiro','Analista de licitações · Kaizen','ana@demo.kaizen-b2g.invalid',true,false),
 ('00000000-0000-4000-8000-000000000003','marina','Marina Alves','Jurídico · Kaizen','marina@demo.kaizen-b2g.invalid',true,false),
 ('00000000-0000-4000-8000-000000000004','carlos','Carlos Mendes','Gestor da Alfa (cliente)','carlos@demo.kaizen-b2g.invalid',true,false),

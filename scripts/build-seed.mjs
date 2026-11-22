@@ -7,7 +7,7 @@ const arr = a => a == null ? 'null' : `array[${a.map(q).join(',')}]::text[]`;
 const out = ['-- Dados fictícios de demonstração (gerado por scripts/build-seed.mjs)', 'begin;'];
 const ins = (t, cols, rows) => { if (rows.length) out.push(`insert into ${t} (${cols.join(',')}) values\n${rows.map(r => '(' + r.join(',') + ')').join(',\n')};`); };
 const UID = {}; const slugs = Object.keys(D.USERS); slugs.forEach((s, i) => UID[s] = `00000000-0000-4000-8000-${String(i + 1).padStart(12, '0')}`);
-const EMAIL = { william: 'william.bossa@outlook.com' };
+const EMAIL = { william: 'william.bossa@kaizenpartners.com.br' };
 // empresas (inclui uma com participação societária sem autorização, para demonstrar que o vínculo societário não concede acesso)
 ins('empresas', ['id', 'razao_social', 'nome_curto', 'cnpj', 'vinculo_comercial', 'participacao_societaria', 'autorizacao_operacional', 'ufs_sem_cobertura', 'projetos'], [
   ...Object.entries(D.EMP).map(([k, e]) => [q(k), q(e.nome), q(e.curto), q(e.cnpj), q(k === 'A' ? 'Cliente externo' : 'Ecossistema Kaizen'), q(k === 'B' ? '30%' : null), 'true', arr(e.semCob), j(e.proj)]),

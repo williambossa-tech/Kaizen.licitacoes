@@ -31,7 +31,7 @@ Veja `.env.example`. No Railway, configure no serviço `kaizen-b2g-web`:
 | `NEXT_PUBLIC_SUPABASE_URL` / `SUPABASE_URL` | sim | já configuradas |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | sim | chave anon/publishable |
 | `SUPABASE_SERVICE_ROLE_KEY` | sim | usada só no servidor (arquivos e criação do usuário administrador) |
-| `ADMIN_INITIAL_PASSWORD` | no primeiro deploy | senha inicial de william.bossa@outlook.com; troque depois |
+| `ADMIN_INITIAL_PASSWORD` | no primeiro deploy | senha inicial de william.bossa@kaizenpartners.com.br; troque depois |
 | `OPENAI_API_KEY`, `OPENAI_MODEL` | não | minutas com IA (Responses API). Sem a chave, o sistema gera rascunho por modelo |
 | `DEMO_MODE`, `SEED_DEMO` | não | `1` habilita troca de perfil de demonstração e carga dos dados fictícios em banco vazio |
 
