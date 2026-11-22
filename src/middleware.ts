@@ -4,6 +4,7 @@ import { createServerClient } from '@supabase/ssr';
 /** Renova a sessão do Supabase a cada requisição (padrão recomendado pelo @supabase/ssr). */
 export async function middleware(request: NextRequest) {
   if (process.env.AUTH_MODE === 'dev' && process.env.NODE_ENV !== 'production') return NextResponse.next();
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || request.nextUrl.pathname.startsWith('/api/saude')) return NextResponse.next();
   let resposta = NextResponse.next({ request });
   const sb = createServerClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, {
     cookies: {

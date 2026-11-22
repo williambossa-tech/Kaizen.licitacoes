@@ -1,7 +1,10 @@
 import FormLogin from './form';
 import { sql } from '@/lib/db';
+import { faltando } from '@/lib/config';
+import { redirect } from 'next/navigation';
 export const dynamic = 'force-dynamic';
 export default async function Login({ searchParams }: { searchParams: Promise<{ erro?: string }> }) {
+  if (faltando().length) redirect('/plataforma');
   const dev = process.env.AUTH_MODE === 'dev' && process.env.NODE_ENV !== 'production';
   const perfis = dev ? await sql()`select slug, nome, papel from perfis order by criado_em, slug` : [];
   const { erro } = await searchParams;

@@ -5,7 +5,7 @@ import path from 'node:path';
 import postgres from 'postgres';
 
 const url = process.env.DATABASE_URL;
-if (!url) { console.error('[migracao] DATABASE_URL ausente: nada a fazer.'); process.exit(process.env.NODE_ENV === 'production' ? 1 : 0); }
+if (!url) { console.error('[migracao] DATABASE_URL ausente: nada a fazer.'); process.exit(0); }
 const local = /localhost|127\.0\.0\.1/.test(url);
 const sql = postgres(url, { prepare: false, max: 1, ssl: local ? false : 'require', onnotice: () => {} });
 const raiz = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
