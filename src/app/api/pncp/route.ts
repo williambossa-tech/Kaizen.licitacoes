@@ -17,6 +17,25 @@ function interpretar(ref: string) {
   m = s.match(/editais\/(\d{14})\/(\d{4})\/(\d{1,6})/); if (m) return { cnpj: m[1], ano: Number(m[2]), seq: Number(m[3]) };
   return null;
 }
+/** O PNCP entrega o documento como PDF, ZIP ou outro formato: o tipo vem do conteúdo (assinatura do arquivo), não do título. */
+function tipoArquivo(dados: ArrayBuffer, disp: string | null) {
+  const h = new Uint8Array(dados.slice(0, 8));
+  const asc = String.fromCharCode(...h);
+  if (asc.startsWith('%PDF')) return { ext: '.pdf', mime: 'application/pdf' };
+  if (h[0] === 0x50 && h[1] === 0x4b) {
+    const n = (disp || '').toLowerCase();
+    if (n.includes('.docx')) return { ext: '.docx', mime: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' };
+    if (n.includes('.xlsx')) return { ext: '.xlsx', mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' };
+    return { ext: '.zip', mime: 'application/zip' };
+  }
+  if (asc.startsWith('Rar!')) return { ext: '.rar', mime: 'application/vnd.rar' };
+  if (h[0] === 0x37 && h[1] === 0x7a) return { ext: '.7z', mime: 'application/x-7z-compressed' };
+  if (h[0] === 0xd0 && h[1] === 0xcf) return { ext: '.doc', mime: 'application/msword' };
+  const m = (disp || '').match(/filename\*?=(?:UTF-8'')?"?([^";]+)/i);
+  const ext = m ? (m[1].match(/\.[a-z0-9]{1,5}$/i) || [''])[0].toLowerCase() : '';
+  return { ext: ext || '.bin', mime: 'application/octet-stream' };
+}
+
 async function obter(url: string) {
   const r = await fetch(url, { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(15000) });
   if (r.status === 404 || r.status === 204) return { status: 'nao_localizado' as const };
@@ -62,10 +81,12 @@ export async function POST(req: Request) {
         const url = `${BASE}/v1/orgaos/${id.cnpj}/compras/${id.ano}/${id.seq}/arquivos/${Number(d.sequencial)}`;
         const resp = await fetch(url, { signal: AbortSignal.timeout(60000) }); if (!resp.ok) { salvos.push({ titulo: d.titulo, erro: 'HTTP ' + resp.status }); continue; }
         const dados = await resp.arrayBuffer(); const arqId = crypto.randomUUID();
-        const nome = String(d.titulo || 'documento').replace(/[^\w.\-() ]+/g, '_').slice(0, 100) + '.pdf';
+        const t = tipoArquivo(dados, resp.headers.get('content-disposition'));
+        const base = String(d.titulo || 'documento').replace(/\.(pdf|zip|docx?|xlsx?|odt|rar|7z)$/i, '').replace(/[^\w.\-() ]+/g, '_').slice(0, 100);
+        const nome = base + t.ext;
         const caminho = `${b.emp}/${arqId}/${nome}`;
-        await gravar(caminho, dados, resp.headers.get('content-type') || 'application/pdf');
-        await tx`insert into arquivos (id, empresa_id, caminho, nome, mime, tamanho, criado_por) values (${arqId}, ${b.emp}, ${caminho}, ${nome}, ${resp.headers.get('content-type')}, ${dados.byteLength}, ${s.efetivo.id})`;
+        await gravar(caminho, dados, t.mime);
+        await tx`insert into arquivos (id, empresa_id, caminho, nome, mime, tamanho, criado_por) values (${arqId}, ${b.emp}, ${caminho}, ${nome}, ${t.mime}, ${dados.byteLength}, ${s.efetivo.id})`;
         const v = ((await tx`select max(versao) m from certame_documentos where certame_id = ${b.crt} and nome = ${d.titulo}`)[0].m || 0) + 1;
         await tx`insert into certame_documentos (certame_id, nome, versao, publicado, arquivo_id, enviado_por_empresa) values (${b.crt}, ${d.titulo}, ${v}, ${d.data ? String(d.data).slice(0, 10) : null}, ${arqId}, ${b.emp})`;
         await auditar(tx, s, b.emp, 'documento_edital', b.crt, 'pncp', v, { titulo: d.titulo, origem: url });
