@@ -3,7 +3,7 @@ import path from 'node:path';
 import { comPerfil } from '@/lib/db';
 import { obterSessao } from '@/lib/sessao';
 import { carregar } from '@/lib/dados';
-import { faltando, paginaPendente } from '@/lib/config';
+import { faltando, paginaPendente, irPara } from '@/lib/config';
 
 export const dynamic = 'force-dynamic';
 let shell: string | null = null;
@@ -13,7 +13,7 @@ const VERSAO = process.env.RAILWAY_DEPLOYMENT_ID?.slice(0, 8) || String(Date.now
 export async function GET(req: Request) {
   const f = faltando(); if (f.length) return paginaPendente(f);
   const s = await obterSessao();
-  if (!s) return Response.redirect(new URL('/login', req.url), 303);
+  if (!s) return irPara('/login');
   if (!shell) shell = await fs.readFile(path.join(process.cwd(), 'public/app/shell.html'), 'utf8');
   const dados = await comPerfil(s.efetivo.id, (tx) => carregar(tx, s));
   const json = JSON.stringify(dados).replace(/</g, '\\u003c').split(String.fromCharCode(0x2028)).join('\\u2028').split(String.fromCharCode(0x2029)).join('\\u2029');

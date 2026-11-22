@@ -10,3 +10,9 @@ export function paginaPendente(f: string[]) {
 <p>O servidor está no ar, mas faltam variáveis no Railway (serviço <b>kaizen-b2g-web</b> › Variables):</p><ul>${f.map((x) => `<li><code>${x}</code></li>`).join('')}</ul>
 <p>Depois de cadastrá-las, o Railway publica de novo automaticamente.</p></body></html>`, { status: 503, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
 }
+
+/**
+ * Redireciona pelo caminho, sem domínio. Atrás do proxy do Railway o req.url do servidor é
+ * localhost:8080; montar o endereço a partir dele mandava o navegador para lá.
+ */
+export const irPara = (caminho: string) => new Response(null, { status: 303, headers: { Location: caminho } });
