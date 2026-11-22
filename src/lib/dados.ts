@@ -1,5 +1,8 @@
 import type { Tx } from './db';
 import type { Sessao } from './sessao';
+import { INSTR_PADRAO, chaveInstr, TIPOS } from './pecas';
+import { PROMPT_PADRAO, CHAVE_PROMPT } from './exigencias';
+import { CHAVE_MODELO } from './ia';
 
 /** Monta, sob RLS, o conjunto de dados que as telas usam, no mesmo formato validado nos templates. */
 export async function carregar(tx: Tx, s: Sessao) {
@@ -32,7 +35,7 @@ export async function carregar(tx: Tx, s: Sessao) {
     lotes: lotes.filter((l) => l.certame_id === c.id).map((l) => ({ n: l.n, d: l.descricao, q: l.quantidade, u: l.unidade, uf: l.ufs == null ? null : l.ufs.length === 1 ? l.ufs[0] : l.ufs, ref: l.valor_referencia }))
   }));
   const DOCS: Record<string, any[]> = {};
-  for (const d of await tx`select * from certame_documentos order by certame_id, nome, versao`) (DOCS[d.certame_id] ||= []).push({ nome: d.nome, v: d.versao, d: d.publicado, pg: d.paginas, ret: d.retificacao || undefined, arqId: d.arquivo_id || undefined });
+  for (const d of await tx`select * from certame_documentos order by certame_id, nome, versao`) (DOCS[d.certame_id] ||= []).push({ nome: d.nome, v: d.versao, d: d.publicado, pg: d.paginas, ret: d.retificacao || undefined, arqId: d.arquivo_id || undefined, pncp: d.origem || undefined });
   const RES: Record<string, any> = {};
   const linhas = await tx`select * from resultado_linhas order by certame_id, n, ordem`;
   for (const r of await tx`select * from resultados`) RES[`${r.certame_id}-L${r.n}`] = { cob: r.cobertura, prov: r.provisorio, fonte: r.fonte, rows: linhas.filter((x) => x.certame_id === r.certame_id && x.n === r.n).map((x) => [x.posicao, x.fornecedor, x.situacao, x.oferta_inicial, x.melhor_oferta, x.valor_aceito, x.motivo || '']) };
@@ -57,6 +60,15 @@ export async function carregar(tx: Tx, s: Sessao) {
   for (const p of await tx`select * from pacotes order by versao`) (PKG[`${p.empresa_id}|${p.certame_id}`] ||= []).push({ v: p.versao, d: p.gerado_em, by: p.gerado_por, items: p.itens, irr: p.irregularidade || '', apres: p.apresentado_em, comp: p.comprovante });
   const MIN: Record<string, any> = {}; const MINMETA: Record<string, number> = {};
   for (const m of await tx`select * from minutas`) { const k = `${m.empresa_id}|${m.certame_id}|${m.tipo}`; MIN[k] = m.versoes; MINMETA[k] = m.rev; }
+  // peças: papel timbrado, representante legal e peças-modelo por empresa
+  const IDENT: Record<string, any> = {};
+  for (const i of await tx`select i.*, a.nome arq from empresa_identidade i left join arquivos a on a.id = i.timbrado_arquivo_id`) IDENT[i.empresa_id] = { timbrado: i.timbrado_arquivo_id ? { id: i.timbrado_arquivo_id, nome: i.arq } : null, rep: i.representante || {}, end: i.endereco, cid: i.cidade, rev: i.rev };
+  const MODELOS: Record<string, any[]> = {};
+  for (const m of await tx`select m.id, m.empresa_id, m.tipo, m.titulo, m.arquivo_id, length(m.texto) chars, m.criado_em, p.nome from pecas_modelo m left join perfis p on p.id = m.criado_por where m.ativo order by m.criado_em`) (MODELOS[m.empresa_id] ||= []).push({ id: m.id, tipo: m.tipo, titulo: m.titulo, arqId: m.arquivo_id, chars: m.chars, by: m.nome, d: String(m.criado_em).slice(0, 10) });
+  const CFG = s.efetivo.admin ? {
+    valores: Object.fromEntries((await tx`select chave, valor from configuracoes`).map((c) => [c.chave, c.valor])),
+    padroes: { [CHAVE_PROMPT]: PROMPT_PADRAO, [CHAVE_MODELO]: '', ...Object.fromEntries(Object.keys(TIPOS).map((t) => [chaveInstr(t), INSTR_PADRAO[t as keyof typeof TIPOS]])) }
+  } : null;
   const IMPLOG = (await tx`select i.*, p.nome from importacoes i left join perfis p on p.id = i.por order by em`).map((i) => ({ d: String(i.em).slice(0, 10), n: i.licitacoes, e: i.erros, u: i.nome, emp: i.empresa_id }));
 
   const ctrs = await tx`select * from contratos order by id`;
@@ -84,6 +96,6 @@ export async function carregar(tx: Tx, s: Sessao) {
     eu: { slug: s.efetivo.slug, nome: s.efetivo.nome, papel: s.efetivo.papel, real: s.modoDemo ? { slug: s.real.slug, nome: s.real.nome } : null },
     demo: perfisDemo.map((p) => ({ slug: p.slug, nome: p.nome, papel: p.papel })),
     hoje: new Date().toLocaleDateString('en-CA', { timeZone: 'America/Sao_Paulo' }),
-    EMP, USERS, DESIG, CRT, DOCS, RES, PART, REQ, REQMETA, MINMETA, DECS, ACV, PKG, MIN, IMPLOG, CTR, LANC, ANT, ATAS, REC, VIEWS, empresasAdm
+    EMP, USERS, DESIG, CRT, DOCS, RES, PART, REQ, REQMETA, MINMETA, DECS, ACV, PKG, MIN, IMPLOG, CTR, LANC, ANT, ATAS, REC, VIEWS, empresasAdm, IDENT, MODELOS, CFG
   };
 }

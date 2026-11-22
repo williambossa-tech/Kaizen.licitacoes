@@ -23,3 +23,18 @@ rollback;
 begin; set local role authenticated; select set_config('app.perfil_id','00000000-0000-4000-8000-000000000001',true);
 update notas_fiscais set valor=1 where numero='NF 1.204';
 rollback;
+-- peças: timbrado, representante e peças-modelo ficam na empresa; configurações de IA só a administração altera
+begin;
+insert into empresa_identidade (empresa_id, representante, cidade) values ('A', '{"nome":"Rep Alfa"}', 'Curitiba/PR') on conflict do nothing;
+insert into pecas_modelo (empresa_id, tipo, titulo, texto) values ('A', 'esc', 'modelo alfa', 'texto');
+set local role authenticated; select set_config('app.perfil_id','00000000-0000-4000-8000-000000000007',true);
+select 'bruno identidade alfa (deve ser 0)', count(*) from empresa_identidade where empresa_id='A';
+select 'bruno modelos alfa (deve ser 0)', count(*) from pecas_modelo where empresa_id='A';
+insert into pecas_modelo (empresa_id, tipo, titulo, texto) values ('A', 'esc', 'invasao', 'x');
+rollback;
+begin; set local role authenticated; select set_config('app.perfil_id','00000000-0000-4000-8000-000000000006',true);
+insert into empresa_identidade (empresa_id, cidade) values ('A', 'x');
+rollback;
+begin; set local role authenticated; select set_config('app.perfil_id','00000000-0000-4000-8000-000000000002',true);
+insert into configuracoes (chave, valor) values ('instr_peca_esc', 'x');
+rollback;

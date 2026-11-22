@@ -1,7 +1,7 @@
 /* Persistência, arquivos, downloads, ZIP/DOCX e IA (versão conectada ao servidor) */
 {
 const K=window.KB;const D=window.KB_DATA;
-Object.assign(K,{ACV:D.ACV,PKG:D.PKG,MIN:D.MIN,ATAS:D.ATAS,REC:D.REC,LANC:D.LANC});
+Object.assign(K,{IDENT:D.IDENT||{},MODELOS:D.MODELOS||{},CFG:D.CFG||null,ACV:D.ACV,PKG:D.PKG,MIN:D.MIN,ATAS:D.ATAS,REC:D.REC,LANC:D.LANC});
 for(const [k,m] of Object.entries(D.REQMETA||{}))if(D.REQ[k]){D.REQ[k]._emp=m.emp;D.REQ[k]._rev=m.rev}
 for(const [k,r] of Object.entries(D.MINMETA||{}))if(D.MIN[k])D.MIN[k]._rev=r;
 

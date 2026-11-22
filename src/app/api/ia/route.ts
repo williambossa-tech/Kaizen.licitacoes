@@ -1,6 +1,8 @@
 import { comPerfil } from '@/lib/db';
 import { obterSessao, jsonErro } from '@/lib/sessao';
 import { perms } from '@/lib/regras';
+import { escolherModelo, raciocinio, CHAVE_MODELO } from '@/lib/ia';
+import { erroOpenAI } from '@/lib/exigencias';
 
 export const dynamic = 'force-dynamic';
 
@@ -14,16 +16,17 @@ export async function POST(req: Request) {
   const ok = await comPerfil(s.efetivo.id, async (tx) => {
     const p = await perms(tx, s, b.emp);
     const part = await tx`select 1 from participacoes where empresa_id = ${b.emp} and certame_id = ${b.crt}`;
-    return part.length > 0 && p.some((x) => ['preparar', 'juridico'].includes(x));
+    if (!(part.length > 0 && p.some((x) => ['preparar', 'juridico'].includes(x)))) return null;
+    return { modelo: ((await tx`select valor from configuracoes where chave = ${CHAVE_MODELO}`)[0]?.valor as string) || '' };
   });
   if (!ok) return jsonErro(403, 'Sem acesso a este processo para gerar minutas.');
   const key = process.env.OPENAI_API_KEY;
   if (!key) return jsonErro(503, 'IA não configurada: defina OPENAI_API_KEY no servidor.');
   const r = await fetch('https://api.openai.com/v1/responses', {
     method: 'POST', headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ model: process.env.OPENAI_MODEL || 'gpt-5', input: String(b.prompt).slice(0, 200000), stream: true })
+    body: JSON.stringify(await (async () => { const model = await escolherModelo(key, ok.modelo); return { model, input: String(b.prompt).slice(0, 200000), stream: true, reasoning: raciocinio(model) }; })())
   });
-  if (!r.ok || !r.body) return jsonErro(502, 'Falha na API de IA (' + r.status + '). O prompt e os anexos foram preservados.');
+  if (!r.ok || !r.body) return jsonErro(502, erroOpenAI(r.status, await r.text().catch(() => '')) + ' O prompt e os anexos foram preservados.');
   const dec = new TextDecoder(); const enc = new TextEncoder();
   const stream = new ReadableStream({
     async start(ctrl) {

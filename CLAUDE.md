@@ -13,7 +13,7 @@ Plataforma **multiempresa** de licitações públicas e rentabilidade contratual
 | T2 | Ficha da licitação, importação (planilha e PNCP), análise de exigências, decisão de participação | `t2.js` |
 | — | Busca no PNCP com filtros e seleção; aba Análise prévia (edital, anexos, esclarecimentos → participar ou arquivar) | `prev.js` |
 | — | Tema escuro/claro, menu lateral, grade e tela cheia nas tabelas | `tema.css`, `tema.js` |
-| T3 | Acervo de habilitação (certidões por empresa), pacote de documentos, minutas com IA | `t3.js` |
+| T3 | Acervo de habilitação (certidões por empresa), pacote de documentos, peças jurídicas com IA no papel timbrado | `t3.js` |
 | T4 | Orçamento de referência, deliberação com alçadas, reconfirmação após lances | `t4.js` |
 | T5 | Disputa, resultados e inteligência competitiva | `t5.js` |
 | T6 | Execução de bens: contrato, ata de registro de preços, empenhos, reservas | `t6.js` |
@@ -55,7 +55,8 @@ src/app/api/acao        importar planilha, gerar pacote, recepcionar NF, abrir r
 src/app/api/arquivos    upload (25 MB, confere permissão) e download por id (sob RLS)
 src/app/api/dados       recarga dos dados do usuário
 src/app/api/demo        "atuar como" perfil de demonstração (cookie assinado kb_atuar)
-src/app/api/ia          minutas por IA em streaming (503 sem chave → rascunho por modelo no cliente)
+src/app/api/ia          IA em streaming: /ia/peca (peças jurídicas), /ia/exigencias (análise de habilitação), /ia (genérica); 503 sem chave → rascunho por modelo
+src/app/api/pecas/docx  peça em Word no papel timbrado da empresa, com fecho e assinatura do representante
 src/app/api/pncp        consulta (GET) e download/versionamento de documentos (POST)
 src/app/api/saude       healthcheck (banco ok, empresas, variáveis faltando)
 src/app/api/sync        gravação genérica das entidades
@@ -66,6 +67,11 @@ src/lib/dados.ts        carga de todos os dados do usuário (KB_DATA)
 src/lib/regras.ts       validadores do /api/sync (o coração das regras de negócio)
 src/lib/armazenamento.ts Supabase Storage ou pasta local
 src/lib/pncp.ts         busca, detalhe, itens, documentos e histórico do PNCP
+src/lib/ia.ts           escolha do modelo (Administração › automático › OPENAI_MODEL), esforço médio, leitura do streaming
+src/lib/pecas.ts        regras fixas e instruções padrão das peças, fecho e qualificação
+src/lib/docx.ts         monta o Word a partir do modelo timbrado (.docx) da empresa
+src/lib/acoesPecas.ts   timbrado/representante, peças-modelo e configurações de IA (via /api/acao)
+src/lib/textos.ts       extração de texto de PDF, DOCX, TXT e ZIP
 supabase/migrations     esquema, segurança (RLS) e endurecimento
 supabase/seed           dados fictícios (demo.json → demo.sql via scripts/build-seed.mjs)
 supabase/local          stub do Supabase para Postgres local e teste de RLS
@@ -135,7 +141,11 @@ tests/e2e_local.py      17 cenários ponta a ponta (Playwright)
 - **Visualização**: `GET /api/pncp?arquivo=CNPJ/ANO/SEQ/DOC` repassa o documento (PDF abre na tela).
 
 ### OpenAI (opcional)
-Usa a Responses API em streaming (`response.output_text.delta`). A chave fica só no servidor (`OPENAI_API_KEY`) e o modelo vem de `OPENAI_MODEL`.
+- Responses API em streaming (`response.output_text.delta`). A chave fica só no servidor (`OPENAI_API_KEY`).
+- **Modelo**: o fixado na Administração (`configuracoes.modelo_ia`); em branco, o mais avançado da família `gpt-N` que a chave lista em `/v1/models` (guardado por 6 h); por último, `OPENAI_MODEL`. Esforço de raciocínio **médio** (decisão do responsável).
+- **Peças jurídicas** (`/api/ia/peca`): o servidor lê os documentos do processo, a qualificação da empresa (`empresa_identidade`), as instruções do tipo (`configuracoes.instr_peca_<tipo>`, editáveis na Administração) e, como referência de estilo, até 3 `pecas_modelo` do tipo e as 2 últimas peças protocoladas da empresa. Regras de formato fixas em `pecas.ts`: a IA não escreve local, data nem assinatura (o sistema acrescenta) e põe as notas internas depois da linha `---- NOTAS INTERNAS`, que não sai no Word.
+- **Papel timbrado**: um .docx por empresa; o Word final mantém cabeçalho, rodapé e estilos do modelo e substitui o corpo (ou só o parágrafo com `{{CORPO}}`). PDF: o usuário salva pelo Word.
+- O PNCP não recebe pedidos de fornecedores: o protocolo é feito no sistema de origem da licitação e registrado manualmente.
 
 ## 7. Variáveis de ambiente (Railway › kaizen-b2g-web › Variables)
 
@@ -180,6 +190,8 @@ Antes de publicar qualquer mudança: checagem de tipos sem erros e os 17 cenári
 - Precificação de serviços de TI (UST, HST, PF, postos) depende da planilha original. Até lá, o custo é informado e o resultado aparece como ilustrativo.
 - Leitura automática de PDF e OCR (empenho, aditivo, edital): hoje a leitura é assistida, com conferência manual.
 - Integração com o PDI: o protocolo é registrado manualmente.
+- Análise de exigências por IA: servidor pronto (`/api/ia/exigencias`, prompt na Administração); falta a tela na aba Exigências e o carregamento automático dos documentos do PNCP na aba Processo.
+- PNCP fora do ar (503): mensagem clara, novas tentativas no download e link do sistema de origem na busca.
 - Segurança no Supabase:
   - Ativar a autenticação multifator (MFA TOTP) antes de clientes reais.
   - Desligar "Allow new users to sign up".

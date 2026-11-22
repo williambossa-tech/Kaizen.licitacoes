@@ -5,6 +5,8 @@ import type { Tx } from '@/lib/db';
 import type { Sessao } from '@/lib/sessao';
 import { interpretar, detalhe, itens as itensPncp, resumo, controle, linkPortal } from '@/lib/pncp';
 import type { Id } from '@/lib/pncp';
+import { salvarIdentidade, incluirModelo, desativarModelo, salvarConfig } from '@/lib/acoesPecas';
+import { modeloAutomatico } from '@/lib/ia';
 
 export const dynamic = 'force-dynamic';
 const UFS = 'AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO'.split(' ');
@@ -148,6 +150,13 @@ export async function POST(req: Request) {
   const s = await obterSessao(); if (!s) return jsonErro(401, 'Sessão expirada. Entre novamente.');
   const b = await req.json().catch(() => null); if (!b) return jsonErro(400, 'Requisição inválida.');
   try {
+    if (b.acao === 'modelo_ia') {
+      if (!s.efetivo.admin) return jsonErro(403, 'Somente a administração.');
+      const k = process.env.OPENAI_API_KEY; if (!k) return jsonErro(503, 'IA não configurada: defina OPENAI_API_KEY no servidor.');
+      const m = await modeloAutomatico(k, true);
+      if (!m.modelo) return jsonErro(502, 'A OpenAI não listou modelos para esta chave. Confira a chave e o crédito da conta.');
+      return Response.json({ ok: true, ...m });
+    }
     let coleta: Coleta[] = [];
     if (b.acao === 'importar_pncp') {
       const refs = Array.isArray(b.refs) ? b.refs.map(String).slice(0, 30) : [];
@@ -160,6 +169,10 @@ export async function POST(req: Request) {
       if (b.acao === 'pacote') return pacote(tx, s, b);
       if (b.acao === 'nf_recepcionar') return recepcionar(tx, s, b);
       if (b.acao === 'abrir_recepcao') { const r = (await tx`select id, empresa_id from nf_recepcoes where id = ${String(b.id).toUpperCase()}`)[0]; if (!r) throw new Recusa(403, `Acesso negado ou registro inexistente: ${s.efetivo.nome} não pode abrir este registro.`); return { id: r.id }; }
+      if (b.acao === 'identidade') return salvarIdentidade(tx, s, b);
+      if (b.acao === 'peca_modelo') return incluirModelo(tx, s, b);
+      if (b.acao === 'peca_modelo_desativar') return desativarModelo(tx, s, b);
+      if (b.acao === 'config') return salvarConfig(tx, s, b);
       if (b.acao === 'visao') { await tx`insert into visoes (usuario_id, nome, config) values (${s.efetivo.id}, ${String(b.nome).slice(0, 120)}, ${tx.json(b.config || {})})`; return {}; }
       throw new Recusa(400, 'Ação desconhecida.');
     });
