@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { createBrowserClient } from '@supabase/ssr';
 
-const campo: React.CSSProperties = { display: 'block', width: '100%', marginTop: 4, minHeight: 44, fontSize: 16, padding: '8px 10px', border: '1px solid #d3d9e0', borderRadius: 8, boxSizing: 'border-box' };
+const campo: React.CSSProperties = { display: 'block', width: '100%', marginTop: 4, minHeight: 44, fontSize: 16, padding: '8px 10px', border: '1px solid #36255f', borderRadius: 10, boxSizing: 'border-box', background: '#130a26', color: '#efeaff' };
 export default function FormLogin({ url, chave }: { url: string; chave: string }) {
   const [email, setEmail] = useState(''); const [senha, setSenha] = useState(''); const [msg, setMsg] = useState(''); const [busy, setBusy] = useState(false);
   const sb = createBrowserClient(url, chave);
@@ -19,11 +19,11 @@ export default function FormLogin({ url, chave }: { url: string; chave: string }
   }
   return (
     <form onSubmit={entrar} style={{ display: 'grid', gap: 12 }}>
-      <label style={{ fontSize: 14, color: '#5a6573' }}>E-mail<input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} style={campo} autoComplete="email" /></label>
-      <label style={{ fontSize: 14, color: '#5a6573' }}>Senha<input type="password" value={senha} onChange={(e) => setSenha(e.target.value)} style={campo} autoComplete="current-password" /></label>
-      <button disabled={busy} style={{ minHeight: 44, background: '#1559a8', color: '#fff', border: 0, borderRadius: 8, fontWeight: 600, fontSize: 16 }}>{busy ? 'Entrando…' : 'Entrar'}</button>
-      <button type="button" onClick={link} disabled={busy} style={{ minHeight: 44, background: '#fff', color: '#1559a8', border: '1px solid #d3d9e0', borderRadius: 8, fontSize: 15 }}>Receber link de acesso por e-mail</button>
-      {msg && <p style={{ fontSize: 14, color: '#5a6573', margin: 0 }}>{msg}</p>}
+      <label style={{ fontSize: 14, color: '#a99cc9' }}>E-mail<input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} style={campo} autoComplete="email" /></label>
+      <label style={{ fontSize: 14, color: '#a99cc9' }}>Senha<input type="password" value={senha} onChange={(e) => setSenha(e.target.value)} style={campo} autoComplete="current-password" /></label>
+      <button disabled={busy} style={{ minHeight: 44, background: 'linear-gradient(90deg,#8b5cf6,#22d3ee)', color: '#fff', border: 0, borderRadius: 10, cursor: 'pointer', fontWeight: 600, fontSize: 16 }}>{busy ? 'Entrando…' : 'Entrar'}</button>
+      <button type="button" onClick={link} disabled={busy} style={{ minHeight: 44, background: 'transparent', color: '#22d3ee', border: '1px solid #36255f', borderRadius: 10, cursor: 'pointer', fontSize: 15 }}>Receber link de acesso por e-mail</button>
+      {msg && <p style={{ fontSize: 14, color: '#a99cc9', margin: 0 }}>{msg}</p>}
     </form>
   );
 }

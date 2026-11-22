@@ -71,7 +71,7 @@ async def main():
         await w.check('#t8fail'); await w.click('[data-act="t8rec"]'); await w.wait_for_timeout(600)
         check('T8: falha de gravação não emite recibo', 'nenhum recibo' in (await w.inner_text('#vfic')))
         await w.uncheck('#t8fail'); await w.click('[data-act="t8rec"]'); await w.wait_for_timeout(800)
-        check('T8: nota recepcionada com recibo', 'Nota fiscal recepcionada pelo sistema' in (await w.inner_text('#vfic')))
+        check('T8: nota recepcionada com recibo', 'nota fiscal recepcionada pelo sistema' in (await w.inner_text('#vfic')).lower())
         await w.click('[data-act="t8kit"]'); await salvo(w)
         await w.click('[data-act="t8rec"]'); await w.wait_for_timeout(800)
         check('T8: reimportar a mesma nota recupera o registro', 'recuperado' in (await w.inner_text('#toast')))
@@ -84,7 +84,7 @@ async def main():
         res = await w.evaluate("KB.T6.resv(KB.T6.goods(KB.KM['CTR-0103']))")
         check('T6: reserva de empenho persistida', res == 30, res)
         # importação
-        await w.evaluate("KB.S.stack=[{v:'imp'}];KB.render()"); await w.click('[data-act="t2prev"]'); await w.click('[data-act="t2impgo"]'); await w.wait_for_timeout(2500)
+        await w.evaluate("KB.S.stack=[{v:'imp',modo:'csv'}];KB.render()"); await w.click('[data-act="t2prev"]'); await w.click('[data-act="t2impgo"]'); await w.wait_for_timeout(2500)
         await w.wait_for_function('window.KB'); await w.click('[data-nav="map"]'); await w.click('#uf-PR')
         check('T2: importação gravada e refletida no mapa (PR passa a 4)', '4 certames' in ' '.join((await w.inner_text('.pval')).split()), await w.inner_text('.pval'))
         # modo demonstração e auditoria

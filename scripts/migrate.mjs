@@ -1,5 +1,6 @@
 // Aplica as migrações em ordem, carrega os dados de demonstração (banco vazio + SEED_DEMO=1)
 // e vincula a conta de login do administrador. Roda no início de cada implantação; é idempotente.
+import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';
 import path from 'node:path';
 import postgres from 'postgres';
@@ -8,7 +9,7 @@ const url = process.env.DATABASE_URL;
 if (!url) { console.error('[migracao] DATABASE_URL ausente: nada a fazer.'); process.exit(0); }
 const local = /localhost|127\.0\.0\.1/.test(url);
 const sql = postgres(url, { prepare: false, max: 1, ssl: local ? false : 'require', onnotice: () => {} });
-const raiz = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const raiz = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 try {
   await sql`create table if not exists _migracoes (nome text primary key, aplicada_em timestamptz not null default now())`;
   if (local) await sql.unsafe(fs.readFileSync(path.join(raiz, 'supabase/local/stub_supabase.sql'), 'utf8'));

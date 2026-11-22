@@ -3,6 +3,8 @@ import { obterSessao, jsonErro } from '@/lib/sessao';
 import { Recusa, perms, exige, auditar } from '@/lib/regras';
 import type { Tx } from '@/lib/db';
 import type { Sessao } from '@/lib/sessao';
+import { interpretar, detalhe, itens as itensPncp, resumo, controle, linkPortal } from '@/lib/pncp';
+import type { Id } from '@/lib/pncp';
 
 export const dynamic = 'force-dynamic';
 const UFS = 'AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO'.split(' ');
@@ -44,6 +46,76 @@ async function importar(tx: Tx, s: Sessao, b: any) {
   return { criados, ignorados, erros };
 }
 
+/* inserção de licitações escolhidas na busca do PNCP: dados oficiais lidos de novo no servidor (não confia no navegador) */
+type Coleta = { id: Id; ok: true; c: ReturnType<typeof resumo>; itens: any[] } | { id: Id; ok: false; motivo: string };
+async function coletarPncp(refs: string[]): Promise<Coleta[]> {
+  const out: Coleta[] = [];
+  for (const ref of refs) {
+    const id = interpretar(ref); if (!id) continue;
+    try {
+      const d = await detalhe(id);
+      if (d.status !== 'ok') { out.push({ id, ok: false, motivo: d.status === 'nao_localizado' ? 'não localizada no PNCP' : 'PNCP indisponível' }); continue; }
+      out.push({ id, ok: true, c: resumo(d.dados), itens: await itensPncp(id).catch(() => []) });
+    } catch (e) { out.push({ id, ok: false, motivo: 'PNCP indisponível' }); }
+  }
+  return out;
+}
+/** Lotes a partir dos itens: um por grupo quando o edital agrupa itens, senão um por item (até 300). */
+function lotesDe(itens: any[], objeto: string) {
+  if (!itens.length) return [{ n: 1, d: String(objeto || 'Objeto do edital').slice(0, 300), q: 1, u: 'lote', ref: null as number | null }];
+  const grupos = new Map<string, any[]>();
+  for (const it of itens) { const k = it.numeroGrupo ? 'G' + it.numeroGrupo : 'I' + it.numeroItem; (grupos.get(k) || grupos.set(k, []).get(k)!).push(it); }
+  const ls = [...grupos.entries()].slice(0, 300).map(([k, g], i) => {
+    const sig = g.some((x) => x.orcamentoSigiloso);
+    const ref = sig ? null : g.reduce((a, x) => a + (Number(x.valorTotal) || 0), 0) || null;
+    if (k.startsWith('G')) return { n: i + 1, d: `Grupo ${k.slice(1)}: ${String(g[0].descricao || '').slice(0, 200)}${g.length > 1 ? ` (+${g.length - 1} itens)` : ''}`, q: g.length, u: 'itens', ref };
+    const x = g[0]; return { n: i + 1, d: `Item ${x.numeroItem}: ${String(x.descricao || '').slice(0, 260)}`, q: Number(x.quantidade) || 1, u: String(x.unidadeMedida || 'un').slice(0, 30), ref };
+  });
+  return ls;
+}
+async function importarPncp(tx: Tx, s: Sessao, b: any, coleta: Coleta[]) {
+  const emp = String(b.emp); exige(await perms(tx, s, emp), ['preparar'], 'inserir licitações');
+  const criados: string[] = []; const ignorados: { ref: string; motivo: string }[] = [];
+  for (const x of coleta) {
+    const ctrl = controle(x.id);
+    if (!x.ok) { ignorados.push({ ref: ctrl, motivo: x.motivo }); continue; }
+    const c = x.c; const uf = UFS.includes(String(c.uf)) ? String(c.uf) : null;
+    if (!uf) { ignorados.push({ ref: ctrl, motivo: 'UF do órgão não informada no PNCP' }); continue; }
+    const num = `${c.numero || x.id.seq}/${x.id.ano}`;
+    const ex = (await tx`select id from certames where id_externo = ${ctrl} or (lower(orgao) = lower(${c.orgao}) and numero = ${num}) limit 1`)[0];
+    let id: string;
+    if (ex) id = ex.id;
+    else {
+      id = `CRT-${uf}-${Date.now().toString().slice(-6)}${criados.length}`;
+      const ses = c.encerramento ? String(c.encerramento).slice(0, 16) : null;
+      const pub = c.publicacao ? String(c.publicacao).slice(0, 10) : b.hoje;
+      const crit = x.itens[0]?.criterioJulgamentoNome ? `${x.itens[0].criterioJulgamentoNome} por ${x.itens.some((i: any) => i.numeroGrupo) ? 'grupo' : 'item'}` : 'Menor preço por item';
+      try {
+        await tx.savepoint(async (sp) => {
+          await sp`insert into certames (id, orgao, unidade, sede_uf, exec_ufs, numero, modalidade, criterio, objeto, publicacao, sessao, situacao_oficial, portal, fonte, id_externo)
+                   values (${id}, ${c.orgao}, ${c.unidade || null}, ${uf}, ${[uf]}, ${num}, ${c.modalidade || 'Pregão eletrônico'}, ${crit}, ${c.objeto || 'Objeto não informado'}, ${pub}, ${ses}, ${c.situacao || null}, ${linkPortal(x.id)}, ${'PNCP · ' + ctrl}, ${ctrl})`;
+          for (const l of lotesDe(x.itens, c.objeto)) await sp`insert into certame_lotes (certame_id, n, descricao, quantidade, unidade, ufs, valor_referencia) values (${id}, ${l.n}, ${l.d}, ${l.q}, ${l.u}, ${[uf]}, ${l.ref ?? 0})`;
+        });
+      } catch (e: any) {
+        if (e?.code === '23505') { ignorados.push({ ref: ctrl, motivo: 'já cadastrada no sistema por outra empresa; peça ao administrador para vinculá-la' }); continue; }
+        throw e;
+      }
+    }
+    if ((await tx`select 1 from participacoes where empresa_id = ${emp} and certame_id = ${id}`).length) { ignorados.push({ ref: ctrl, motivo: 'já está na carteira desta empresa' }); continue; }
+    const pid = (await tx`insert into participacoes (empresa_id, certame_id, projeto) values (${emp}, ${id}, ${b.proj || null}) returning id`)[0].id;
+    const fim = c.encerramento ? String(c.encerramento).slice(0, 10) : null;
+    const prazo = fim && fim < b.prazo ? fim : b.prazo;
+    for (const l of await tx`select n from certame_lotes where certame_id = ${id}`) {
+      const estado = { dec: 'pendente', et: 'Em análise preliminar', resp: s.efetivo.slug || 'ana', prazo, acao: 'Análise prévia do edital', hist: [{ et: 'Prospectada', d: b.hoje, by: 'Busca no PNCP' }, { et: 'Em análise preliminar', d: b.hoje, by: s.efetivo.nome }] };
+      await tx`insert into participacao_lotes (participacao_id, empresa_id, certame_id, n, estado, decisao, etapa, responsavel, prazo) values (${pid}, ${emp}, ${id}, ${l.n}, ${tx.json(estado)}, 'pendente', 'Em análise preliminar', ${estado.resp}, ${prazo})`;
+    }
+    criados.push(id);
+  }
+  await tx`insert into importacoes (empresa_id, por, licitacoes, erros, linhas) values (${emp}, ${s.efetivo.id}, ${criados.length}, ${ignorados.length}, ${tx.json({ origem: 'PNCP', refs: coleta.map((x) => controle(x.id)) })})`;
+  await auditar(tx, s, emp, 'importacao', criados.join(',') || '-', 'importar_pncp', null, { criados, ignorados });
+  return { criados, ignorados };
+}
+
 /* pacote da participação: o servidor copia as versões vigentes no acervo naquele momento */
 async function pacote(tx: Tx, s: Sessao, b: any) {
   const emp = String(b.emp); exige(await perms(tx, s, emp), ['preparar'], 'montar pacotes de habilitação');
@@ -76,8 +148,15 @@ export async function POST(req: Request) {
   const s = await obterSessao(); if (!s) return jsonErro(401, 'Sessão expirada. Entre novamente.');
   const b = await req.json().catch(() => null); if (!b) return jsonErro(400, 'Requisição inválida.');
   try {
+    let coleta: Coleta[] = [];
+    if (b.acao === 'importar_pncp') {
+      const refs = Array.isArray(b.refs) ? b.refs.map(String).slice(0, 30) : [];
+      if (!refs.length) return jsonErro(400, 'Selecione ao menos uma licitação.');
+      coleta = await coletarPncp(refs);
+    }
     const r = await comPerfil(s.efetivo.id, async (tx) => {
       if (b.acao === 'importar') return importar(tx, s, b);
+      if (b.acao === 'importar_pncp') return importarPncp(tx, s, b, coleta);
       if (b.acao === 'pacote') return pacote(tx, s, b);
       if (b.acao === 'nf_recepcionar') return recepcionar(tx, s, b);
       if (b.acao === 'abrir_recepcao') { const r = (await tx`select id, empresa_id from nf_recepcoes where id = ${String(b.id).toUpperCase()}`)[0]; if (!r) throw new Recusa(403, `Acesso negado ou registro inexistente: ${s.efetivo.nome} não pode abrir este registro.`); return { id: r.id }; }

@@ -28,7 +28,7 @@ export async function carregar(tx: Tx, s: Sessao) {
   const CRT = certs.map((c) => ({
     id: c.id, org: c.orgao, un: c.unidade, sede: c.sede_uf, exec: c.exec_ufs, num: c.numero, obj: c.objeto, pub: c.publicacao, ses: c.sessao,
     enc: c.encerramento_tipo ? { t: c.encerramento_tipo, d: c.encerramento_data } : null, sit: c.situacao_oficial, mod: c.modalidade, crit: c.criterio,
-    portal: c.portal, cancel: c.cancelado || undefined, src: c.fonte === 'Adaptador de demonstração' ? undefined : c.fonte,
+    portal: c.portal, pncp: c.id_externo || undefined, cancel: c.cancelado || undefined, src: c.fonte === 'Adaptador de demonstração' ? undefined : c.fonte,
     lotes: lotes.filter((l) => l.certame_id === c.id).map((l) => ({ n: l.n, d: l.descricao, q: l.quantidade, u: l.unidade, uf: l.ufs == null ? null : l.ufs.length === 1 ? l.ufs[0] : l.ufs, ref: l.valor_referencia }))
   }));
   const DOCS: Record<string, any[]> = {};

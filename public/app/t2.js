@@ -204,7 +204,7 @@ function validate(t){const {head,rows}=t.csv;const mp=t.map;const g=(r,f)=>{cons
   const key=norm(o.org)+'|'+o.num;const dup=CRT.find(c=>norm(c.org)+'|'+c.num===key);if(dup&&partsAll().some(p=>p.crt===dup.id&&p.emp===S.emp))o.dup=dup.id;
   if(seen[key+'|'+o.lote])o.err.push('lote repetido no arquivo');seen[key+'|'+o.lote]=1;
   o.st=o.err.length?'erro':o.dup?'duplicado':'novo';out.push(o)});return out}
-K.view('imp',{label:()=>'Importar edital',render(t){
+K.T2.impCSV={label:()=>'Importar edital',render(t){
  if(S.emp==='ALL')return '<div class="callout warn">Escolha uma empresa (CNPJ) antes de importar: toda inclusão identifica o CNPJ ativo.</div>';
  t.txt=t.txt??SAMPLE;const proj=Object.entries(EMP[S.emp].proj);t.proj=t.proj||proj[0][0];
  let prev='';if(t.csv){const v=validate(t);t.val=v;const n=v.filter(o=>o.st==='novo');const ng=new Set(n.map(o=>norm(o.org)+'|'+o.num)).size;
@@ -213,18 +213,18 @@ K.view('imp',{label:()=>'Importar edital',render(t){
   ${v.map(o=>`<tr><td data-l="Linha">${o.i}</td><td data-l="Órgão">${esc(o.org)}</td><td data-l="Número">${esc(o.num)}</td><td data-l="UF">${esc(o.uf)}</td><td data-l="Sessão">${esc(o.ses)}</td><td data-l="Lote">${o.lote} · ${esc(o.desc)}</td><td data-l="Situação">${o.st==='erro'?`<span class="pill bad">Erro</span> ${o.err.join('; ')}`:o.st==='duplicado'?`<span class="pill warn">Duplicado</span> já existe (${o.dup}); será ignorado`:`<span class="pill ok">Novo</span>`}${o.warn.length?' <span class="pill warn">Aviso</span> '+o.warn.join('; '):''}</td></tr>`).join('')}</tbody></table></div>
   <div class="callout ${n.length?'':'warn'}" style="margin-top:12px">${n.length} ${plural(n.length,['linha nova','linhas novas'])} (${ng} ${plural(ng,['licitação','licitações'])}) · ${v.filter(o=>o.st==='duplicado').length} duplicada(s) ignorada(s) · ${v.filter(o=>o.st==='erro').length} com erro (não importadas).</div>
   ${n.length?`<button class="btn pri" data-act="t2impgo">Importar ${ng} ${plural(ng,['licitação','licitações'])} para ${EMP[S.emp].curto} · CNPJ ${EMP[S.emp].cnpj}</button>`:''}`}
- return `<div class="mod"><div class="mhead"><div><h1>Importar edital</h1><p class="mut small">CSV com uma linha por lote · empresa ativa: <b>${EMP[S.emp].nome} · CNPJ ${EMP[S.emp].cnpj}</b></p></div></div>
+ return `<div class="mod"><div class="mhead"><div><h1>Importar edital</h1><p class="mut small">CSV com uma linha por lote · empresa ativa: <b>${EMP[S.emp].nome} · CNPJ ${EMP[S.emp].cnpj}</b></p></div></div>${K.T2.impTabs?K.T2.impTabs(t):''}
  <div class="form" style="max-width:none"><div class="grid2"><label>Arquivo CSV<input type="file" accept=".csv,.txt" data-chg="t2file"></label><label>Projeto de destino<select data-chg="t2proj">${proj.map(([k,v])=>`<option value="${k}" ${t.proj===k?'selected':''}>${v}</option>`).join('')}</select></label></div>
  <label>Conteúdo (exemplo já preenchido com 1 licitação nova de 2 lotes, 1 duplicada, 1 com erro de data e 1 com aviso)<textarea id="t2txt" rows="7" style="font-family:ui-monospace,Menlo,monospace;font-size:13px">${esc(t.txt)}</textarea></label>
  <div class="acts"><button class="btn pri" data-act="t2prev">Pré-visualizar</button><span class="small mut">XLSX entra na implementação; a integração por API ou webhook com o fornecedor de prospecção usa a mesma prévia.</span></div></div>${prev}
- ${IMPLOG.length?`<h3 style="margin-top:20px">Importações desta sessão</h3><ul class="tl">${IMPLOG.map(l=>`<li><b>${dt(l.d)}</b> · ${l.n} licitação(ões) · ${l.e} erro(s) · ${l.u} · ${EMP[l.emp].curto}</li>`).join('')}</ul>`:''}</div>`}});
+ ${IMPLOG.length?`<h3 style="margin-top:20px">Importações desta sessão</h3><ul class="tl">${IMPLOG.map(l=>`<li><b>${dt(l.d)}</b> · ${l.n} licitação(ões) · ${l.e} erro(s) · ${l.u} · ${EMP[l.emp].curto}</li>`).join('')}</ul>`:''}</div>`}};
 K.act('t2file',a=>{const f=a.files[0];if(!f)return;f.text().then(x=>{const t=top();t.txt=x;t.csv=null;render()})});
 K.act('t2proj',a=>{top().proj=a.value});
 K.act('t2prev',()=>{const t=top();t.txt=$('#t2txt').value;t.csv=parseCSV(t.txt);t.map={};FIELDS.forEach(f=>{t.map[f[0]]=t.csv.head.findIndex(h=>norm(h)===f[0])});render()});
 K.act('t2map',a=>{const t=top();t.map[a.dataset.f]=+a.value;render()});
 K.act('t2impgo',async()=>{const t=top();const n=t.val.filter(o=>o.st==='novo');const groups={};n.forEach(o=>(groups[norm(o.org)+'|'+o.num]=groups[norm(o.org)+'|'+o.num]||[]).push(o));
  const grupos=Object.values(groups).map(g=>({linhas:g.sort((a,b)=>a.lote-b.lote).map(x=>({org:x.org,unid:x.unid,num:x.num,mod:x.mod,obj:x.obj,uf:x.uf,ses:x.ses,link:x.link,lote:x.lote,desc:x.desc,q:x.q,un:x.un,ref:x.ref}))}));
- try{const r=await K.api('importar',{emp:S.emp,proj:t.proj,grupos,prazo:K.T2.addD(HOJE,3),errosPrevia:t.val.filter(o=>o.st==='erro').length});toast(r.criados.length+' licitação(ões) importada(s)'+(r.ignorados.length?', '+r.ignorados.length+' já existente(s)':'')+'. Atualizando…');sessionStorage.setItem('kb_ir','cart');setTimeout(()=>location.reload(),900)}
+ try{const r=await K.api('importar',{emp:S.emp,proj:t.proj,grupos,prazo:K.T2.addD(HOJE,3),errosPrevia:t.val.filter(o=>o.st==='erro').length});toast(r.criados.length+' licitação(ões) importada(s)'+(r.ignorados.length?', '+r.ignorados.length+' já existente(s)':'')+'. Atualizando…');sessionStorage.setItem('kb_ir','prev');setTimeout(()=>location.reload(),900)}
  catch(e){toast(e.message)}});
 
 /* ---------- Meu dia ---------- */

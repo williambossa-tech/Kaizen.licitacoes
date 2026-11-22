@@ -5,9 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kaizen B2G</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>try{var kbT=localStorage.getItem('kb_tema');if(kbT==='light'||kbT==='dark')document.documentElement.dataset.theme=kbT}catch(e){}</script>
 <link rel="stylesheet" href="/app/base.css?v=__V__">
 <link rel="stylesheet" href="/app/app.css?v=__V__">
+<link rel="stylesheet" href="/app/tema.css?v=__V__">
 </head>
 <body>
 <header class="top">
@@ -18,7 +20,7 @@
       <label class="sr" for="emp">Empresa ativa</label>
       <select id="emp" aria-label="Empresa ativa"></select>
       <small id="cnpj"></small>
-      <label class="sr" for="usr">Atuar como (demonstração)</label><select id="usr" aria-label="Atuar como (demonstração)" style="font-weight:500" hidden></select><small id="urole"></small><a href="/sair" class="btn" style="text-decoration:none;color:inherit;display:inline-flex;align-items:center">Sair</a>
+      <label class="sr" for="usr">Atuar como (demonstração)</label><select id="usr" aria-label="Atuar como (demonstração)" style="font-weight:500" hidden></select><small id="urole"></small><button type="button" class="btn" id="tema">Modo claro</button><a href="/sair" class="btn" style="text-decoration:none;color:inherit;display:inline-flex;align-items:center">Sair</a>
     </div>
   </div>
 </header>
@@ -94,6 +96,7 @@
 <script src="/app/core.js?v=__V__"></script>
 <script src="/app/util.js?v=__V__"></script>
 <script src="/app/t2.js?v=__V__"></script>
+<script src="/app/prev.js?v=__V__"></script>
 <script src="/app/bpmn.js?v=__V__"></script>
 <script src="/app/t3.js?v=__V__"></script>
 <script src="/app/t4.js?v=__V__"></script>
@@ -102,6 +105,7 @@
 <script src="/app/t7.js?v=__V__"></script>
 <script src="/app/t8.js?v=__V__"></script>
 <script src="/app/t9.js?v=__V__"></script>
+<script src="/app/tema.js?v=__V__"></script>
 <script>KB.baseline();{const ir=sessionStorage.getItem('kb_ir');if(ir){sessionStorage.removeItem('kb_ir');KB.S.stack=[{v:ir}];}}KB.render();</script>
 </body>
 </html>

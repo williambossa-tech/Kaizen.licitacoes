@@ -123,8 +123,8 @@ $('#ufq').addEventListener('change',e=>{const u=findUF(e.target.value);if(u){sel
 $('#ufq').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();e.target.dispatchEvent(new Event('change'))}});
 
 /* ---------- navegação ---------- */
-const NAV=[['dia','Meu dia'],['lic','Licitações'],['res','Resultados e concorrentes'],['map','Mapa'],['ctrs','Contratos'],['fin','Financeiro'],['docs','Documentos'],['proc','Processo'],['adm','Administração']];
-const NAVV={dia:'dia',lic:'cart',res:'conc',ctrs:'ctrs',fin:'fin',docs:'acervo',proc:'bpmn',adm:'adm'};
+const NAV=[['dia','Meu dia'],['lic','Licitações'],['pre','Análise prévia'],['res','Resultados e concorrentes'],['map','Mapa'],['ctrs','Contratos'],['fin','Financeiro'],['docs','Documentos'],['proc','Processo'],['adm','Administração']];
+const NAVV={dia:'dia',lic:'cart',pre:'prev',res:'conc',ctrs:'ctrs',fin:'fin',docs:'acervo',proc:'bpmn',adm:'adm'};
 const V={},ACT={},HOOK={crt:[],lote:[],ctr:[]};
 const PHT={docs:['Documentos','Acervo de certidões e documentos por empresa.','Template 3'],proc:['Processo','Documentação do processo e BPMN.','Template 2'],dia:['Meu dia','Prazos, decisões pendentes e sessões do dia por responsável.','Template 2 · Carteira, entrada e decisão de participação'],lic:['Licitações','Carteira operacional: grade com filtros rápidos (aguardando minha aprovação, orçamento pendente, em disputa, pós-disputa), lotes e etapas.','Template 2 · Carteira, entrada e decisão de participação'],res:['Resultados e concorrentes','Classificação de todos os participantes, histórico por concorrente e diferença de preço em disputas comparáveis.','Template 5 · Disputa, resultados e concorrência'],ctrs:['Contratos','Empenhos, saldos, aditivos, atas de registro de preços e postos de serviço.','Templates 6 e 7 · Contratos de bens, atas e serviços de TI'],fin:['Financeiro','DRE por contrato e competência, caixa e conciliação.','Template 9 · DRE, caixa e BI consolidado'],adm:['Administração','Empresas, usuários, vínculos de acesso, alçadas e permissões por CNPJ.','Etapa de implementação (após aprovação dos templates)']};
 const top=()=>S.stack[S.stack.length-1];

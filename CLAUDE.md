@@ -11,6 +11,8 @@ Plataforma **multiempresa** de licitações públicas e rentabilidade contratual
 |---|---|---|
 | T1 | Mapa do Brasil / BI geográfico (painel de entrada) | `public/app/core.js`, `geo.js` |
 | T2 | Ficha da licitação, importação (planilha e PNCP), análise de exigências, decisão de participação | `t2.js` |
+| — | Busca no PNCP com filtros e seleção; aba Análise prévia (edital, anexos, esclarecimentos → participar ou arquivar) | `prev.js` |
+| — | Tema escuro/claro, menu lateral, grade e tela cheia nas tabelas | `tema.css`, `tema.js` |
 | T3 | Acervo de habilitação (certidões por empresa), pacote de documentos, minutas com IA | `t3.js` |
 | T4 | Orçamento de referência, deliberação com alçadas, reconfirmação após lances | `t4.js` |
 | T5 | Disputa, resultados e inteligência competitiva | `t5.js` |
@@ -63,6 +65,7 @@ src/lib/sessao.ts       sessão real/efetiva, modo demonstração, assinatura HM
 src/lib/dados.ts        carga de todos os dados do usuário (KB_DATA)
 src/lib/regras.ts       validadores do /api/sync (o coração das regras de negócio)
 src/lib/armazenamento.ts Supabase Storage ou pasta local
+src/lib/pncp.ts         busca, detalhe, itens, documentos e histórico do PNCP
 supabase/migrations     esquema, segurança (RLS) e endurecimento
 supabase/seed           dados fictícios (demo.json → demo.sql via scripts/build-seed.mjs)
 supabase/local          stub do Supabase para Postgres local e teste de RLS
@@ -126,6 +129,11 @@ tests/e2e_local.py      17 cenários ponta a ponta (Playwright)
 - **Situações de resposta**: `ok`, `nao_localizado` (404/204) e `indisponivel` (outros códigos ou erro de rede). Nesses dois últimos casos o usuário segue pelo fluxo manual.
 - **Testado em produção em 22/11/2026** com o pregão 90006/2026 do Confea: consulta, documento não localizado e download do edital (ZIP de 4,3 MB) para o Storage.
 
+- **Busca de editais** (aba "Buscar no PNCP" em Importar edital): usa o mesmo serviço da tela do portal, `https://pncp.gov.br/api/search/?tipos_documento=edital&q=…&status=recebendo_proposta&ufs=PR|SC&modalidades=6&ordenacao=-data&tam_pagina=100`. O fim do prazo de propostas vem em `data_fim_vigencia`. O serviço recusa pedidos em sequência; o servidor tenta 3 vezes e, se falhar, usa `/api/consulta/v1/contratacoes/publicacao` (exige período e modalidade).
+- **Inserção** (`acao: importar_pncp`): o servidor relê detalhe e itens no PNCP; lote = grupo do edital ou item (até 300); `certames.id_externo` guarda o número de controle. As licitações entram em "Em análise preliminar" e aparecem na aba Análise prévia.
+- **Esclarecimentos e impugnações**: o PNCP não tem campo próprio; a tela mostra documentos com esses termos no título e o histórico (`/historico`) com justificativas, e aponta o sistema de origem.
+- **Visualização**: `GET /api/pncp?arquivo=CNPJ/ANO/SEQ/DOC` repassa o documento (PDF abre na tela).
+
 ### OpenAI (opcional)
 Usa a Responses API em streaming (`response.output_text.delta`). A chave fica só no servidor (`OPENAI_API_KEY`) e o modelo vem de `OPENAI_MODEL`.
 
@@ -153,7 +161,7 @@ npm install
 DATABASE_URL=postgres://postgres:postgres@localhost:5432/kb2g node scripts/migrate.mjs --seed
 cp .env.example .env.local   # AUTH_MODE=dev, DATABASE_URL local, STORAGE_DIR=.data/arquivos
 npm run dev                  # http://localhost:3000
-python3 tests/e2e_local.py   # 17 cenários; o banco precisa estar recém-carregado
+python3 tests/e2e_local.py   # 17 cenários; o banco precisa estar recém-carregado (no Windows: CHROME=<caminho do chrome.exe do Playwright>)
 psql -d kb2g -f supabase/local/teste_rls.sql   # isolamento entre empresas direto no banco
 npx tsc --noEmit -p .        # checagem de tipos
 ```
