@@ -1,5 +1,7 @@
 # Kaizen B2G
 
+> Contexto completo para desenvolvimento: [`CLAUDE.md`](CLAUDE.md).
+
 Plataforma multiempresa de licitações públicas e rentabilidade contratual: carteira por CNPJ, decisão de participação, acervo de habilitação, precificação com alçadas, disputa e resultados, execução de contratos de bens e de TI, nota fiscal com kit de obrigações, DRE por contrato e BI geográfico.
 
 ## Arquitetura
@@ -27,7 +29,7 @@ Veja `.env.example`. No Railway, configure no serviço `kaizen-b2g-web`:
 
 | Variável | Obrigatória | Observação |
 |---|---|---|
-| `DATABASE_URL` | sim | Supabase › Connect › Transaction pooler (URI com a senha) |
+| `DATABASE_URL` | sim | Transaction pooler do Supabase com o usuário exclusivo `kb_app` (ver `CLAUDE.md`) |
 | `NEXT_PUBLIC_SUPABASE_URL` / `SUPABASE_URL` | sim | já configuradas |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | sim | chave anon/publishable |
 | `SUPABASE_SERVICE_ROLE_KEY` | sim | usada só no servidor (arquivos e criação do usuário administrador) |
@@ -53,5 +55,5 @@ Teste de isolamento direto no banco: `psql -d kb2g -f supabase/local/teste_rls.s
 - Precificação de serviços de TI (UST, HST, PF, postos): regras dependem da planilha original. Até lá, a calculadora aceita custo informado e mostra o resultado como ilustrativo.
 - Leitura automática de PDF (empenho, aditivo, edital) e OCR: nesta versão a leitura é assistida, com conferência manual.
 - Integração técnica com o PDI: o protocolo é registrado manualmente.
-- Conector PNCP: implementado sobre a API pública (`/v1/orgaos/{cnpj}/compras/{ano}/{sequencial}` e `/arquivos`). O teste com contratação real ainda precisa ser feito no ambiente publicado.
+- Conector PNCP: detalhe pela API de consulta (`/api/consulta/v1/orgaos/{cnpj}/compras/{ano}/{sequencial}`) e arquivos pela API do PNCP (`/api/pncp/v1/.../arquivos`). Testado em produção em 22/11/2026.
 - Autenticação multifator para perfis privilegiados: ativar no Supabase Auth (MFA TOTP) antes de cadastrar clientes reais.
