@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kaizen B2G</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>try{var kbT=localStorage.getItem('kb_tema');if(kbT==='light'||kbT==='dark')document.documentElement.dataset.theme=kbT}catch(e){}</script>
+<link rel="stylesheet" href="/app/base.css?v=__V__">
+<link rel="stylesheet" href="/app/app.css?v=__V__">
+<link rel="stylesheet" href="/app/tema.css?v=__V__">
+</head>
+<body>
+<main style="max-width:760px;margin:48px auto;padding:0 16px">
+  <div class="brand" style="font-size:22px;font-weight:700;margin-bottom:18px"><i aria-hidden="true"></i>Kaizen B2G</div>
+  <div class="mod" id="inicio"></div>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>window.KB_DATA=__DADOS__;</script>
+<script src="/app/cadastro.js?v=__V__"></script>
+<script>
+(function(){const D=window.KB_DATA;const el=document.getElementById('inicio');const nome=(D.eu&&D.eu.nome||'').split(' ')[0];
+ const usuarios=(D.perfisAdm||[]).filter(u=>!u.eu).length;const emps=(D.empresasAdm||[]).length;
+ el.innerHTML=D.admin
+  ?`<h1>Primeiros passos</h1><p>Olá, ${nome}. ${emps?'Você ainda não tem acesso a nenhuma empresa autorizada.':'Nenhuma empresa cadastrada ainda.'} Comece cadastrando a primeira empresa cliente: basta informar o CNPJ.</p>
+    <ol class="small"><li>Cadastre a empresa (os dados vêm da Receita pelo CNPJ).</li><li>Cadastre os usuários e marque o que cada um pode fazer em cada empresa.</li><li>Depois, importe as licitações pelo PNCP.</li></ol>
+    <div class="acts"><button class="btn pri" id="nova">Cadastrar empresa</button><button class="btn" id="usr">Cadastrar usuário${usuarios?' ('+usuarios+' cadastrados)':''}</button><a class="btn" href="/sair">Sair</a></div>`
+  :`<h1>Acesso pendente</h1><p>Olá, ${nome}. Seu usuário ainda não tem acesso a nenhuma empresa. Peça ao administrador da Kaizen para liberar o acesso.</p><div class="acts"><a class="btn" href="/sair">Sair</a></div>`;
+ const b=document.getElementById('nova');if(b)b.onclick=()=>KBCAD.empresa(null);
+ const u=document.getElementById('usr');if(u)u.onclick=()=>KBCAD.usuario(null);})();
+</script>
+</body>
+</html>

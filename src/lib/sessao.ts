@@ -31,9 +31,9 @@ async function perfilPor(where: { slug?: string; auth?: string; email?: string }
   const rows = where.slug ? await db`select * from perfis where slug = ${where.slug}`
     : where.auth ? await db`select * from perfis where auth_id = ${where.auth}`
     : await db`select * from perfis where lower(email) = lower(${where.email!}) and auth_id is null`;
-  const p = rows[0]; if (!p) return null;
-  const adm = await db`select 1 from vinculos where usuario_id = ${p.id} and 'admin' = any(permissoes) limit 1`;
-  return { id: p.id, slug: p.slug, nome: p.nome, papel: p.papel, email: p.email, demo: p.demo, consolida: p.consolida, admin: adm.length > 0 };
+  const p = rows[0]; if (!p || p.ativo === false) return null;
+  const adm = p.administrador || (await db`select 1 from vinculos where usuario_id = ${p.id} and 'admin' = any(permissoes) limit 1`).length > 0;
+  return { id: p.id, slug: p.slug, nome: p.nome, papel: p.papel, email: p.email, demo: p.demo, consolida: p.consolida, admin: !!adm };
 }
 
 /** Identifica o usuário: Supabase Auth em produção; seletor local em desenvolvimento. */

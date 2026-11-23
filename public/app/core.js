@@ -45,7 +45,7 @@ const plural=(n,u)=>n===1?u[0]:u[1];
 const per=()=>PER[S.per];
 const inP=d=>!!d&&d.slice(0,10)>=per()[0]&&d.slice(0,10)<=per()[1];
 const inPc=c=>c>=per()[0].slice(0,7)&&c<=per()[1].slice(0,7);
-const scope=()=>S.emp==='ALL'?['A','B']:[S.emp];
+const scope=()=>S.emp==='ALL'?USERS[S.user].emp.slice():[S.emp];
 const refC=c=>c.ses?c.ses.slice(0,10):c.pub;
 const isPart=lp=>lp.dec==='participar'||lp.dec==='condicionada';
 const ufsC=c=>S.base==='sede'?(c.sede?[c.sede]:[]):c.exec;
@@ -145,10 +145,10 @@ function fillCtl(){
  $('#proj').innerHTML=pj.map(([k,v])=>`<option value="${k}">${v}</option>`).join('');$('#proj').value=S.proj;
  const cs=new Set();partsAll().forEach(p=>CM[p.crt].lotes.forEach(l=>(RES[p.crt+'-L'+l.n]?.rows||[]).forEach(r=>{if(!ours().includes(r[1]))cs.add(r[1])})));
  $('#conc').innerHTML='<option value="">Todos</option>'+[...cs].sort().map(c=>`<option>${c}</option>`).join('');$('#conc').value=S.conc;
- const U=USERS[S.user];{const us=$('#usr');if(D.demo&&D.demo.length){us.hidden=false;if(!us.options.length)us.innerHTML=D.demo.map(p=>`<option value="${p.slug}">${p.nome}${D.eu.real&&p.slug===D.eu.real.slug?' (você)':''}</option>`).join('');us.value=S.user}else{us.hidden=true}}$('#emp').innerHTML=U.emp.map(e=>`<option value="${e}">${EMP[e].nome}</option>`).join('')+(U.cons&&U.emp.length>1?'<option value="ALL">Consolidado autorizado (Alfa + Beta)</option>':'');$('#emp').value=S.emp;$('#urole').textContent=U.papel+(D.eu.real?' · modo demonstração por '+D.eu.real.nome:'');$('#per').value=S.per;$('#met').value=S.met;$('#reg').value=S.reg;$('#modal').value=S.modal;
+ const U=USERS[S.user];{const us=$('#usr');if(D.demo&&D.demo.length){us.hidden=false;if(!us.options.length)us.innerHTML=D.demo.map(p=>`<option value="${p.slug}">${p.nome}${D.eu.real&&p.slug===D.eu.real.slug?' (você)':''}</option>`).join('');us.value=S.user}else{us.hidden=true}}$('#emp').innerHTML=U.emp.map(e=>`<option value="${e}">${EMP[e].nome}</option>`).join('')+(U.cons&&U.emp.length>1?'<option value="ALL">Consolidado ('+U.emp.map(e=>EMP[e].curto).join(' + ')+')</option>':'');$('#emp').value=S.emp;$('#urole').textContent=U.papel+(D.eu.real?' · modo demonstração por '+D.eu.real.nome:'');$('#per').value=S.per;$('#met').value=S.met;$('#reg').value=S.reg;$('#modal').value=S.modal;
  $('#b-exec').setAttribute('aria-pressed',S.base==='exec');$('#b-sede').setAttribute('aria-pressed',S.base==='sede');
  $('#fsum').textContent=per()[2]+' · '+MET[S.met].l;
- $('#cnpj').textContent=S.emp==='ALL'?'2 CNPJs autorizados: '+EMP.A.cnpj+' · '+EMP.B.cnpj:'CNPJ '+EMP[S.emp].cnpj;
+ $('#cnpj').textContent=S.emp==='ALL'?scope().length+' CNPJs autorizados':'CNPJ '+EMP[S.emp].cnpj;
  const r0=S.stack[0];const cur=r0.v==='map'?'map':r0.v==='ph'?r0.k:Object.keys(NAVV).find(k=>NAVV[k]===r0.v);$('#nav').innerHTML=NAV.map(([k,l])=>`<button type="button" data-nav="${k}" ${k===cur?'aria-current="page"':''}>${l}</button>`).join('');const bi=r0.v==='map';$('#filters').hidden=!bi;$('#ftog').hidden=!bi}
 $('#nav').addEventListener('click',e=>{const k=e.target.closest('button')?.dataset.nav;if(!k)return;if(k==='map')return goMap();const v=NAVV[k];if(top().v==='map'){S.scroll=window.scrollY}S.stack=V[v]?[{v}]:[{v:'ph',k}];setHash(V[v]?v:'modulo');render();window.scrollTo(0,0)});
 $('#usr').addEventListener('change',async e=>{const slug=e.target.value;$('#busy').hidden=false;$('#busy').textContent='Trocando de perfil…';const r=await fetch('/api/demo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({slug})});if(!r.ok){$('#busy').hidden=true;toast((await r.json()).erro||'Não foi possível trocar de perfil.');return}location.reload()});
@@ -157,7 +157,7 @@ const on=(id,f)=>$(id).addEventListener('change',e=>{f(e.target.value);S.pg=1;re
 on('#per',v=>S.per=v);on('#met',v=>S.met=v);on('#reg',v=>{S.reg=v;if(S.uf&&UF[S.uf]&&!inReg(S.uf))S.uf=null});on('#proj',v=>S.proj=v);on('#modal',v=>S.modal=v);on('#conc',v=>S.conc=v);
 $('#b-exec').onclick=()=>{S.base='exec';if(S.uf==='MULTI')S.uf=null;render()};$('#b-sede').onclick=()=>{S.base='sede';if(S.uf==='MULTI')S.uf=null;render()};
 $('#clear').onclick=()=>{S.reg='';S.proj='';S.modal='';S.conc='';S.pg=1;render();toast('Filtros de região, projeto, modalidade e concorrente limpos.')};
-$('#emp').addEventListener('change',e=>{const nv=e.target.value,busy=$('#busy');busy.hidden=false;busy.textContent='Carregando o contexto de '+(nv==='ALL'?'Alfa + Beta (consolidado)':EMP[nv].nome)+'…';
+$('#emp').addEventListener('change',e=>{const nv=e.target.value,busy=$('#busy');busy.hidden=false;busy.textContent='Carregando o contexto de '+(nv==='ALL'?'todas as empresas (consolidado)':EMP[nv].nome)+'…';
  setTimeout(()=>{S.emp=nv;const cleared=[];const pj=scope().flatMap(x=>Object.keys(EMP[x].proj));if(S.proj&&!pj.includes(S.proj)){S.proj='';cleared.push('Projeto')}
   fillCtl();if(S.conc&&$('#conc').value!==S.conc){S.conc='';cleared.push('Concorrente')}
   const t=top();let moved=false;if(['crt','lote','ctr'].includes(t.v)){const ok=t.v==='ctr'?scope().includes(KM[t.id].emp):partsAll().some(p=>p.crt===t.crt);if(!ok){S.stack=[S.stack[0]];setHash(HN[S.stack[0].v]);moved=true}}else if(V[t.v]?.scoped&&!V[t.v].scoped(t)){S.stack=[S.stack[0]];setHash(HN[S.stack[0].v]);moved=true}
@@ -243,7 +243,7 @@ function renderMap(){
  const sp=gP.querySelector('.sel');if(sp)gP.appendChild(sp);
  const LL=L_.filter(x=>!S.reg||inReg(x.uf));const T=sum(LL,m);
   $('#mtitle').textContent=`${M.l} por UF`;
- $('#msub').textContent=`${S.emp==='ALL'?'Consolidado Alfa + Beta':EMP[S.emp].nome} · ${per()[2]} · referência: ${M.ref} · localização: ${S.base==='exec'?'local de execução':'sede da unidade compradora'}`;
+ $('#msub').textContent=`${S.emp==='ALL'?'Consolidado das empresas autorizadas':EMP[S.emp].nome} · ${per()[2]} · referência: ${M.ref} · localização: ${S.base==='exec'?'local de execução':'sede da unidade compradora'}`;
  $('#bscope').textContent=S.reg?'Região '+REG[S.reg]:'Brasil';
  $('#btot').textContent=fmtV(T.val,m);
  let bn='';if(m==='crt'){const ufsum=LL.filter(x=>UF[x.uf]).length,loc=new Set(LL.filter(x=>UF[x.uf]).map(x=>x.crt)).size;bn=`${plural(T.val,M.u)} únicos`+(ufsum>loc?` · soma das UFs ${ufsum} (certames em mais de uma UF)`:'')}else bn=unitTxt(T,m);

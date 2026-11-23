@@ -51,7 +51,8 @@ Navegador ──> Next.js 15 (App Router, TypeScript) no Railway ──> Postgre
 
 ### Pastas
 ```
-src/app/api/acao        importar planilha, gerar pacote, recepcionar NF, abrir recepção, salvar visão
+src/app/api/acao        importar planilha, gerar pacote, recepcionar NF, abrir recepção, salvar visão, cadastrar empresa/usuário, configurações
+src/app/api/cnpj        dados da empresa pelo CNPJ (BrasilAPI › Minha Receita › ReceitaWS) ou pelo texto colado do comprovante
 src/app/api/arquivos    upload (25 MB, confere permissão) e download por id (sob RLS)
 src/app/api/dados       recarga dos dados do usuário
 src/app/api/demo        "atuar como" perfil de demonstração (cookie assinado kb_atuar)
@@ -72,6 +73,9 @@ src/lib/pecas.ts        regras fixas e instruções padrão das peças, fecho e 
 src/lib/docx.ts         monta o Word a partir do modelo timbrado (.docx) da empresa
 src/lib/acoesPecas.ts   timbrado/representante, peças-modelo e configurações de IA (via /api/acao)
 src/lib/textos.ts       extração de texto de PDF, DOCX, TXT e ZIP
+src/lib/cnpj.ts         validação de CNPJ, consulta pública e leitura do comprovante colado
+src/lib/cadastro.ts     cadastro de empresas e usuários (login no Supabase Auth) e listas da Administração
+public/app/cadastro.js  formulários de empresa e usuário; public/app/inicio.html: primeiros passos sem empresa
 supabase/migrations     esquema, segurança (RLS) e endurecimento
 supabase/seed           dados fictícios (demo.json → demo.sql via scripts/build-seed.mjs)
 supabase/local          stub do Supabase para Postgres local e teste de RLS
@@ -99,8 +103,12 @@ tests/e2e_local.py      17 cenários ponta a ponta (Playwright)
    - A aprovação exige todos os designados. Com margem abaixo de 12%, cada voto exige fundamento.
    - A reconfirmação só abre se o último lance ficou abaixo do preço de referência, e só conclui com todas as partes.
 8. **Arquivos**: o bucket é privado e os caminhos seguem `<empresa>/<uuid>/<nome>`. O download sempre passa pelo servidor, com checagem de RLS.
-9. **Modo demonstração** (`DEMO_MODE=1`): o administrador atua como perfis fictícios. A auditoria grava o usuário real (`usuario_id`) e o perfil assumido (`atuando_como`).
-10. **Endurecimento para o Supabase** (migração 3):
+9. **Administrador do sistema**: `perfis.administrador` (independe de empresa) ou a permissão `admin` num vínculo.
+   - Só ele cadastra empresas e usuários. Essas gravações usam a conexão da aplicação (sem RLS), porque a primeira empresa nasce antes de existir vínculo; a checagem fica em `cadastro.ts`.
+   - Quem cadastra uma empresa recebe vínculo com todas as permissões nela.
+   - Usuário com `perfis.ativo = false` não entra. Sem vínculo com empresa autorizada, a pessoa vê a tela de primeiros passos (administrador) ou "acesso pendente".
+10. **Modo demonstração** (`DEMO_MODE=1`): o administrador atua como perfis fictícios. A auditoria grava o usuário real (`usuario_id`) e o perfil assumido (`atuando_como`).
+11. **Endurecimento para o Supabase** (migração 3):
     - O papel `anon` não tem acesso a nada.
     - O papel `authenticated` não tem DELETE nem TRUNCATE.
     - Criar certame ou lote exige ter pelo menos uma empresa autorizada.
@@ -122,6 +130,8 @@ tests/e2e_local.py      17 cenários ponta a ponta (Playwright)
 - **Datas**: fuso `America/Sao_Paulo` (`TZ` no Railway). `certames.sessao` é `timestamp` sem fuso, em horário de Brasília. O driver devolve datas como texto (`YYYY-MM-DD` e `YYYY-MM-DDTHH:MM`).
 - **jsonb reordena chaves**: para comparar objetos use `canon`/`eq` de `regras.ts`, nunca `JSON.stringify` direto.
 - **Migrações**: arquivos `supabase/migrations/AAAAMMDDNNNNNN_nome.sql`, aplicados em ordem e registrados em `_migracoes`. Não edite uma migração já aplicada: crie outra.
+- **Produção sem dados fictícios** desde 23/11/2026: o banco foi limpo (ficaram o login do administrador e as configurações de IA), `DEMO_MODE=0` e `SEED_DEMO=0`. Os dados fictícios continuam valendo só no ambiente local e nos testes.
+- **Empresas novas** recebem o id `E` + os 14 dígitos do CNPJ (as fictícias são A, B e G).
 - **Dados fictícios**: altere `supabase/seed/demo.json` e rode `node scripts/build-seed.mjs`. Os UUIDs dos perfis seguem `00000000-0000-4000-8000-00000000000N`, na ordem william, ana, marina, carlos, paula, rui, bruno. As empresas são A (Alfa), B (Beta) e G (Gama, sem autorização).
 - **Commits**: mensagem em português, curta e descritiva.
 
@@ -197,4 +207,3 @@ Antes de publicar qualquer mudança: checagem de tipos sem erros e os 17 cenári
   - Desligar "Allow new users to sign up".
   - Configurar a URL de redirecionamento, se o login por link for usado.
 - Tornar o repositório privado, ou confirmar que ele pode continuar público.
-- O teste de download do PNCP gravou o edital do Confea como documento do certame `CRT-AM-0116` (Alfa, dados fictícios). Pode ser removido.

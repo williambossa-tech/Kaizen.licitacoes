@@ -3,6 +3,7 @@ import type { Sessao } from './sessao';
 import { INSTR_PADRAO, chaveInstr, TIPOS } from './pecas';
 import { PROMPT_PADRAO, CHAVE_PROMPT } from './exigencias';
 import { CHAVE_MODELO } from './ia';
+import { listasAdmin } from './cadastro';
 
 /** Monta, sob RLS, o conjunto de dados que as telas usam, no mesmo formato validado nos templates. */
 export async function carregar(tx: Tx, s: Sessao) {
@@ -21,6 +22,7 @@ export async function carregar(tx: Tx, s: Sessao) {
     u.emp.push(r.empresa_id); u.pe[r.empresa_id] = r.permissoes;
     for (const p of r.permissoes) if (!u.perm.includes(p)) u.perm.push(p);
   }
+  USERS[s.efetivo.slug] ||= { nome: s.efetivo.nome, papel: s.efetivo.papel, emp: [], perm: [], pe: {}, cons: s.efetivo.consolida, demo: s.efetivo.demo };
   USERS[s.efetivo.slug].emp = USERS[s.efetivo.slug].emp.filter((e: string) => EMP[e]);
   for (const k of Object.keys(USERS)) if (!USERS[k].emp.length && k !== s.efetivo.slug) delete USERS[k];
   const DESIG: Record<string, string[]> = {};
@@ -89,13 +91,13 @@ export async function carregar(tx: Tx, s: Sessao) {
   const ATAS = (await tx`select * from atas order by id`).map((a) => ({ id: a.id, emp: a.empresa_id, crt: a.certame_id, num: a.numero, ini: a.inicio, fim: a.fim, item: a.item, un: a.unidade, reg: a.registrado, preco: a.preco, ...a.dados, _rev: a.rev }));
   const REC = (await tx`select * from nf_recepcoes order by recebido_em`).map((r) => ({ id: r.id, num: r.numero, ctr: r.contrato_id, emp: r.empresa_id, v: r.valor, apres: r.apresentacao, dh: String(r.recebido_em).slice(0, 16).replace('T', ' '), arqId: r.arquivo_id || undefined, kit: r.kit, _rev: r.rev }));
   const VIEWS = (await tx`select nome, config from visoes where usuario_id = ${s.efetivo.id} order by criado_em`).map((v) => ({ nome: v.nome, ...v.config }));
-  const empresasAdm = s.efetivo.admin ? emps.map((e) => ({ nome: e.razao_social, cnpj: e.cnpj, comercial: e.vinculo_comercial, societaria: e.participacao_societaria, autorizada: e.autorizacao_operacional })) : [];
+  const { empresasAdm, perfisAdm } = s.efetivo.id === s.real.id ? await listasAdmin(s) : { empresasAdm: [], perfisAdm: [] };
   const perfisDemo = s.real.admin && process.env.DEMO_MODE === '1' ? (await tx`select slug, nome, papel from perfis where demo or id = ${s.real.id} order by criado_em, slug`) : [];
 
   return {
     eu: { slug: s.efetivo.slug, nome: s.efetivo.nome, papel: s.efetivo.papel, real: s.modoDemo ? { slug: s.real.slug, nome: s.real.nome } : null },
     demo: perfisDemo.map((p) => ({ slug: p.slug, nome: p.nome, papel: p.papel })),
     hoje: new Date().toLocaleDateString('en-CA', { timeZone: 'America/Sao_Paulo' }),
-    EMP, USERS, DESIG, CRT, DOCS, RES, PART, REQ, REQMETA, MINMETA, DECS, ACV, PKG, MIN, IMPLOG, CTR, LANC, ANT, ATAS, REC, VIEWS, empresasAdm, IDENT, MODELOS, CFG
+    EMP, USERS, DESIG, CRT, DOCS, RES, PART, REQ, REQMETA, MINMETA, DECS, ACV, PKG, MIN, IMPLOG, CTR, LANC, ANT, ATAS, REC, VIEWS, empresasAdm, perfisAdm, admin: s.real.admin && s.efetivo.id === s.real.id, IDENT, MODELOS, CFG
   };
 }

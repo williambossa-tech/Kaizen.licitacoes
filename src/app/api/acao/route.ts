@@ -1,4 +1,4 @@
-import { comPerfil } from '@/lib/db';
+import { comPerfil, sql } from '@/lib/db';
 import { obterSessao, jsonErro } from '@/lib/sessao';
 import { Recusa, perms, exige, auditar } from '@/lib/regras';
 import type { Tx } from '@/lib/db';
@@ -7,6 +7,7 @@ import { interpretar, detalhe, itens as itensPncp, resumo, controle, linkPortal 
 import type { Id } from '@/lib/pncp';
 import { salvarIdentidade, incluirModelo, desativarModelo, salvarConfig } from '@/lib/acoesPecas';
 import { modeloAutomatico } from '@/lib/ia';
+import { salvarEmpresa, salvarUsuario } from '@/lib/cadastro';
 
 export const dynamic = 'force-dynamic';
 const UFS = 'AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO'.split(' ');
@@ -150,6 +151,9 @@ export async function POST(req: Request) {
   const s = await obterSessao(); if (!s) return jsonErro(401, 'Sessão expirada. Entre novamente.');
   const b = await req.json().catch(() => null); if (!b) return jsonErro(400, 'Requisição inválida.');
   try {
+    if (b.acao === 'config') return Response.json({ ok: true, ...(await sql().begin((tx) => salvarConfig(tx, s, b))) });
+    if (b.acao === 'empresa_salvar') return Response.json({ ok: true, ...(await salvarEmpresa(s, b)) });
+    if (b.acao === 'usuario_salvar') return Response.json({ ok: true, ...(await salvarUsuario(s, b)) });
     if (b.acao === 'modelo_ia') {
       if (!s.efetivo.admin) return jsonErro(403, 'Somente a administração.');
       const k = process.env.OPENAI_API_KEY; if (!k) return jsonErro(503, 'IA não configurada: defina OPENAI_API_KEY no servidor.');
@@ -172,7 +176,6 @@ export async function POST(req: Request) {
       if (b.acao === 'identidade') return salvarIdentidade(tx, s, b);
       if (b.acao === 'peca_modelo') return incluirModelo(tx, s, b);
       if (b.acao === 'peca_modelo_desativar') return desativarModelo(tx, s, b);
-      if (b.acao === 'config') return salvarConfig(tx, s, b);
       if (b.acao === 'visao') { await tx`insert into visoes (usuario_id, nome, config) values (${s.efetivo.id}, ${String(b.nome).slice(0, 120)}, ${tx.json(b.config || {})})`; return {}; }
       throw new Recusa(400, 'Ação desconhecida.');
     });

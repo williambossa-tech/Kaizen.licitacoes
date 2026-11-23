@@ -69,7 +69,7 @@ K.act('pvinserir',async a=>{const t=top();const refs=Object.keys(t.sel);if(!refs
 const naFila=()=>{const by={};K.T2.lotsAll().filter(x=>x.lp.et===ANALISE&&(!x.lp.dec||x.lp.dec==='pendente')).forEach(x=>{const k=x.emp+'|'+x.crt;(by[k]=by[k]||[]).push(x)});return Object.values(by)};
 K.view('prev',{label:()=>'Análise prévia',render(t){
  const fila=naFila().sort((a,b)=>String(a[0].c.ses||'9').localeCompare(String(b[0].c.ses||'9')));
- return `<div class="mod"><div class="mhead"><div><h1>Análise prévia</h1><p class="mut small">${fila.length} ${plural(fila.length,['licitação aguardando','licitações aguardando'])} a decisão de participar ou arquivar · ${S.emp==='ALL'?'Alfa + Beta':EMP[S.emp].nome}</p></div>
+ return `<div class="mod"><div class="mhead"><div><h1>Análise prévia</h1><p class="mut small">${fila.length} ${plural(fila.length,['licitação aguardando','licitações aguardando'])} a decisão de participar ou arquivar · ${S.emp==='ALL'?'Consolidado das empresas autorizadas':EMP[S.emp].nome}</p></div>
  <div class="acts">${K.can('preparar')&&S.emp!=='ALL'?'<button class="btn pri" data-act="t2imp">Buscar no PNCP</button>':''}</div></div>
  ${fila.length?`<ul class="list">${fila.map(ls=>{const x=ls[0],c=x.c;const dias=c.ses?Math.round((new Date(c.ses.slice(0,10)+'T12:00:00')-new Date(HOJE+'T12:00:00'))/864e5):null;
   return `<li><button class="rowb" data-act="pvabrir" data-crt="${c.id}" data-emp="${x.emp}"><span class="rowtop"><span class="org">${esc(c.org)}</span><span class="meta num">${c.ses?'propostas até '+dh(c.ses):'sem data de sessão'}${dias!=null&&dias>=0&&dias<=5?' <span class="pill warn">'+(dias===0?'hoje':dias===1?'amanhã':'em '+dias+' dias')+'</span>':''}</span></span>
