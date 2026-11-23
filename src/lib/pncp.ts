@@ -48,30 +48,34 @@ export function resumo(d: any) {
 export const MODALIDADES: Record<string, string> = { '6': 'Pregão eletrônico', '4': 'Concorrência eletrônica', '8': 'Dispensa', '7': 'Pregão presencial', '5': 'Concorrência presencial', '12': 'Credenciamento', '9': 'Inexigibilidade', '1': 'Leilão eletrônico' };
 
 const ymd = (d: string) => d.replace(/-/g, '');
-const POR_PAGINA = 50, MAX_PAGINAS = 12;
+const POR_PAGINA = 50, MAX_PAGINAS = 80;
 
 /**
  * Busca contratações publicadas no período, por UF e modalidade.
  * "abertas": só as divulgadas cujo prazo de propostas ainda não terminou (a disputa ainda não começou).
  */
-export async function buscar(f: { de: string; ate: string; uf?: string; mod: string; q?: string; abertas: boolean }) {
+export async function buscar(f: { de: string; ate: string; uf?: string; mod: string; q?: string; abertas: boolean; limite?: number }) {
   const qs = (p: number) => `dataInicial=${ymd(f.de)}&dataFinal=${ymd(f.ate)}&codigoModalidadeContratacao=${f.mod}${f.uf ? '&uf=' + f.uf : ''}&pagina=${p}&tamanhoPagina=${POR_PAGINA}`;
   const url = (p: number) => `${CONSULTA}/v1/contratacoes/publicacao?${qs(p)}`;
-  const primeira = await obter(url(1), 30000);
+  const primeira = await comRetentativa(url(1));
   if (primeira.status === 'nao_localizado') return { situacao: 'ok' as const, total: 0, lidos: 0, truncado: false, itens: [] };
   if (primeira.status !== 'ok') return { situacao: 'indisponivel' as const, http: 'http' in primeira ? primeira.http : undefined };
   const total = Number(primeira.dados.totalRegistros) || 0;
   const paginas = Math.min(Number(primeira.dados.totalPaginas) || 1, MAX_PAGINAS);
   let brutos: any[] = [...(primeira.dados.data || [])];
-  for (let p = 2; p <= paginas; p += 4) {
-    const lote = await Promise.all([p, p + 1, p + 2, p + 3].filter((x) => x <= paginas).map((x) => obter(url(x), 30000).catch(() => null)));
-    for (const r of lote) if (r && r.status === 'ok') brutos = brutos.concat(r.dados.data || []);
+  // o PNCP limita pedidos seguidos (429): páginas uma a uma, com pausa quando ele pede, até 60 s no total
+  const limite = f.limite ?? Date.now() + 60000;
+  for (let p = 2; p <= paginas && Date.now() < limite; p++) {
+    let r = await obterGuardado(url(p), 30000).catch(() => null);
+    for (let i = 0; i < 3 && r && r.status === 'indisponivel' && r.http === 429 && Date.now() + 12000 < limite; i++) { await espera(12000); r = await obterGuardado(url(p), 30000).catch(() => null); }
+    if (!r || r.status !== 'ok') break;
+    brutos = brutos.concat(r.dados.data || []);
   }
   const agora = agoraBrasilia();
-  const termo = norm(f.q || '');
+  const termos = palavras(f.q || '');
   const itens = brutos.map(resumo).filter((x) => {
     if (f.abertas && (x.situacaoId !== 1 || !x.encerramento || x.encerramento <= agora)) return false;
-    if (termo && !norm(`${x.objeto} ${x.orgao} ${x.municipio}`).includes(termo)) return false;
+    if (termos.length) { const alvo = norm(`${x.objeto} ${x.orgao} ${x.municipio}`); if (!termos.every((t) => alvo.includes(t))) return false; }
     return true;
   }).sort((a, b) => String(a.encerramento || '9').localeCompare(String(b.encerramento || '9')));
   return { situacao: 'ok' as const, total, lidos: brutos.length, truncado: total > brutos.length, itens };
@@ -91,12 +95,21 @@ function doPortal(x: any) {
     valorEstimado: x.valor_global ?? x.valor_total_estimado ?? null, srp: !!x.srp, link: x.link_sistema_origem || null, portal: linkPortal(id)
   };
 }
-/** O portal do PNCP recusa pedidos em sequência: até 3 tentativas com espera crescente. */
+const espera = (ms: number) => new Promise((r) => setTimeout(r, ms));
+/** Respostas de busca guardadas por 5 minutos: repetir a mesma pesquisa não gera novos pedidos ao PNCP. */
+const guardadas = new Map<string, { em: number; r: Resp }>();
+async function obterGuardado(url: string, ms = 30000): Promise<Resp> {
+  const g = guardadas.get(url); if (g && Date.now() - g.em < 5 * 60e3) return g.r;
+  const r = await obter(url, ms);
+  if (r.status === 'ok') { guardadas.set(url, { em: Date.now(), r }); if (guardadas.size > 300) guardadas.delete(guardadas.keys().next().value!); }
+  return r;
+}
+/** O PNCP recusa pedidos seguidos por cerca de 10 a 15 segundos: até 4 tentativas, esperando 2, 6 e 12 segundos. */
 async function comRetentativa(url: string, ms = 30000): Promise<Resp> {
   let ult: Resp = { status: 'indisponivel' };
-  for (let i = 0; i < 3; i++) {
-    try { ult = await obter(url, ms); if (ult.status !== 'indisponivel') return ult; } catch { ult = { status: 'indisponivel' }; }
-    await new Promise((r) => setTimeout(r, 1500 * (i + 1)));
+  for (const pausa of [2000, 6000, 12000, 0]) {
+    try { ult = await obterGuardado(url, ms); if (ult.status !== 'indisponivel') return ult; } catch { ult = { status: 'indisponivel' }; }
+    if (pausa) await espera(pausa);
   }
   return ult;
 }
@@ -113,7 +126,7 @@ export async function pesquisar(f: { q?: string; status: string; ufs: string[]; 
   const brutos: any[] = []; let total = 0; let fimPeriodo = false;
   for (let p = 1; p <= 5 && !fimPeriodo; p++) {
     const r = await comRetentativa(`${base}&pagina=${p}`);
-    if (r.status !== 'ok') { if (p === 1) return null; break; }
+    if (r.status !== 'ok') { if (p === 1) { console.warn('[pncp] busca do portal indisponível', 'http' in r ? r.http : r.status); return null; } break; }
     total = Number(r.dados.total) || 0; const ls = (r.dados.items || []).map(doPortal); brutos.push(...ls);
     if (ls.length < 100) break;
     if (f.de && ls.some((x: any) => x.publicacao && x.publicacao.slice(0, 10) < f.de!)) fimPeriodo = true;
@@ -128,6 +141,8 @@ export async function pesquisar(f: { q?: string; status: string; ufs: string[]; 
   }).sort((a, b) => String(a.encerramento || '9').localeCompare(String(b.encerramento || '9')));
   return { situacao: 'ok' as const, fonte: 'portal', total, lidos: brutos.length, truncado: !fimPeriodo && total > brutos.length, itens };
 }
+/** Palavras da busca sem aspas e sem sinais: todas precisam aparecer no objeto, no órgão ou no município. */
+export const palavras = (q: string) => norm(q).replace(/["'“”‘’]/g, ' ').split(/[^\p{L}\p{N}]+/u).filter((t) => t.length > 1);
 export const norm = (s: string) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
 
 /** Detalhe da contratação (consulta, com retorno ao endereço anterior). */

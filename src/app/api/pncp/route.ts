@@ -45,9 +45,16 @@ async function busca(s: any, u: URLSearchParams) {
     if (!r) {
       // reserva: API de consulta (exige período, modalidade e no máximo 3 UFs)
       if (!de || !ate || ufs.length > 3) return Response.json({ ok: true, situacao: 'indisponivel', mensagem: 'A busca do portal do PNCP não respondeu. Tente de novo em instantes ou informe o período de publicação e até 3 UFs.' });
-      const partes = await Promise.all((ufs.length ? ufs : ['']).map((uf) => buscar({ de, ate, uf, mod: mod || '6', q, abertas })));
-      if (partes.some((p) => p.situacao !== 'ok')) return Response.json({ ok: true, situacao: 'indisponivel', mensagem: 'O PNCP não respondeu. Tente de novo em instantes.' });
-      r = { situacao: 'ok', fonte: 'consulta', total: partes.reduce((a, p: any) => a + p.total, 0), lidos: partes.reduce((a, p: any) => a + p.lidos, 0), truncado: partes.some((p: any) => p.truncado), itens: partes.flatMap((p: any) => p.itens) };
+      // sem modalidade escolhida: pregão eletrônico (6) e concorrência eletrônica (4), as mais comuns para fornecedores
+      const mods = mod ? [mod] : ['6', '4'];
+      const partes: any[] = []; // uma consulta por vez: o PNCP recusa pedidos simultâneos
+      const limite = Date.now() + 75000; let faltou = false;
+      for (const uf of ufs.length ? ufs : ['']) for (const m of mods) { if (Date.now() > limite - 5000) { faltou = true; continue; } partes.push(await buscar({ de, ate, uf, mod: m, q, abertas, limite })); }
+      const limitado = 'O PNCP está limitando as consultas agora (muitos pedidos em sequência). Aguarde um minuto e pesquise de novo.';
+      if (!partes.length || partes.some((p) => p.situacao !== 'ok')) return Response.json({ ok: true, situacao: 'indisponivel', mensagem: partes.some((p) => p.http === 429) ? limitado : 'O PNCP não respondeu. Tente de novo em instantes.' });
+      r = { situacao: 'ok', fonte: 'consulta', modalidades: mods, total: partes.reduce((a, p: any) => a + p.total, 0), lidos: partes.reduce((a, p: any) => a + p.lidos, 0), truncado: faltou || partes.some((p: any) => p.truncado), itens: partes.flatMap((p: any) => p.itens) };
+      // nada achado e boa parte sem ler: não mostrar "0 encontradas" como se fosse resposta definitiva
+      if (!r.itens.length && r.truncado && r.lidos < r.total / 2) return Response.json({ ok: true, situacao: 'indisponivel', mensagem: limitado });
     }
     // marca o que já está no sistema para a empresa ativa
     const emp = u.get('emp') || '';
