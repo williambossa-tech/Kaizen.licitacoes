@@ -20,7 +20,7 @@ K.view('imp',{label:()=>'Importar edital',render(t){
  if(S.emp==='ALL')return '<div class="callout warn">Escolha uma empresa (CNPJ) antes de importar: toda inclusão identifica o CNPJ ativo.</div>';
  if((t.modo||'pncp')==='csv')return K.T2.impCSV.render(t);
  const f=t.f=t.f||{q:'',status:'recebendo_proposta',ufs:[],mod:'',de:addD(HOJE,-30),ate:HOJE};
- const proj=Object.entries(EMP[S.emp].proj);t.proj=t.proj||proj[0][0];t.sel=t.sel||{};
+ const proj=Object.entries((EMP[S.emp]||{}).proj||{});t.proj=t.proj??(proj[0]?proj[0][0]:'');t.sel=t.sel||{};
  const r=t.res;let out='';
  if(t.buscando)out='<p class="note" style="margin-top:16px">Consultando o PNCP… pode levar alguns segundos.</p>';
  else if(r&&r.situacao!=='ok')out=`<div class="callout warn" style="margin-top:16px">${esc(r.mensagem||'O PNCP não respondeu.')}</div>`;
@@ -42,7 +42,7 @@ K.view('imp',{label:()=>'Importar edital',render(t){
   <div><span class="small mut">UFs ${f.ufs.length?`(${f.ufs.join(', ')})`:'(todas)'}</span><div class="qf" style="margin-top:6px">${Object.keys(UF).map(u=>`<button class="chip" data-act="pvuf" data-k="${u}" aria-pressed="${f.ufs.includes(u)}" title="${UF[u][0]}">${u}</button>`).join('')}${f.ufs.length?'<button class="chip" data-act="pvuf" data-k="">Limpar</button>':''}</div></div>
   <div class="grid2" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))"><label>Modalidade<select id="pvmod">${MODS.map(([k,l])=>`<option value="${k}" ${f.mod===k?'selected':''}>${l}</option>`).join('')}</select></label>
   <label>Publicação de<input id="pvde" type="date" value="${f.de}"></label><label>Publicação até<input id="pvate" type="date" value="${f.ate}"></label>
-  <label>Projeto de destino<select data-chg="t2proj">${proj.map(([k,v])=>`<option value="${k}" ${t.proj===k?'selected':''}>${v}</option>`).join('')}</select></label></div>
+  <label>Projeto de destino<select data-chg="t2proj">${proj.length?'':'<option value="">Sem projeto (opcional)</option>'}${proj.map(([k,v])=>`<option value="${k}" ${t.proj===k?'selected':''}>${esc(v)}</option>`).join('')}</select></label></div>
   <div class="acts"><button class="btn pri" data-act="pvbuscar">Pesquisar</button><button class="btn" data-act="pvlimpar">Limpar campos</button><span class="small mut">Mesma busca da tela de editais do portal do PNCP. “A receber / recebendo proposta” mostra só licitações vigentes ou futuras, ainda sem disputa aberta.</span></div>
  </div>${out}</div>`}});
 const rotulo=n=>n?`Inserir ${n} ${plural(n,['licitação selecionada','licitações selecionadas'])}`:'Selecione as licitações para inserir';
@@ -59,7 +59,7 @@ K.act('pvbuscar',async()=>{const t=top();lerForm(t);const f=t.f;
 document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target&&e.target.id==='pvq'){e.preventDefault();const b=document.querySelector('[data-act="pvbuscar"]');if(b)b.click()}});
 K.act('pvsel',a=>{const t=top();const x=t.res.itens[+a.dataset.i];if(a.checked){if(Object.keys(t.sel).length>=LIMITE){a.checked=false;return toast('Até '+LIMITE+' licitações por vez.')}t.sel[x.controle]=1}else delete t.sel[x.controle];atualizaBotao()});
 K.act('pvall',a=>{const t=top();t.sel={};if(a.checked)t.res.itens.filter(x=>!(x.noSistema&&x.noSistema.minha)).slice(0,LIMITE).forEach(x=>t.sel[x.controle]=1);document.querySelectorAll('.pvck').forEach(c=>{c.checked=!!t.sel[t.res.itens[+c.dataset.i].controle]});if(a.checked&&t.res.itens.length>LIMITE)toast('Selecionadas as primeiras '+LIMITE+'.');atualizaBotao()});
-K.act('pvinserir',async a=>{const t=top();const refs=Object.keys(t.sel);if(!refs.length)return;a.disabled=true;a.textContent='Inserindo '+refs.length+'… (lendo itens e documentos no PNCP)';
+K.act('pvinserir',async a=>{const t=top();const refs=Object.keys(t.sel);if(!refs.length)return;if(S.emp==='ALL')return toast('Escolha uma empresa no seletor (canto inferior esquerdo) para importar.');a.disabled=true;a.textContent='Inserindo '+refs.length+'… (lendo itens e documentos no PNCP)';
  try{const r=await K.api('importar_pncp',{emp:S.emp,proj:t.proj,refs,prazo:addD(HOJE,3)});
   const ig=r.ignorados||[];toast(r.criados.length+' '+plural(r.criados.length,['licitação inserida','licitações inseridas'])+(ig.length?'; '+ig.length+' não inserida(s): '+ig.map(x=>x.ref+' ('+x.motivo+')').join('; '):'')+'. Abrindo a análise prévia…');
   sessionStorage.setItem('kb_ir','prev');setTimeout(()=>location.reload(),ig.length?4000:1200)}
