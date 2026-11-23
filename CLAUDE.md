@@ -130,7 +130,7 @@ tests/e2e_local.py      17 cenários ponta a ponta (Playwright)
 - **Datas**: fuso `America/Sao_Paulo` (`TZ` no Railway). `certames.sessao` é `timestamp` sem fuso, em horário de Brasília. O driver devolve datas como texto (`YYYY-MM-DD` e `YYYY-MM-DDTHH:MM`).
 - **jsonb reordena chaves**: para comparar objetos use `canon`/`eq` de `regras.ts`, nunca `JSON.stringify` direto.
 - **Migrações**: arquivos `supabase/migrations/AAAAMMDDNNNNNN_nome.sql`, aplicados em ordem e registrados em `_migracoes`. Não edite uma migração já aplicada: crie outra.
-- **Produção sem dados fictícios** desde 23/11/2026: o banco foi limpo (ficaram o login do administrador e as configurações de IA), `DEMO_MODE=0` e `SEED_DEMO=0`. Os dados fictícios continuam valendo só no ambiente local e nos testes.
+- **Limpeza da produção (pendente, aguarda confirmação do responsável)**: apagar os dados fictícios (fica o login do administrador e as configurações de IA) e definir `DEMO_MODE=0` e `SEED_DEMO=0` no Railway antes, para os fictícios não voltarem sozinhos. Os dados fictícios continuam valendo no ambiente local e nos testes.
 - **Empresas novas** recebem o id `E` + os 14 dígitos do CNPJ (as fictícias são A, B e G).
 - **Dados fictícios**: altere `supabase/seed/demo.json` e rode `node scripts/build-seed.mjs`. Os UUIDs dos perfis seguem `00000000-0000-4000-8000-00000000000N`, na ordem william, ana, marina, carlos, paula, rui, bruno. As empresas são A (Alfa), B (Beta) e G (Gama, sem autorização).
 - **Commits**: mensagem em português, curta e descritiva.
